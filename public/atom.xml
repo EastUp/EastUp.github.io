@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jamin</title>
+  
+  <subtitle>人生没有终点！</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://eastup.github.io/"/>
+  <updated>2020-04-16T11:48:43.587Z</updated>
+  <id>http://eastup.github.io/</id>
+  
+  <author>
+    <name>jamin</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://eastup.github.io/hello-world/"/>
+    <id>http://eastup.github.io/hello-world/</id>
+    <published>2020-04-16T11:48:43.587Z</published>
+    <updated>2020-04-16T11:48:43.587Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
