@@ -136,8 +136,8 @@ live2d:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  # type: git
-  # repository: git@github.com:EastUp/EastUp.github.io.git
-  # branch: master
   type: git
-  repo: https://github.com/EastUp/EastUp.github.io
+  repository: git@github.com:EastUp/EastUp.github.io.git
+  branch: master
+  # type: git
+  # repo: https://github.com/EastUp/EastUp.github.io
