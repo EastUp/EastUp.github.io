@@ -117,21 +117,21 @@ search:
   format: html
   limit: 10000
 
-live2d:
-  enable: true
-  scriptFrom: local
-  pluginRootPath: live2dw/
-  pluginJsPath: lib/
-  pluginModelPath: assets/
-  model:
-    # 填写你所需要的看板娘名称
-    use: live2d-widget-model-haruto
-  display:
-    position: right
-    width: 150
-    height: 300
-  mobile:
-    show: true
+# live2d:
+#   enable: true
+#   scriptFrom: local
+#   pluginRootPath: live2dw/
+#   pluginJsPath: lib/
+#   pluginModelPath: assets/
+#   model:
+#     # 填写你所需要的看板娘名称
+#     use: live2d-widget-model-haruto
+#   display:
+#     position: right
+#     width: 150
+#     height: 300
+#   mobile:
+#     show: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

@@ -872,5 +872,6 @@ codeblock:
   copy_button:  # 设置是否开启代码块复制按钮
     enable: true
     show_result: true  # 是否显示复制成功信息
-
+live2d:
+  enable: true
 

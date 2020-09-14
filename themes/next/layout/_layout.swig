@@ -13,6 +13,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang || page.language || config.language }}">
+  <script src="/live2d-widget/autoload.js"></script>
 
   {% set container_class = "container " %}
   {% if theme.sidebar.position %}
