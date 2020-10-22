@@ -13,6 +13,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang || page.language || config.language }}">
+  <!-- <script src="/live2d-widget/autoload.js"></script> -->
   <script src="/live2d-widget/autoload.js"></script>
 
   {% set container_class = "container " %}
@@ -90,5 +91,6 @@
   {% include '_third-party/scroll-cookie.swig' %}
   {% include '_third-party/exturl.swig' %}
   {% include '_custom/custom.swig' %}
+  {% include '_third-party/copy-code.swig' %}
 </body>
 </html>

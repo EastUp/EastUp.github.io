@@ -172,7 +172,7 @@ toc:
   enable: true
 
   # Automatically add list number to toc.
-  number: true
+  number: false
 
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: false
@@ -393,9 +393,9 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: false
-  appid:  # your leancloud application appid
-  appkey:  # your leancloud application appkey
+  enable: true
+  appid:  nGS6I8Lhxl6RuW9rWHtlzQgi-gzGzoHsz
+  appkey: osxkNrrnKC4USSNpLUJyfsCb
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
   placeholder: Just go go # comment box placeholder
@@ -548,9 +548,11 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: false
-  app_id: #<app_id>
-  app_key: #<app_key>
+  enable: true
+  app_id: nGS6I8Lhxl6RuW9rWHtlzQgi-gzGzoHsz
+  app_key: osxkNrrnKC4USSNpLUJyfsCb
+  security: false
+  betterPerformance: false
 
 # Another tool to show number of visitors to each article.
 # visit https://console.firebase.google.com/u/0/ to get apiKey and projectId
@@ -873,5 +875,5 @@ codeblock:
     enable: true
     show_result: true  # 是否显示复制成功信息
 live2d:
-  enable: true
+ enable: true
 
