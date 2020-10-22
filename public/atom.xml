@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://eastup.github.io/"/>
-  <updated>2020-10-22T07:20:46.992Z</updated>
+  <updated>2020-10-22T10:20:56.705Z</updated>
   <id>http://eastup.github.io/</id>
   
   <author>
@@ -17,42 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>01.基本数据类型和指针入门</title>
-    <link href="http://eastup.github.io/01.C%E5%9F%BA%E7%A1%80-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8C%87%E9%92%88%E5%85%A5%E9%97%A8/"/>
-    <id>http://eastup.github.io/01.C%E5%9F%BA%E7%A1%80-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8C%87%E9%92%88%E5%85%A5%E9%97%A8/</id>
-    <published>2018-02-12T00:12:43.000Z</published>
-    <updated>2020-10-22T07:20:46.992Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;01-基本数据类型和指针入门&quot;&gt;&lt;a href=&quot;#01-基本数据类型和指针入门&quot; class=&quot;headerlink&quot; title=&quot;01.基本数据类型和指针入门&quot;&gt;&lt;/a&gt;&lt;center&gt;01.基本数据类型和指针入门&lt;center&gt;&lt;/h1&gt;&lt;h1
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Android" scheme="http://eastup.github.io/categories/Android/"/>
-    
-      <category term="NDK" scheme="http://eastup.github.io/categories/Android/NDK/"/>
-    
-      <category term="C" scheme="http://eastup.github.io/categories/Android/NDK/C/"/>
-    
-    
-      <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hexo+Next博客搭建</title>
     <link href="http://eastup.github.io/Hexo+Next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     <id>http://eastup.github.io/Hexo+Next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
     <published>2018-02-12T00:12:43.000Z</published>
-    <updated>2020-10-22T09:50:50.707Z</updated>
+    <updated>2020-10-22T10:20:56.705Z</updated>
     
     <summary type="html">
     
@@ -74,6 +43,66 @@
       <category term="Hexo" scheme="http://eastup.github.io/tags/Hexo/"/>
     
       <category term="Next" scheme="http://eastup.github.io/tags/Next/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+Next配置</title>
+    <link href="http://eastup.github.io/Hexo+Next%E9%85%8D%E7%BD%AE/"/>
+    <id>http://eastup.github.io/Hexo+Next%E9%85%8D%E7%BD%AE/</id>
+    <published>2018-02-12T00:12:43.000Z</published>
+    <updated>2020-10-22T10:59:07.422Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;1-博客中图片的显示问题：&quot;&gt;&lt;a href=&quot;#1-博客中图片的显示问题：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="博客搭建" scheme="http://eastup.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+    
+      <category term="Hexo" scheme="http://eastup.github.io/tags/Hexo/"/>
+    
+      <category term="Next" scheme="http://eastup.github.io/tags/Next/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>01.基本数据类型和指针入门</title>
+    <link href="http://eastup.github.io/01.C%E5%9F%BA%E7%A1%80-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8C%87%E9%92%88%E5%85%A5%E9%97%A8/"/>
+    <id>http://eastup.github.io/01.C%E5%9F%BA%E7%A1%80-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8C%87%E9%92%88%E5%85%A5%E9%97%A8/</id>
+    <published>2018-02-12T00:12:43.000Z</published>
+    <updated>2020-10-22T10:12:50.215Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;01-基本数据类型和指针入门&quot;&gt;&lt;a href=&quot;#01-基本数据类型和指针入门&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://eastup.github.io/categories/Android/"/>
+    
+      <category term="NDK" scheme="http://eastup.github.io/categories/Android/NDK/"/>
+    
+      <category term="C" scheme="http://eastup.github.io/categories/Android/NDK/C/"/>
+    
+    
+      <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

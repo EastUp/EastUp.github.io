@@ -91,7 +91,7 @@ hexo s   # 启动预览
 访问 http://localhost:4000 出现 Hexo 默认页面，本地博客安装成功！
 
 Hexo 博客文件夹目录结构如下：
-![](./pic/hexo目录结构.jpg)
+![](/images/hexo目录结构.jpg)
 
 # 5. 部署 Hexo 到 GitHub Pages
 
