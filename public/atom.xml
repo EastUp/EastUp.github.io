@@ -47,4 +47,34 @@
     
   </entry>
   
+  <entry>
+    <title>Hexo+Next博客搭建</title>
+    <link href="http://eastup.github.io/Hexo+Next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    <id>http://eastup.github.io/Hexo+Next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
+    <published>2018-02-12T00:12:43.000Z</published>
+    <updated>2020-10-22T09:50:50.707Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这里我们使用 GitHub Pages 来搭建 Hexo 静态博客网站，其最吸引人的莫过于完全免费使用，并且非常稳定。&lt;/p&gt;
+&lt;h1 id=&quot;1-原理&quot;&gt;&lt;a href=&quot;#1-原理&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="博客搭建" scheme="http://eastup.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+    
+      <category term="Hexo" scheme="http://eastup.github.io/tags/Hexo/"/>
+    
+      <category term="Next" scheme="http://eastup.github.io/tags/Next/"/>
+    
+  </entry>
+  
 </feed>

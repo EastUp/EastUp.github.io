@@ -22,4 +22,67 @@
         <tag>C学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Hexo+Next博客搭建</title>
+    <url>/Hexo+Next%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p>这里我们使用 GitHub Pages 来搭建 Hexo 静态博客网站，其最吸引人的莫过于完全免费使用，并且非常稳定。</p>
+<h1 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h1><h2 id="GitHub-Pages-是什么？"><a href="#GitHub-Pages-是什么？" class="headerlink" title="GitHub Pages 是什么？"></a>GitHub Pages 是什么？</h2><p>GitHub Pages 是由 GitHub 官方提供的一种免费的静态站点托管服务，让我们可以在 GitHub 仓库里托管和发布自己的静态网站页面。</p>
+<h2 id="Hexo-是什么？"><a href="#Hexo-是什么？" class="headerlink" title="Hexo 是什么？"></a>Hexo 是什么？</h2><p>Hexo 是一个快速、简洁且高效的静态博客框架，它基于 Node.js 运行，可以将我们撰写的 Markdown 文档解析渲染成静态的 HTML 网页。</p>
+<h2 id="Hexo-GitHub-文章发布原理"><a href="#Hexo-GitHub-文章发布原理" class="headerlink" title="Hexo + GitHub 文章发布原理"></a>Hexo + GitHub 文章发布原理</h2><p>在本地撰写 Markdown 格式文章后，通过 Hexo 解析文档，渲染生成具有主题样式的 HTML 静态网页，再推送到 GitHub 上完成博文的发布。  </p>
+<h1 id="2-环境安装"><a href="#2-环境安装" class="headerlink" title="2.环境安装"></a>2.环境安装</h1><p>Hexo 基于 <code>Node.js</code>，搭建过程中还需要使用 npm（Node.js 已带） 和 <code>git</code>，因此先搭建本地操作环境，安装 Node.js 和 Git。</p>
+<ul>
+<li>下载安装<a href="https://nodejs.org/zh-cn" target="_blank" rel="noopener">Node.js</a></li>
+<li>下载安装<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a></li>
+</ul>
+<p>检查是否安装成功：进入终端，依次输入 <code>node -v</code>、<code>npm -v</code> 和 <code>git --version</code> 并回车，出现程序版本号即可。</p>
+<h1 id="3-Github配置"><a href="#3-Github配置" class="headerlink" title="3.Github配置"></a>3.Github配置</h1><h2 id="3-1连接Github"><a href="#3-1连接Github" class="headerlink" title="3.1连接Github"></a>3.1连接Github</h2><p>右键 -&gt; Git Bash Here，设置用户名和邮箱：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;GitHub 用户名&quot;</span><br><span class="line">git config --global user.email &quot;GitHub 邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2创建-SSH-密匙添加到Github上"><a href="#3-2创建-SSH-密匙添加到Github上" class="headerlink" title="3.2创建 SSH 密匙添加到Github上"></a>3.2创建 SSH 密匙添加到Github上</h2><p>输入 <code>ssh-keygen -t rsa -C &quot;GitHub 邮箱&quot;</code>，然后一路回车。</p>
+<p>进入 [C:\Users\用户名.ssh] 目录（要勾选显示“隐藏的项目”），用记事本打开公钥 id_rsa.pub 文件并复制里面的内容。</p>
+<p>登陆 GitHub ，点击用户头像进入 Settings 页面，选择左边栏的 SSH and GPG keys，点击 New SSH key。</p>
+<p>Title 随便取个名字，粘贴复制的 id_rsa.pub 内容到 Key 中，点击 Add SSH key 完成添加。</p>
+<p><strong>验证连接</strong>：打开 Git Bash，输入 <code>ssh -T git@github.com</code> 出现 <code>“Are you sure……”</code>，输入 yes 回车确认。显示 <code>“Hi xxx! You&#39;ve successfully……”</code> 即连接成功。</p>
+<h2 id="3-3创建-Github-Pages-仓库"><a href="#3-3创建-Github-Pages-仓库" class="headerlink" title="3.3创建 Github Pages 仓库"></a>3.3创建 Github Pages 仓库</h2><p>GitHub 主页右上角加号 -&gt; New repository：</p>
+<ul>
+<li>Repository name 中输入 用户名.github.io</li>
+<li>勾选 “Initialize this repository with a README”</li>
+<li>Description 选填</li>
+</ul>
+<p>填好后点击 Create repository 创建。</p>
+<p>创建后默认自动启用 HTTPS，博客地址为：<code>https://用户名.github.io</code></p>
+<h1 id="4-本地安装-Hexo-博客程序"><a href="#4-本地安装-Hexo-博客程序" class="headerlink" title="4.本地安装 Hexo 博客程序"></a>4.本地安装 Hexo 博客程序</h1><h2 id="4-1安装-Hexo"><a href="#4-1安装-Hexo" class="headerlink" title="4.1安装 Hexo"></a>4.1安装 Hexo</h2><p>使用使用 npm 一键安装 Hexo 博客程序：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; linux或mac用户需要管理员权限（sudo），运行这条命令：</span><br><span class="line"></span><br><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-Hexo-初始化和本地预览"><a href="#4-2-Hexo-初始化和本地预览" class="headerlink" title="4.2 Hexo 初始化和本地预览"></a>4.2 Hexo 初始化和本地预览</h2><p>初始化并安装所需组件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init      # 初始化</span><br><span class="line">npm install    # 安装组件</span><br></pre></td></tr></table></figure>
+
+<p>完成后依次输入下面命令，启动本地服务器进行预览：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g   # 生成页面</span><br><span class="line">hexo s   # 启动预览</span><br></pre></td></tr></table></figure>
+
+<p>访问 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 出现 Hexo 默认页面，本地博客安装成功！</p>
+<p>Hexo 博客文件夹目录结构如下：<br><img src="./pic/hexo%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.jpg" alt=""></p>
+<h1 id="5-部署-Hexo-到-GitHub-Pages"><a href="#5-部署-Hexo-到-GitHub-Pages" class="headerlink" title="5. 部署 Hexo 到 GitHub Pages"></a>5. 部署 Hexo 到 GitHub Pages</h1><p>首先安装 hexo-deployer-git：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后修改 _config.yml 文件末尾的 Deployment 部分，修改成如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:用户名&#x2F;用户名.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>完成后运行 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d #部署到GitHub Pages</span><br></pre></td></tr></table></figure>
+
+<p>将网站上传部署到 GitHub Pages。这时访问我们的 GitHub 域名 <code>https://用户名.github.io</code> 就可以看到 Hexo 网站了。</p>
+<h1 id="6-安装Next主题"><a href="#6-安装Next主题" class="headerlink" title="6.安装Next主题"></a>6.安装Next主题</h1><p>进入网站目录打开 Git Bash Here 下载主题：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<p>然后修改 hexo的 <code>_config.yml</code> 中的 <code>theme</code> 为新主题名称 <code>next</code>。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Next</tag>
+      </tags>
+  </entry>
 </search>
