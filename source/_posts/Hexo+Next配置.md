@@ -1,6 +1,6 @@
 ---
 title: Hexo+Next配置
-date:  2018-02-12 08:12:43
+date:  2018-02-11 08:12:43
 tags:  [Hexo,Next]
 categories: 博客搭建
 ---
