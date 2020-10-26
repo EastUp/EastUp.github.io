@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://eastup.github.io/"/>
-  <updated>2020-10-23T09:43:15.044Z</updated>
+  <updated>2020-10-26T09:59:16.387Z</updated>
   <id>http://eastup.github.io/</id>
   
   <author>
@@ -17,11 +17,237 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>12.指针赋值、野指针、项目开发模型强化</title>
+    <link href="http://eastup.github.io/12.C%E8%BF%9B%E9%98%B6-%E5%9B%9B%E9%A9%B1%E6%A8%A1%E5%9E%8B%E3%80%81%E9%87%8E%E6%8C%87%E9%92%88%E3%80%81%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B%E5%BC%BA%E5%8C%96/"/>
+    <id>http://eastup.github.io/12.C%E8%BF%9B%E9%98%B6-%E5%9B%9B%E9%A9%B1%E6%A8%A1%E5%9E%8B%E3%80%81%E9%87%8E%E6%8C%87%E9%92%88%E3%80%81%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B%E5%BC%BA%E5%8C%96/</id>
+    <published>2018-02-22T00:12:43.000Z</published>
+    <updated>2020-10-26T09:59:16.387Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;12-指针赋值、野指针、项目开发模型强化&quot;&gt;&lt;a href=&quot;#12-指针赋值、野指针、项目开发模型强化&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="C" scheme="http://eastup.github.io/categories/C/"/>
+    
+    
+      <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="C进阶" scheme="http://eastup.github.io/tags/C%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>11.内存四驱模型</title>
+    <link href="http://eastup.github.io/11.C%E8%BF%9B%E9%98%B6-%E5%86%85%E5%AD%98%E5%9B%9B%E9%A9%B1%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://eastup.github.io/11.C%E8%BF%9B%E9%98%B6-%E5%86%85%E5%AD%98%E5%9B%9B%E9%A9%B1%E6%A8%A1%E5%9E%8B/</id>
+    <published>2018-02-21T00:12:43.000Z</published>
+    <updated>2020-10-26T09:48:53.846Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;11-内存四驱模型&quot;&gt;&lt;a href=&quot;#11-内存四驱模型&quot; class=&quot;headerlink&quot; title=&quot;11.内存四驱模型&quot;&gt;&lt;/a&gt;&lt;center&gt;11.内存四驱模型&lt;center&gt;&lt;/center&gt;&lt;/center&gt;&lt;/h1&gt;&lt;h1
+        
+      
+    
+    </summary>
+    
+    
+      <category term="C" scheme="http://eastup.github.io/categories/C/"/>
+    
+    
+      <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="C进阶" scheme="http://eastup.github.io/tags/C%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>10.缓存策略和异常处理</title>
+    <link href="http://eastup.github.io/10.JNI%E5%9F%BA%E7%A1%80-%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E5%92%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
+    <id>http://eastup.github.io/10.JNI%E5%9F%BA%E7%A1%80-%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E5%92%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</id>
+    <published>2018-02-20T00:12:43.000Z</published>
+    <updated>2020-10-26T09:03:32.708Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;10-缓存策略和异常处理&quot;&gt;&lt;a href=&quot;#10-缓存策略和异常处理&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JNI" scheme="http://eastup.github.io/categories/JNI/"/>
+    
+    
+      <category term="JNI学习" scheme="http://eastup.github.io/tags/JNI%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>09.Android共享内存的序列化过程</title>
+    <link href="http://eastup.github.io/09.JNI%E5%9F%BA%E7%A1%80-Android%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%87%E7%A8%8B/"/>
+    <id>http://eastup.github.io/09.JNI%E5%9F%BA%E7%A1%80-Android%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%87%E7%A8%8B/</id>
+    <published>2018-02-19T00:12:43.000Z</published>
+    <updated>2020-10-26T09:03:24.058Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;09-Android共享内存的序列化过程&quot;&gt;&lt;a href=&quot;#09-Android共享内存的序列化过程&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JNI" scheme="http://eastup.github.io/categories/JNI/"/>
+    
+    
+      <category term="JNI学习" scheme="http://eastup.github.io/tags/JNI%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Android" scheme="http://eastup.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>08.Native层构建java对象</title>
+    <link href="http://eastup.github.io/08.JNI%E5%9F%BA%E7%A1%80-Native%E5%B1%82%E6%9E%84%E5%BB%BAjava%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://eastup.github.io/08.JNI%E5%9F%BA%E7%A1%80-Native%E5%B1%82%E6%9E%84%E5%BB%BAjava%E5%AF%B9%E8%B1%A1/</id>
+    <published>2018-02-18T10:12:43.000Z</published>
+    <updated>2020-10-26T09:02:59.717Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;08-Native层构建java对象&quot;&gt;&lt;a href=&quot;#08-Native层构建java对象&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JNI" scheme="http://eastup.github.io/categories/JNI/"/>
+    
+    
+      <category term="JNI学习" scheme="http://eastup.github.io/tags/JNI%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>07.JNIEnv 的实现原理</title>
+    <link href="http://eastup.github.io/07.JNI%E5%9F%BA%E7%A1%80-JNIEnv%20%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
+    <id>http://eastup.github.io/07.JNI%E5%9F%BA%E7%A1%80-JNIEnv%20%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</id>
+    <published>2018-02-18T00:12:43.000Z</published>
+    <updated>2020-10-26T09:02:53.443Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;07-JNIEnv-的实现原理&quot;&gt;&lt;a href=&quot;#07-JNIEnv-的实现原理&quot; class=&quot;headerlink&quot; title=&quot;07.JNIEnv 的实现原理&quot;&gt;&lt;/a&gt;&lt;center&gt;07.JNIEnv
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JNI" scheme="http://eastup.github.io/categories/JNI/"/>
+    
+    
+      <category term="JNI学习" scheme="http://eastup.github.io/tags/JNI%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>06.文件操作</title>
+    <link href="http://eastup.github.io/06.C%E5%9F%BA%E7%A1%80-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+    <id>http://eastup.github.io/06.C%E5%9F%BA%E7%A1%80-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</id>
+    <published>2018-02-17T00:12:43.000Z</published>
+    <updated>2020-10-26T09:23:36.451Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;06-文件操作&quot;&gt;&lt;a href=&quot;#06-文件操作&quot; class=&quot;headerlink&quot; title=&quot;06.文件操作&quot;&gt;&lt;/a&gt;&lt;center&gt;06.文件操作&lt;center&gt;&lt;/center&gt;&lt;/center&gt;&lt;/h1&gt;&lt;h1 id=&quot;知识点：&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="C" scheme="http://eastup.github.io/categories/C/"/>
+    
+    
+      <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="C基础" scheme="http://eastup.github.io/tags/C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>05.结构体联合体和枚举</title>
+    <link href="http://eastup.github.io/05.C%E5%9F%BA%E7%A1%80-%E7%BB%93%E6%9E%84%E4%BD%93%E8%81%94%E5%90%88%E4%BD%93%E5%92%8C%E6%9E%9A%E4%B8%BE/"/>
+    <id>http://eastup.github.io/05.C%E5%9F%BA%E7%A1%80-%E7%BB%93%E6%9E%84%E4%BD%93%E8%81%94%E5%90%88%E4%BD%93%E5%92%8C%E6%9E%9A%E4%B8%BE/</id>
+    <published>2018-02-16T00:12:43.000Z</published>
+    <updated>2020-10-26T09:23:26.922Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;05-结构体联合体和枚举&quot;&gt;&lt;a href=&quot;#05-结构体联合体和枚举&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="C" scheme="http://eastup.github.io/categories/C/"/>
+    
+    
+      <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="C基础" scheme="http://eastup.github.io/tags/C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>04.字符串常见操作和指针练习</title>
     <link href="http://eastup.github.io/04.C%E5%9F%BA%E7%A1%80-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C%E5%92%8C%E6%8C%87%E9%92%88%E7%BB%83%E4%B9%A0/"/>
     <id>http://eastup.github.io/04.C%E5%9F%BA%E7%A1%80-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C%E5%92%8C%E6%8C%87%E9%92%88%E7%BB%83%E4%B9%A0/</id>
     <published>2018-02-15T00:12:43.000Z</published>
-    <updated>2020-10-23T09:43:15.044Z</updated>
+    <updated>2020-10-26T09:23:14.510Z</updated>
     
     <summary type="html">
     
@@ -36,14 +262,12 @@
     </summary>
     
     
-      <category term="Android" scheme="http://eastup.github.io/categories/Android/"/>
-    
-      <category term="NDK" scheme="http://eastup.github.io/categories/Android/NDK/"/>
-    
-      <category term="C" scheme="http://eastup.github.io/categories/Android/NDK/C/"/>
+      <category term="C" scheme="http://eastup.github.io/categories/C/"/>
     
     
       <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="C基础" scheme="http://eastup.github.io/tags/C%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -52,7 +276,7 @@
     <link href="http://eastup.github.io/03.C%E5%9F%BA%E7%A1%80-%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%92%8C%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/"/>
     <id>http://eastup.github.io/03.C%E5%9F%BA%E7%A1%80-%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%92%8C%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/</id>
     <published>2018-02-14T00:12:43.000Z</published>
-    <updated>2020-10-23T07:33:36.916Z</updated>
+    <updated>2020-10-26T09:23:03.014Z</updated>
     
     <summary type="html">
     
@@ -67,14 +291,12 @@
     </summary>
     
     
-      <category term="Android" scheme="http://eastup.github.io/categories/Android/"/>
-    
-      <category term="NDK" scheme="http://eastup.github.io/categories/Android/NDK/"/>
-    
-      <category term="C" scheme="http://eastup.github.io/categories/Android/NDK/C/"/>
+      <category term="C" scheme="http://eastup.github.io/categories/C/"/>
     
     
       <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="C基础" scheme="http://eastup.github.io/tags/C%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -83,7 +305,7 @@
     <link href="http://eastup.github.io/02.C%E5%9F%BA%E7%A1%80-%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%E5%92%8C%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/"/>
     <id>http://eastup.github.io/02.C%E5%9F%BA%E7%A1%80-%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%E5%92%8C%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</id>
     <published>2018-02-13T00:12:43.000Z</published>
-    <updated>2020-10-23T07:36:05.358Z</updated>
+    <updated>2020-10-26T09:22:53.053Z</updated>
     
     <summary type="html">
     
@@ -98,14 +320,12 @@
     </summary>
     
     
-      <category term="Android" scheme="http://eastup.github.io/categories/Android/"/>
-    
-      <category term="NDK" scheme="http://eastup.github.io/categories/Android/NDK/"/>
-    
-      <category term="C" scheme="http://eastup.github.io/categories/Android/NDK/C/"/>
+      <category term="C" scheme="http://eastup.github.io/categories/C/"/>
     
     
       <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="C基础" scheme="http://eastup.github.io/tags/C%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -114,7 +334,7 @@
     <link href="http://eastup.github.io/01.C%E5%9F%BA%E7%A1%80-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8C%87%E9%92%88%E5%85%A5%E9%97%A8/"/>
     <id>http://eastup.github.io/01.C%E5%9F%BA%E7%A1%80-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8C%87%E9%92%88%E5%85%A5%E9%97%A8/</id>
     <published>2018-02-12T00:12:43.000Z</published>
-    <updated>2020-10-23T05:55:17.771Z</updated>
+    <updated>2020-10-26T09:48:38.631Z</updated>
     
     <summary type="html">
     
@@ -129,14 +349,12 @@
     </summary>
     
     
-      <category term="Android" scheme="http://eastup.github.io/categories/Android/"/>
-    
-      <category term="NDK" scheme="http://eastup.github.io/categories/Android/NDK/"/>
-    
-      <category term="C" scheme="http://eastup.github.io/categories/Android/NDK/C/"/>
+      <category term="C" scheme="http://eastup.github.io/categories/C/"/>
     
     
       <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="C基础" scheme="http://eastup.github.io/tags/C%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
