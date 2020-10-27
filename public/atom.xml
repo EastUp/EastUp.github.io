@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://eastup.github.io/"/>
-  <updated>2020-10-26T09:59:16.387Z</updated>
+  <updated>2020-10-27T10:00:23.713Z</updated>
   <id>http://eastup.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>14.结构体赋值、套指针、深浅拷贝、大小</title>
+    <link href="http://eastup.github.io/14.C%E8%BF%9B%E9%98%B6-%E7%BB%93%E6%9E%84%E4%BD%93%E8%B5%8B%E5%80%BC%E3%80%81%E5%A5%97%E6%8C%87%E9%92%88%E3%80%81%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E3%80%81%E5%A4%A7%E5%B0%8F/"/>
+    <id>http://eastup.github.io/14.C%E8%BF%9B%E9%98%B6-%E7%BB%93%E6%9E%84%E4%BD%93%E8%B5%8B%E5%80%BC%E3%80%81%E5%A5%97%E6%8C%87%E9%92%88%E3%80%81%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E3%80%81%E5%A4%A7%E5%B0%8F/</id>
+    <published>2018-02-24T00:12:43.000Z</published>
+    <updated>2020-10-27T10:00:23.713Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;14-结构体赋值、套指针、深浅拷贝、大小&quot;&gt;&lt;a href=&quot;#14-结构体赋值、套指针、深浅拷贝、大小&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="C" scheme="http://eastup.github.io/categories/C/"/>
+    
+    
+      <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="C进阶" scheme="http://eastup.github.io/tags/C%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>13.二级指针和多级指针</title>
+    <link href="http://eastup.github.io/13.C%E8%BF%9B%E9%98%B6-%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88%E5%92%8C%E5%A4%9A%E7%BA%A7%E6%8C%87%E9%92%88/"/>
+    <id>http://eastup.github.io/13.C%E8%BF%9B%E9%98%B6-%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88%E5%92%8C%E5%A4%9A%E7%BA%A7%E6%8C%87%E9%92%88/</id>
+    <published>2018-02-23T00:12:43.000Z</published>
+    <updated>2020-10-27T09:37:56.269Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;13-二级指针和多级指针&quot;&gt;&lt;a href=&quot;#13-二级指针和多级指针&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="C" scheme="http://eastup.github.io/categories/C/"/>
+    
+    
+      <category term="C学习" scheme="http://eastup.github.io/tags/C%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="C进阶" scheme="http://eastup.github.io/tags/C%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>12.指针赋值、野指针、项目开发模型强化</title>
@@ -214,11 +272,11 @@
   </entry>
   
   <entry>
-    <title>05.结构体联合体和枚举</title>
-    <link href="http://eastup.github.io/05.C%E5%9F%BA%E7%A1%80-%E7%BB%93%E6%9E%84%E4%BD%93%E8%81%94%E5%90%88%E4%BD%93%E5%92%8C%E6%9E%9A%E4%B8%BE/"/>
-    <id>http://eastup.github.io/05.C%E5%9F%BA%E7%A1%80-%E7%BB%93%E6%9E%84%E4%BD%93%E8%81%94%E5%90%88%E4%BD%93%E5%92%8C%E6%9E%9A%E4%B8%BE/</id>
+    <title>05.结构体联合体和枚举以及大小计算</title>
+    <link href="http://eastup.github.io/05.C%E5%9F%BA%E7%A1%80-%E7%BB%93%E6%9E%84%E4%BD%93%E8%81%94%E5%90%88%E4%BD%93%E5%92%8C%E6%9E%9A%E4%B8%BE%E4%BB%A5%E5%8F%8A%E5%A4%A7%E5%B0%8F%E8%AE%A1%E7%AE%97/"/>
+    <id>http://eastup.github.io/05.C%E5%9F%BA%E7%A1%80-%E7%BB%93%E6%9E%84%E4%BD%93%E8%81%94%E5%90%88%E4%BD%93%E5%92%8C%E6%9E%9A%E4%B8%BE%E4%BB%A5%E5%8F%8A%E5%A4%A7%E5%B0%8F%E8%AE%A1%E7%AE%97/</id>
     <published>2018-02-16T00:12:43.000Z</published>
-    <updated>2020-10-26T09:23:26.922Z</updated>
+    <updated>2020-10-27T09:49:52.639Z</updated>
     
     <summary type="html">
     
@@ -226,7 +284,7 @@
       
         
         
-          &lt;h1 id=&quot;05-结构体联合体和枚举&quot;&gt;&lt;a href=&quot;#05-结构体联合体和枚举&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;05-结构体联合体和枚举以及大小计算&quot;&gt;&lt;a href=&quot;#05-结构体联合体和枚举以及大小计算&quot; class=&quot;headerlink&quot;
         
       
     
