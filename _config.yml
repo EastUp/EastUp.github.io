@@ -98,9 +98,9 @@ ignore:
 theme: next
 
 #RSS订阅
-plugins: hexo-generator-feed
-
-# RSS订阅
+plugin:
+- hexo-generator-feed
+#Feed Atom
 feed:
   type: atom
   path: atom.xml
