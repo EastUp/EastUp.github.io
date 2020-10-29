@@ -88,14 +88,14 @@
 
 
 
-<meta name="description" content="10.缓存策略和异常处理代码请看：10.JNI基础-缓存策略和异常处理 知识点：1. 数组排序： void qsort(void * _Base, size_t _NumOfElements, size_t _SizeOfElements, int(*_PtFuncCompare)(const void *, const void *)) ：c中的排序方法 jxxx* &#x3D; env-&gt;GetX">
+<meta name="description" content="缓存策略和异常处理代码请看：10.JNI基础-缓存策略和异常处理 知识点：1. 数组排序： void qsort(void * _Base, size_t _NumOfElements, size_t _SizeOfElements, int(*_PtFuncCompare)(const void *, const void *)) ：c中的排序方法 jxxx* &#x3D; env-&gt;GetXXAr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="10.缓存策略和异常处理">
+<meta property="og:title" content="04.缓存策略和异常处理">
 <meta property="og:url" content="http://eastup.github.io/10.JNI%E5%9F%BA%E7%A1%80-%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E5%92%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="Jamin">
-<meta property="og:description" content="10.缓存策略和异常处理代码请看：10.JNI基础-缓存策略和异常处理 知识点：1. 数组排序： void qsort(void * _Base, size_t _NumOfElements, size_t _SizeOfElements, int(*_PtFuncCompare)(const void *, const void *)) ：c中的排序方法 jxxx* &#x3D; env-&gt;GetX">
+<meta property="og:description" content="缓存策略和异常处理代码请看：10.JNI基础-缓存策略和异常处理 知识点：1. 数组排序： void qsort(void * _Base, size_t _NumOfElements, size_t _SizeOfElements, int(*_PtFuncCompare)(const void *, const void *)) ：c中的排序方法 jxxx* &#x3D; env-&gt;GetXXAr">
 <meta property="article:published_time" content="2018-02-20T00:12:43.000Z">
-<meta property="article:modified_time" content="2020-10-28T07:47:14.006Z">
+<meta property="article:modified_time" content="2020-10-29T05:29:25.421Z">
 <meta property="article:author" content="jamin">
 <meta property="article:tag" content="JNI学习">
 <meta property="article:tag" content="异常">
@@ -135,7 +135,7 @@
 
 
 
-  <title>10.缓存策略和异常处理 | Jamin</title>
+  <title>04.缓存策略和异常处理 | Jamin</title>
   
 
 
@@ -345,7 +345,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">10.缓存策略和异常处理</h1>
+          <h1 class="post-title" itemprop="name headline">04.缓存策略和异常处理</h1>
         
 
         <div class="post-meta">
@@ -407,7 +407,7 @@
 
           
           
-             <span id="/10.JNI%E5%9F%BA%E7%A1%80-%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E5%92%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="leancloud_visitors" data-flag-title="10.缓存策略和异常处理">
+             <span id="/10.JNI%E5%9F%BA%E7%A1%80-%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E5%92%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="leancloud_visitors" data-flag-title="04.缓存策略和异常处理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -469,17 +469,15 @@
       
 
       
-        <h1 id="10-缓存策略和异常处理"><a href="#10-缓存策略和异常处理" class="headerlink" title="10.缓存策略和异常处理"></a><center>10.缓存策略和异常处理<center></center></center></h1><p><strong>代码请看：<a href="https://github.com/EastUp/JavaJNITest/tree/master/src/com/east/jni10" target="_blank" rel="noopener">10.JNI基础-缓存策略和异常处理</a></strong></p>
+        <h1 id="缓存策略和异常处理"><a href="#缓存策略和异常处理" class="headerlink" title="缓存策略和异常处理"></a><center>缓存策略和异常处理<center></center></center></h1><p><strong>代码请看：<a href="https://github.com/EastUp/JavaJNITest/tree/master/src/com/east/jni10" target="_blank" rel="noopener">10.JNI基础-缓存策略和异常处理</a></strong></p>
 <h1 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h1><h2 id="1-数组排序："><a href="#1-数组排序：" class="headerlink" title="1. 数组排序："></a>1. 数组排序：</h2><ul>
 <li><code>void qsort(void * _Base, size_t _NumOfElements, size_t _SizeOfElements, int(*_PtFuncCompare)(const void *, const void *))</code> ：c中的排序方法</li>
 <li><code>jxxx* = env-&gt;GetXXArrayElements(env,jarray,NULL);</code>：将java层的数组转换成c层的数组（指针）。</li>
 <li><code>(*env)-&gt;ReleaseXXArrayElements(env, jarray, xxArray, JNI_OK);</code>：同步数组的数据给 java 数组 xxArray 并不是 jarray。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; JNI_OK &#x3D;&#x3D; 0:：既要同步数据给 jarray， 又要释放 intArray</span><br><span class="line">&#x2F;&#x2F; JNI_COMMIT &#x3D;&#x3D; 1：会同步数据给 jarray, 但是不会释放 intArray</span><br><span class="line">&#x2F;&#x2F; JNI_ABORT &#x3D;&#x3D; 2：不会同步数据给 jarray, 但是会释放 intArray</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <p>native层：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 4. 定义一个 compare 的方法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* number1, <span class="keyword">const</span> <span class="keyword">int</span>* number2)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> *number1 - *number2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组排序</span></span><br><span class="line">JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni10_Sample_sort</span><br><span class="line">(JNIEnv* env, jclass jclz, jintArray jarray)&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 2. 获取 jintArray 的首地址</span></span><br><span class="line">	jint* intArray = (*env)-&gt;GetIntArrayElements(env,jarray,<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3. 获取数组的长度</span></span><br><span class="line">	<span class="keyword">int</span> length = (*env)-&gt;GetArrayLength(env,jarray);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 对 jarray 进行排序</span></span><br><span class="line">	<span class="comment">// void qsort(void * _Base, size_t _NumOfElements, size_t _SizeOfElements, int(*_PtFuncCompare)(const void *, const void *))</span></span><br><span class="line">	<span class="comment">// 第一个参数：void* 数组的首地址</span></span><br><span class="line">	<span class="comment">// 第二个参数：数组的长度</span></span><br><span class="line">	<span class="comment">// 第三个参数：数组元素数据类型的大小</span></span><br><span class="line">	<span class="comment">// 第四个参数：数组的一个比较方法指针（Comparable）</span></span><br><span class="line">	qsort(intArray,length,<span class="keyword">sizeof</span>(<span class="keyword">int</span>),compare);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 同步数组的数据给 java 数组 intArray 并不是 jarray， 可以简单理解为 copy</span></span><br><span class="line">	<span class="comment">// JNI_OK == 0:：既要同步数据给 jarray， 又要释放 intArray</span></span><br><span class="line">	<span class="comment">// JNI_COMMIT == 1：会同步数据给 jarray, 但是不会释放 intArray</span></span><br><span class="line">	<span class="comment">// JNI_ABORT == 2：不会同步数据给 jarray, 但是会释放 intArray</span></span><br><span class="line"></span><br><span class="line">	(*env)-&gt;ReleaseIntArrayElements(env, jarray, intArray, JNI_OK);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="2-局部引用和全局引用"><a href="#2-局部引用和全局引用" class="headerlink" title="2. 局部引用和全局引用"></a>2. 局部引用和全局引用</h2><ul>
 <li><strong><code>jobject j_str = (*env)-&gt;NewObject(env,str_clz,jmid)</code></strong>：局部引用对象生成。</li>
 <li><strong><code>(*env)-&gt;DeleteLocalRef(env,j_str);</code></strong> ：删除局部引用</li>
@@ -487,15 +485,11 @@
 <li><strong>(*env)-&gt;DeleteGlobalRef(env,globalStr)</strong>：删除全局引用</li>
 </ul>
 <h3 id="2-1-局部引用"><a href="#2-1-局部引用" class="headerlink" title="2.1. 局部引用"></a>2.1. 局部引用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 局部引用</span></span><br><span class="line">JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni10_Sample_localRef</span><br><span class="line">(JNIEnv * env, jclass jclz)&#123;</span><br><span class="line">	<span class="comment">// 在 native 层构建的 Java 对象，不用了应该怎么管理（应该进行回收删除）</span></span><br><span class="line">	<span class="comment">// native 层开辟的内存由谁管理，你能开辟多大</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 字符串截取，String 对象</span></span><br><span class="line">	jclass str_clz = (*env)-&gt;FindClass(env,<span class="string">"java/lang/String"</span>);</span><br><span class="line">	jmethodID jmid = (*env)-&gt;GetMethodID(env, str_clz, <span class="string">"&lt;init&gt;"</span>, <span class="string">"()V"</span>);</span><br><span class="line">	jobject j_str = (*env)-&gt;NewObject(env,str_clz,jmid);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 还有 100 行代码</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// jobject 不要再使用了，要回收 javaGC 的源码</span></span><br><span class="line">	(*env)-&gt;DeleteLocalRef(env,j_str);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 删除了就不能再使用了，C 和 C++ 都需要自己释放内存（静态开辟的不需要，动态开辟的需要）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="2-2-全局引用"><a href="#2-2-全局引用" class="headerlink" title="2.2 全局引用"></a>2.2 全局引用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 全局引用</span></span><br><span class="line">jstring globalStr;</span><br><span class="line"></span><br><span class="line">JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni10_Sample_saveGlobalRef</span><br><span class="line">(JNIEnv * env, jclass j_clz, jstring value)&#123;</span><br><span class="line">	<span class="comment">// 保存全局引用，其它方法需要用到</span></span><br><span class="line">	globalStr = (*env)-&gt;NewGlobalRef(env,value);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// NewWeakGlobalRef （java 中的软引用很像）无法保证对象不为空</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">JNIEXPORT jstring JNICALL Java_com_east_jni10_Sample_getGlobalRef</span><br><span class="line">(JNIEnv * env, jclass j_clz)&#123;</span><br><span class="line">	<span class="keyword">return</span> globalStr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除全局引用</span></span><br><span class="line">JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni10_Sample_deleteGlobalRef</span><br><span class="line">(JNIEnv * env, jclass j_clz)&#123;</span><br><span class="line">	(*env)-&gt;DeleteGlobalRef(env,globalStr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="3-缓存策略-static-native层有一大堆方法需要去获取-name-属性-初始化全局静态缓存"><a href="#3-缓存策略-static-native层有一大堆方法需要去获取-name-属性-初始化全局静态缓存" class="headerlink" title="3. 缓存策略 static, native层有一大堆方法需要去获取 name 属性 // 初始化全局静态缓存"></a>3. 缓存策略 static, native层有一大堆方法需要去获取 name 属性 // 初始化全局静态缓存</h2><h3 id="3-1-局部静态缓存"><a href="#3-1-局部静态缓存" class="headerlink" title="3.1  局部静态缓存"></a>3.1  局部静态缓存</h3><p>局部静态缓存：即使方法被重复调用也不会反复的给<code>static</code>修饰的字段赋值。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni10_Sample_staticLocalCache</span><br><span class="line">(JNIEnv * env, jclass j_clz, jstring value)&#123;</span><br><span class="line">	<span class="comment">// name 属性，赋值操作</span></span><br><span class="line">	<span class="keyword">static</span> jfieldID jfid = <span class="literal">NULL</span>; <span class="comment">// 局部静态缓存，即使方法被重复调用也不会反复的去获取 jfieldID</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (jfid)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"fieldID is not null\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		jfid = (*env)-&gt;GetStaticFieldID(env, j_clz, <span class="string">"name"</span>, <span class="string">"Ljava/lang/String;"</span>);<span class="comment">// 如果没有静态缓存 这个方法会被多次调用，会去反复的获取 jfieldID</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	(*env)-&gt;SetStaticObjectField(env,j_clz,jfid,value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="3-2-全局静态缓存"><a href="#3-2-全局静态缓存" class="headerlink" title="3.2 全局静态缓存"></a>3.2 全局静态缓存</h3><p>全局静态缓存：即使方法被重复调用也不会反复的给<code>static</code>修饰的字段赋值。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局静态缓存</span></span><br><span class="line"><span class="keyword">static</span> jfieldID f_name_id = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">static</span> jfieldID f_name1_id = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">static</span> jfieldID f_name2_id = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni10_Sample_staticLocalCache</span><br><span class="line">(JNIEnv * env, jclass j_clz, jstring value)&#123;</span><br><span class="line">	<span class="comment">// 因为是静态缓存，所以这个方法被反复调用，也不会反复的去获取 jfieldID</span></span><br><span class="line">	(*env)-&gt;SetStaticObjectField(env,j_clz,f_name_id,value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni10_Sample_initStaticCache</span><br><span class="line">(JNIEnv *env, jclass j_clz)&#123;</span><br><span class="line">	<span class="comment">// 初始化全局静态缓存</span></span><br><span class="line">	f_name_id = (*env)-&gt;GetStaticFieldID(env, j_clz, <span class="string">"name"</span>, <span class="string">"Ljava/lang/String;"</span>);</span><br><span class="line">	f_name1_id = (*env)-&gt;GetStaticFieldID(env, j_clz, <span class="string">"name1"</span>, <span class="string">"Ljava/lang/String;"</span>);</span><br><span class="line">	f_name2_id = (*env)-&gt;GetStaticFieldID(env, j_clz, <span class="string">"name2"</span>, <span class="string">"Ljava/lang/String;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="4-异常处理（简单讲，C-异常）"><a href="#4-异常处理（简单讲，C-异常）" class="headerlink" title="4. 异常处理（简单讲，C++异常）"></a>4. 异常处理（简单讲，C++异常）</h2><ul>
 <li><code>jthrowable throwable = (*env)-&gt;ExceptionOccurred(env);</code>：正在抛出一个异常的本地引用</li>
 <li><code>(*env)-&gt;ExceptionClear(env);</code>：清除异常</li>
@@ -517,16 +511,9 @@
 </ol>
 <p>说明下：<code>ExceptionCheck</code> 用法</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">env-&gt;FindClass(<span class="string">"Android123CWJ"</span>); <span class="comment">//假设这个类本身不存在</span></span><br><span class="line"> <span class="keyword">if</span>(env-&gt;ExceptionCheck())</span><br><span class="line"> &#123;</span><br><span class="line">   env-&gt;ExceptionDescribe();</span><br><span class="line">   env-&gt;ExceptionClear();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-
 <p>下面是：<code>ExceptionOccurred</code> 用法</p>
 <p>注意： 保存后在抛出异常后记得 <code>return</code></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 异常处理</span></span><br><span class="line">JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni10_Sample_exception</span><br><span class="line">(JNIEnv *env, jclass j_clz)&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 假设现在想给 ，name3 赋值</span></span><br><span class="line">	jfieldID jfid = (*env)-&gt;GetStaticFieldID(env, j_clz, <span class="string">"name3"</span>, <span class="string">"Ljava/lang/String;"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 两种方式解决</span></span><br><span class="line">	<span class="comment">// 1. 补救措施， 不拿 name3 拿 name</span></span><br><span class="line">	<span class="comment">// 1.1 有没有异常</span></span><br><span class="line">	jthrowable throwable = (*env)-&gt;ExceptionOccurred(env);</span><br><span class="line">	<span class="comment">/*if (throwable)&#123;</span></span><br><span class="line"><span class="comment">		// 补救措施，先把异常清除</span></span><br><span class="line"><span class="comment">		printf("native have a exception");</span></span><br><span class="line"><span class="comment">		// 清除异常</span></span><br><span class="line"><span class="comment">		(*env)-&gt;ExceptionClear(env);</span></span><br><span class="line"><span class="comment">		// 重新获取 name 属性</span></span><br><span class="line"><span class="comment">		jfid = (*env)-&gt;GetStaticFieldID(env, j_clz, "name", "Ljava/lang/String;");</span></span><br><span class="line"><span class="comment">	&#125;*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. 想给 java 层抛一个异常</span></span><br><span class="line">	<span class="keyword">if</span> (throwable)&#123;</span><br><span class="line">		<span class="comment">// 清除异常</span></span><br><span class="line">		(*env)-&gt;ExceptionClear(env);</span><br><span class="line">		<span class="comment">// 给 java 层抛 一个 Throwable 异常</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 第一种方式，直接把异常抛给 java 层</span></span><br><span class="line">		(*env)-&gt;Throw(env, throwable);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 第二种方式抛异常</span></span><br><span class="line">		<span class="comment">// (*env)-&gt;ThrowNew(env, no_such_clz, "NoSuchFieldException name3");</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span>; <span class="comment">//  必须 return 如果不的话，程序会接着往下运行，肯定还会crash</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	jstring name = (*env)-&gt;NewStringUTF(env, <span class="string">"Eastrise"</span>);</span><br><span class="line">	(*env)-&gt;SetStaticObjectField(env, j_clz, jfid, name);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
 
       
     </div>
@@ -598,8 +585,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/09.JNI%E5%9F%BA%E7%A1%80-Android%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%87%E7%A8%8B/" rel="next" title="09.Android共享内存的序列化过程">
-                <i class="fa fa-chevron-left"></i> 09.Android共享内存的序列化过程
+              <a href="/09.JNI%E5%9F%BA%E7%A1%80-Android%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%87%E7%A8%8B/" rel="next" title="03.Android共享内存的序列化过程">
+                <i class="fa fa-chevron-left"></i> 03.Android共享内存的序列化过程
               </a>
             
           </div>
@@ -608,8 +595,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/11.C%E8%BF%9B%E9%98%B6-%E5%86%85%E5%AD%98%E5%9B%9B%E9%A9%B1%E6%A8%A1%E5%9E%8B/" rel="prev" title="11.内存四驱模型">
-                11.内存四驱模型 <i class="fa fa-chevron-right"></i>
+              <a href="/11.C%E8%BF%9B%E9%98%B6-%E5%86%85%E5%AD%98%E5%9B%9B%E9%A9%B1%E6%A8%A1%E5%9E%8B/" rel="prev" title="07.内存四驱模型">
+                07.内存四驱模型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -702,7 +689,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -713,7 +700,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -724,7 +711,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1311,7 +1298,7 @@ if(canvas.getContext){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#10-缓存策略和异常处理"><span class="nav-text">10.缓存策略和异常处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点："><span class="nav-text">知识点：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数组排序："><span class="nav-text">1. 数组排序：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-局部引用和全局引用"><span class="nav-text">2. 局部引用和全局引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-局部引用"><span class="nav-text">2.1. 局部引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-全局引用"><span class="nav-text">2.2 全局引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-缓存策略-static-native层有一大堆方法需要去获取-name-属性-初始化全局静态缓存"><span class="nav-text">3. 缓存策略 static, native层有一大堆方法需要去获取 name 属性 &#x2F;&#x2F; 初始化全局静态缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-局部静态缓存"><span class="nav-text">3.1  局部静态缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-全局静态缓存"><span class="nav-text">3.2 全局静态缓存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-异常处理（简单讲，C-异常）"><span class="nav-text">4. 异常处理（简单讲，C++异常）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存策略和异常处理"><span class="nav-text">缓存策略和异常处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点："><span class="nav-text">知识点：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数组排序："><span class="nav-text">1. 数组排序：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-局部引用和全局引用"><span class="nav-text">2. 局部引用和全局引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-局部引用"><span class="nav-text">2.1. 局部引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-全局引用"><span class="nav-text">2.2 全局引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-缓存策略-static-native层有一大堆方法需要去获取-name-属性-初始化全局静态缓存"><span class="nav-text">3. 缓存策略 static, native层有一大堆方法需要去获取 name 属性 &#x2F;&#x2F; 初始化全局静态缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-局部静态缓存"><span class="nav-text">3.1  局部静态缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-全局静态缓存"><span class="nav-text">3.2 全局静态缓存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-异常处理（简单讲，C-异常）"><span class="nav-text">4. 异常处理（简单讲，C++异常）</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1345,7 +1332,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">29.8k</span>
+    <span title="Site words total count">31.8k</span>
   
 </div>
 
@@ -1972,6 +1959,28 @@ if(canvas.getContext){
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
