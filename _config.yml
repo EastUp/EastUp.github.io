@@ -94,21 +94,17 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 # RSS订阅
-# plugins: hexo-generate-feed
+#plugins: hexo-generate-feed
 theme: next
 
 #RSS订阅
-plugin: hexo-generator-feed
+plugins: hexo-generator-feed
 
 # RSS订阅
 feed:
   type: atom
   path: atom.xml
   limit: 20
-  hub:
-  content:
-  content_limit: 140
-  content_limit_delim: ' '
 
   # 搜索
 search:
