@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Jamin">
 <meta property="og:description" content="内存四驱模型知识点：1. 数组作为参数传递时获取不到长度的问题！！原因：数组作为参数传递，会退化成为一个指针，传递的是首地址 （高效） 2. 数据类型剖析数据类型的本质：一块连续大小的内存空间数据类型的别名：int32_tvoid指针数据类型：void* 代表任意的数据类型的指针   3. 变量的本质 变量的本质：固定内存块大小（一块连续大小的内存空间）的别名，通过变量可以去操作一块内存上的数据">
 <meta property="article:published_time" content="2018-02-21T00:12:43.000Z">
-<meta property="article:modified_time" content="2020-10-29T10:29:29.049Z">
+<meta property="article:modified_time" content="2020-10-29T05:30:25.974Z">
 <meta property="article:author" content="jamin">
 <meta property="article:tag" content="C学习">
 <meta property="article:tag" content="C进阶">
@@ -491,8 +491,8 @@
 <li>release模式下：向上</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">// 0508 , 0496  a 的地址要大于 b 的地址 （debug）</span></span><br><span class="line">    <span class="comment">// 016  , 020   a 的地址要小于 b 的地址 （release）</span></span><br><span class="line">    <span class="comment">// buffer 数据类型跟栈的开口方向无关 （内部存储都是向上）</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> buff[<span class="number">10</span>];</span><br><span class="line">    <span class="comment">// buff+1 -&gt; buff</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p , %p , %p , %p"</span>,&amp;a,&amp;b,buff,buff+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> a1 = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">int</span>* ff=  &amp;a1; <span class="comment">// 虽说是 a1 的地址，但是我也可以把 ff 看做一个数组</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// char** 二位数组 char** 二级指针</span></span><br><span class="line"></span><br><span class="line">    ff += <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    getchar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-指针强化"><a href="#6-指针强化" class="headerlink" title="6. 指针强化"></a>6. 指针强化</h2><font color="red">**一个指针的大小始终是32位系统占4个字节，64位系统占8字节**</font>
 
-<h2 id="6-指针强化"><a href="#6-指针强化" class="headerlink" title="6. 指针强化"></a>6. 指针强化</h2><p><font color="red"><strong>一个指针的大小始终是32位系统占4个字节，64位系统占8字节</strong></font></p>
 <p>指针为什么要有类型：</p>
 <ol>
 <li>为了地址增量的方便：例如double型的地址增量为8，而int型指针的地址增量为4</li>
@@ -570,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/10.JNI%E5%9F%BA%E7%A1%80-%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E5%92%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="next" title="04.缓存策略和异常处理">
-                <i class="fa fa-chevron-left"></i> 04.缓存策略和异常处理
+              <a href="/11.JNI%E5%9F%BA%E7%A1%80-ndk%E8%B0%83%E8%AF%95/" rel="next" title="05.ndk调试">
+                <i class="fa fa-chevron-left"></i> 05.ndk调试
               </a>
             
           </div>
@@ -674,7 +674,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -696,7 +696,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1317,7 +1317,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.8k</span>
+    <span title="Site words total count">35.9k</span>
   
 </div>
 
