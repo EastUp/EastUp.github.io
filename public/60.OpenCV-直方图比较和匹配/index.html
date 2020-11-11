@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="直方图比较和匹配1. 直方图比较 （compareHist 2组数据去对比）compareHist( const SparseMat&amp; H1, const SparseMat&amp; H2, int method ) 1.1 相关性比较 HISTCMP_CORREL （多少的时候是最好的  1）  N bins  直方图的等级   1.2 卡方比较 HISTCMP_CHISQR    (">
+<meta name="description" content="1. 直方图比较 （compareHist 2组数据去对比）compareHist( const SparseMat&amp; H1, const SparseMat&amp; H2, int method ) 1.1 相关性比较 HISTCMP_CORREL （多少的时候是最好的  1）  N bins  直方图的等级   1.2 卡方比较 HISTCMP_CHISQR    (多少的时候是最好">
 <meta property="og:type" content="article">
-<meta property="og:title" content="12.直方图比较和匹配">
+<meta property="og:title" content="OpenCV：12.直方图比较和匹配">
 <meta property="og:url" content="http://eastup.github.io/60.OpenCV-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%AF%94%E8%BE%83%E5%92%8C%E5%8C%B9%E9%85%8D/index.html">
 <meta property="og:site_name" content="Jamin">
-<meta property="og:description" content="直方图比较和匹配1. 直方图比较 （compareHist 2组数据去对比）compareHist( const SparseMat&amp; H1, const SparseMat&amp; H2, int method ) 1.1 相关性比较 HISTCMP_CORREL （多少的时候是最好的  1）  N bins  直方图的等级   1.2 卡方比较 HISTCMP_CHISQR    (">
+<meta property="og:description" content="1. 直方图比较 （compareHist 2组数据去对比）compareHist( const SparseMat&amp; H1, const SparseMat&amp; H2, int method ) 1.1 相关性比较 HISTCMP_CORREL （多少的时候是最好的  1）  N bins  直方图的等级   1.2 卡方比较 HISTCMP_CHISQR    (多少的时候是最好">
 <meta property="og:image" content="http://eastup.github.io/images/60.%E7%9B%B8%E5%85%B3%E6%80%A7%E6%AF%94%E8%BE%83.png">
 <meta property="og:image" content="http://eastup.github.io/images/60.%E7%9B%B8%E5%85%B3%E6%80%A7%E6%AF%94%E8%BE%832.png">
 <meta property="og:image" content="http://eastup.github.io/images/60.%E5%8D%A1%E6%96%B9%E6%AF%94%E8%BE%83.png">
 <meta property="og:image" content="http://eastup.github.io/images/60.%E5%8D%81%E5%AD%97%E4%BA%A4%E5%8F%89%E6%80%A7%E6%AF%94%E8%BE%83.png">
 <meta property="og:image" content="http://eastup.github.io/images/60.%E5%B7%B4%E5%BC%8F%E8%B7%9D%E7%A6%BB.png">
 <meta property="article:published_time" content="2019-04-11T00:12:43.000Z">
-<meta property="article:modified_time" content="2020-11-04T08:03:57.613Z">
+<meta property="article:modified_time" content="2020-11-11T07:07:32.066Z">
 <meta property="article:author" content="jamin">
 <meta property="article:tag" content="OpenCV">
 <meta name="twitter:card" content="summary">
@@ -140,7 +140,7 @@
 
 
 
-  <title>12.直方图比较和匹配 | Jamin</title>
+  <title>OpenCV：12.直方图比较和匹配 | Jamin</title>
   
 
 
@@ -350,7 +350,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">12.直方图比较和匹配</h1>
+          <h1 class="post-title" itemprop="name headline">OpenCV：12.直方图比较和匹配</h1>
         
 
         <div class="post-meta">
@@ -412,7 +412,7 @@
 
           
           
-             <span id="/60.OpenCV-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%AF%94%E8%BE%83%E5%92%8C%E5%8C%B9%E9%85%8D/" class="leancloud_visitors" data-flag-title="12.直方图比较和匹配">
+             <span id="/60.OpenCV-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%AF%94%E8%BE%83%E5%92%8C%E5%8C%B9%E9%85%8D/" class="leancloud_visitors" data-flag-title="OpenCV：12.直方图比较和匹配">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -474,7 +474,7 @@
       
 
       
-        <h1 id="直方图比较和匹配"><a href="#直方图比较和匹配" class="headerlink" title="直方图比较和匹配"></a><center>直方图比较和匹配<center></center></center></h1><h1 id="1-直方图比较-（compareHist-2组数据去对比）"><a href="#1-直方图比较-（compareHist-2组数据去对比）" class="headerlink" title="1. 直方图比较 （compareHist 2组数据去对比）"></a>1. 直方图比较 （compareHist 2组数据去对比）</h1><p><code>compareHist( const SparseMat&amp; H1, const SparseMat&amp; H2, int method )</code></p>
+        <h1 id="1-直方图比较-（compareHist-2组数据去对比）"><a href="#1-直方图比较-（compareHist-2组数据去对比）" class="headerlink" title="1. 直方图比较 （compareHist 2组数据去对比）"></a>1. 直方图比较 （compareHist 2组数据去对比）</h1><p><code>compareHist( const SparseMat&amp; H1, const SparseMat&amp; H2, int method )</code></p>
 <h2 id="1-1-相关性比较-HISTCMP-CORREL-（多少的时候是最好的-1）-N-bins-直方图的等级"><a href="#1-1-相关性比较-HISTCMP-CORREL-（多少的时候是最好的-1）-N-bins-直方图的等级" class="headerlink" title="1.1 相关性比较 HISTCMP_CORREL （多少的时候是最好的  1）  N bins  直方图的等级"></a>1.1 相关性比较 HISTCMP_CORREL （多少的时候是最好的  1）  N bins  直方图的等级</h2><p><img src="/images/60.%E7%9B%B8%E5%85%B3%E6%80%A7%E6%AF%94%E8%BE%83.png" alt>  <img src="/images/60.%E7%9B%B8%E5%85%B3%E6%80%A7%E6%AF%94%E8%BE%832.png" alt></p>
 <h2 id="1-2-卡方比较-HISTCMP-CHISQR-多少的时候是最好的-0"><a href="#1-2-卡方比较-HISTCMP-CHISQR-多少的时候是最好的-0" class="headerlink" title="1.2 卡方比较 HISTCMP_CHISQR    (多少的时候是最好的  0)"></a>1.2 卡方比较 HISTCMP_CHISQR    (多少的时候是最好的  0)</h2><p><img src="/images/60.%E5%8D%A1%E6%96%B9%E6%AF%94%E8%BE%83.png" alt></p>
 <h2 id="1-3-十字交叉性-HISTCMP-INTERSECT"><a href="#1-3-十字交叉性-HISTCMP-INTERSECT" class="headerlink" title="1.3 十字交叉性 HISTCMP_INTERSECT"></a>1.3 十字交叉性 HISTCMP_INTERSECT</h2><p><img src="/images/60.%E5%8D%81%E5%AD%97%E4%BA%A4%E5%8F%89%E6%80%A7%E6%AF%94%E8%BE%83.png" alt></p>
@@ -576,8 +576,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/59.OpenCV-%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%E4%B8%8E%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96/" rel="next" title="11.色彩空间与直方图均衡化">
-                <i class="fa fa-chevron-left"></i> 11.色彩空间与直方图均衡化
+              <a href="/59.OpenCV-%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%E4%B8%8E%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96/" rel="next" title="OpenCV：11.色彩空间与直方图均衡化">
+                <i class="fa fa-chevron-left"></i> OpenCV：11.色彩空间与直方图均衡化
               </a>
             
           </div>
@@ -586,8 +586,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/61.OpenCV-%E8%BD%AE%E5%BB%93%E6%9F%A5%E6%89%BE%E3%80%81%E5%9B%BE%E5%83%8F%E7%9F%A9%E3%80%81%E5%A4%9A%E8%BE%B9%E5%BD%A2%E6%B5%8B%E8%AF%95%E3%80%81%E5%9B%BE%E5%83%8F%E5%88%86%E6%B0%B4%E5%B2%AD/" rel="prev" title="13.轮廓查找、图像矩、多边形测试、图像分水岭">
-                13.轮廓查找、图像矩、多边形测试、图像分水岭 <i class="fa fa-chevron-right"></i>
+              <a href="/61.OpenCV-%E8%BD%AE%E5%BB%93%E6%9F%A5%E6%89%BE%E3%80%81%E5%9B%BE%E5%83%8F%E7%9F%A9%E3%80%81%E5%A4%9A%E8%BE%B9%E5%BD%A2%E6%B5%8B%E8%AF%95%E3%80%81%E5%9B%BE%E5%83%8F%E5%88%86%E6%B0%B4%E5%B2%AD/" rel="prev" title="OpenCV：13.轮廓查找、图像矩、多边形测试、图像分水岭">
+                OpenCV：13.轮廓查找、图像矩、多边形测试、图像分水岭 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -680,7 +680,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -691,7 +691,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -702,7 +702,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1289,7 +1289,7 @@ if(canvas.getContext){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#直方图比较和匹配"><span class="nav-text">直方图比较和匹配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-直方图比较-（compareHist-2组数据去对比）"><span class="nav-text">1. 直方图比较 （compareHist 2组数据去对比）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-相关性比较-HISTCMP-CORREL-（多少的时候是最好的-1）-N-bins-直方图的等级"><span class="nav-text">1.1 相关性比较 HISTCMP_CORREL （多少的时候是最好的  1）  N bins  直方图的等级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-卡方比较-HISTCMP-CHISQR-多少的时候是最好的-0"><span class="nav-text">1.2 卡方比较 HISTCMP_CHISQR    (多少的时候是最好的  0)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-十字交叉性-HISTCMP-INTERSECT"><span class="nav-text">1.3 十字交叉性 HISTCMP_INTERSECT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-巴氏距离-CV-COMP-BHATTACHARYYA-多少的时候是最好的-0"><span class="nav-text">1.4 巴氏距离 CV_COMP_BHATTACHARYYA  (多少的时候是最好的  0)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-直方图反向投射-反射投影的次数-（不是像素值）"><span class="nav-text">2. 直方图反向投射 (反射投影的次数 （不是像素值）)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-直方图模板匹配"><span class="nav-text">3.直方图模板匹配</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-直方图比较-（compareHist-2组数据去对比）"><span class="nav-text">1. 直方图比较 （compareHist 2组数据去对比）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-相关性比较-HISTCMP-CORREL-（多少的时候是最好的-1）-N-bins-直方图的等级"><span class="nav-text">1.1 相关性比较 HISTCMP_CORREL （多少的时候是最好的  1）  N bins  直方图的等级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-卡方比较-HISTCMP-CHISQR-多少的时候是最好的-0"><span class="nav-text">1.2 卡方比较 HISTCMP_CHISQR    (多少的时候是最好的  0)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-十字交叉性-HISTCMP-INTERSECT"><span class="nav-text">1.3 十字交叉性 HISTCMP_INTERSECT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-巴氏距离-CV-COMP-BHATTACHARYYA-多少的时候是最好的-0"><span class="nav-text">1.4 巴氏距离 CV_COMP_BHATTACHARYYA  (多少的时候是最好的  0)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-直方图反向投射-反射投影的次数-（不是像素值）"><span class="nav-text">2. 直方图反向投射 (反射投影的次数 （不是像素值）)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-直方图模板匹配"><span class="nav-text">3.直方图模板匹配</span></a></li></ol></div>
             
 
           </div>
@@ -1323,7 +1323,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">73.9k</span>
+    <span title="Site words total count">88.1k</span>
   
 </div>
 

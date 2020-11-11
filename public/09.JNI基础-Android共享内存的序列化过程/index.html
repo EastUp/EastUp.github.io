@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="JNI学习,Android," />
+  <meta name="keywords" content="JNI学习,Android,面试," />
 
 
 
@@ -88,19 +88,20 @@
 
 
 
-<meta name="description" content="Android共享内存的序列化过程代码请看：NDKPractice项目的jni09 知识点：1. 面试题： 进程间的通信方式有哪些 binder 和 socket 通信的区别有哪些  从传输性能上说 ： Socket,传输效率低，开销大，主要用在跨网络的进程间通信;消息队列和管道采用存储-转发方式.数据先从发送方拷贝到内存开辟的缓存区中，然后再从内核缓存区拷贝到接收方缓存区，至少有两次拷贝过程。B">
+<meta name="description" content="代码请看：NDKPractice项目的jni09 1. 面试题： 进程间的通信方式有哪些 binder 和 socket 通信的区别有哪些  从传输性能上说 ： Socket,传输效率低，开销大，主要用在跨网络的进程间通信;消息队列和管道采用存储-转发方式.数据先从发送方拷贝到内存开辟的缓存区中，然后再从内核缓存区拷贝到接收方缓存区，至少有两次拷贝过程。Binder只需要拷贝一次（因为内存映射）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="03.Android共享内存的序列化过程">
+<meta property="og:title" content="JNI:03.Android共享内存的序列化过程">
 <meta property="og:url" content="http://eastup.github.io/09.JNI%E5%9F%BA%E7%A1%80-Android%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Jamin">
-<meta property="og:description" content="Android共享内存的序列化过程代码请看：NDKPractice项目的jni09 知识点：1. 面试题： 进程间的通信方式有哪些 binder 和 socket 通信的区别有哪些  从传输性能上说 ： Socket,传输效率低，开销大，主要用在跨网络的进程间通信;消息队列和管道采用存储-转发方式.数据先从发送方拷贝到内存开辟的缓存区中，然后再从内核缓存区拷贝到接收方缓存区，至少有两次拷贝过程。B">
+<meta property="og:description" content="代码请看：NDKPractice项目的jni09 1. 面试题： 进程间的通信方式有哪些 binder 和 socket 通信的区别有哪些  从传输性能上说 ： Socket,传输效率低，开销大，主要用在跨网络的进程间通信;消息队列和管道采用存储-转发方式.数据先从发送方拷贝到内存开辟的缓存区中，然后再从内核缓存区拷贝到接收方缓存区，至少有两次拷贝过程。Binder只需要拷贝一次（因为内存映射）">
 <meta property="og:image" content="http://eastup.github.io/images/09%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98.png">
 <meta property="og:image" content="http://eastup.github.io/images/09Parcel%E5%8E%9F%E7%90%86.png">
 <meta property="article:published_time" content="2018-02-19T00:12:43.000Z">
-<meta property="article:modified_time" content="2020-10-30T02:01:17.012Z">
+<meta property="article:modified_time" content="2020-11-11T06:48:07.263Z">
 <meta property="article:author" content="jamin">
 <meta property="article:tag" content="JNI学习">
 <meta property="article:tag" content="Android">
+<meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://eastup.github.io/images/09%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98.png">
 
@@ -138,7 +139,7 @@
 
 
 
-  <title>03.Android共享内存的序列化过程 | Jamin</title>
+  <title>JNI:03.Android共享内存的序列化过程 | Jamin</title>
   
 
 
@@ -348,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">03.Android共享内存的序列化过程</h1>
+          <h1 class="post-title" itemprop="name headline">JNI:03.Android共享内存的序列化过程</h1>
         
 
         <div class="post-meta">
@@ -410,7 +411,7 @@
 
           
           
-             <span id="/09.JNI%E5%9F%BA%E7%A1%80-Android%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%87%E7%A8%8B/" class="leancloud_visitors" data-flag-title="03.Android共享内存的序列化过程">
+             <span id="/09.JNI%E5%9F%BA%E7%A1%80-Android%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%87%E7%A8%8B/" class="leancloud_visitors" data-flag-title="JNI:03.Android共享内存的序列化过程">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -472,8 +473,8 @@
       
 
       
-        <h1 id="Android共享内存的序列化过程"><a href="#Android共享内存的序列化过程" class="headerlink" title="Android共享内存的序列化过程"></a><center>Android共享内存的序列化过程<center></center></center></h1><p><strong>代码请看：<a href="https://github.com/EastUp/NDKPractice/tree/master/jni09" target="_blank" rel="noopener">NDKPractice项目的jni09</a></strong></p>
-<h1 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h1><h2 id="1-面试题："><a href="#1-面试题：" class="headerlink" title="1. 面试题："></a>1. 面试题：</h2><ol>
+        <p><strong>代码请看：<a href="https://github.com/EastUp/NDKPractice/tree/master/jni09" target="_blank" rel="noopener">NDKPractice项目的jni09</a></strong></p>
+<h1 id="1-面试题："><a href="#1-面试题：" class="headerlink" title="1. 面试题："></a>1. 面试题：</h1><ol>
 <li>进程间的通信方式有哪些</li>
 <li>binder 和 socket 通信的区别有哪些 <ul>
 <li>从传输性能上说 ： <code>Socket</code>,<code>传输效率低</code>，<code>开销大</code>，主要用在<code>跨网络的进程间通信</code>;消息队列和管道采用存储-转发方式.数据先从发送方拷贝到内存开辟的缓存区中，<br>然后再从内核缓存区拷贝到接收方缓存区，至少有两次拷贝过程。<code>Binder</code>只需要拷贝一次（因为内存映射）</li>
@@ -485,14 +486,14 @@
 <li>Serializable 和 Parcelable 之间的区别<br> Serializable ：主要是IO操作，消耗较大 ，好处就是 <code>简单</code>。<strong>存储设置中或将对象序列化后通过网络传输时使用</strong><br> Parcelable ：因为原理是<code>共享内存</code>,所以效率高，内存消耗小。<strong>应用程序在内存间数据传输时推荐使用</strong></li>
 <li>Parcelable 序列化和反序列化的具体过程</li>
 </ol>
-<h2 id="2-重点：-Native-构建对象如何与-Java-层对应"><a href="#2-重点：-Native-构建对象如何与-Java-层对应" class="headerlink" title="2. 重点： Native 构建对象如何与 Java 层对应"></a>2. <font color="red">重点：</font> Native 构建对象如何与 Java 层对应</h2><p><img src="/images/09%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98.png" alt></p>
-<h3 id="2-1-opencv-Mat-源码阅读"><a href="#2-1-opencv-Mat-源码阅读" class="headerlink" title="2.1 opencv Mat 源码阅读"></a>2.1 opencv Mat 源码阅读</h3><p>Java -&gt; Mat.java = C++ Mat.cpp 对象</p>
+<h1 id="2-重点：-Native-构建对象如何与-Java-层对应"><a href="#2-重点：-Native-构建对象如何与-Java-层对应" class="headerlink" title="2. 重点： Native 构建对象如何与 Java 层对应"></a>2. <font color="red">重点：</font> Native 构建对象如何与 Java 层对应</h1><p><img src="/images/09%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98.png" alt></p>
+<h2 id="2-1-opencv-Mat-源码阅读"><a href="#2-1-opencv-Mat-源码阅读" class="headerlink" title="2.1 opencv Mat 源码阅读"></a>2.1 opencv Mat 源码阅读</h2><p>Java -&gt; Mat.java = C++ Mat.cpp 对象</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Mat &#123;&#x2F;&#x2F; Java 对象</span><br><span class="line">    &#x2F;&#x2F; </span><br><span class="line"></span><br><span class="line">    public final long nativeObj;</span><br><span class="line">    public Mat()&#123;</span><br><span class="line">        nativeObj &#x3D; n_Mat(rows, cols, type);&#x2F;&#x2F; c++ 创建一个对象，返回的是 long 类型（c++ 对象的指针地址）</span><br><span class="line">    &#125;</span><br><span class="line">    public static native long n_Mat(int rows, int cols, int type);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>c 层 构建的对象</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__DDI</span><br><span class="line">  (JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span> method_name[] = <span class="string">"Mat::n_1Mat__DDI()"</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        LOGD(<span class="string">"%s"</span>, method_name);</span><br><span class="line">        <span class="function">Size <span class="title">size</span><span class="params">((<span class="keyword">int</span>)size_width, (<span class="keyword">int</span>)size_height)</span></span>;</span><br><span class="line">        <span class="keyword">return</span> (jlong) <span class="keyword">new</span> Mat( <span class="built_in">size</span>, type );</span><br><span class="line">    &#125; <span class="keyword">catch</span>(<span class="keyword">const</span> <span class="built_in">std</span>::exception &amp;e) &#123;</span><br><span class="line">        throwJavaException(env, &amp;e, method_name);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (...) &#123;</span><br><span class="line">        throwJavaException(env, <span class="number">0</span>, method_name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-2-Parcel-java-的源码"><a href="#2-2-Parcel-java-的源码" class="headerlink" title="2.2 Parcel.java 的源码"></a>2.2 Parcel.java 的源码</h3><p><img src="/images/09Parcel%E5%8E%9F%E7%90%86.png" alt></p>
+<h2 id="2-2-Parcel-java-的源码"><a href="#2-2-Parcel-java-的源码" class="headerlink" title="2.2 Parcel.java 的源码"></a>2.2 Parcel.java 的源码</h2><p><img src="/images/09Parcel%E5%8E%9F%E7%90%86.png" alt></p>
 <p>java层 创建对象调用 c 层的创建对象并获取到 c 层的指针（地址）：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private void init(long nativePtr) &#123;</span><br><span class="line">    if (nativePtr !&#x3D; 0) &#123;</span><br><span class="line">        mNativePtr &#x3D; nativePtr;</span><br><span class="line">        mOwnsNativeParcelObject &#x3D; false;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        &#x2F;&#x2F; 这里获取 c 层 parcel 对象的 指针（地址）</span><br><span class="line">        mNativePtr &#x3D; nativeCreate();</span><br><span class="line">        mOwnsNativeParcelObject &#x3D; true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -510,7 +511,7 @@
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">status_t</span> <span class="title">Parcel</span>:</span>:writeAligned(T val) &#123;</span><br><span class="line">    COMPILE_TIME_ASSERT_FUNCTION_SCOPE(PAD_SIZE_UNSAFE(<span class="keyword">sizeof</span>(T)) == <span class="keyword">sizeof</span>(T));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((mDataPos+<span class="keyword">sizeof</span>(val)) &lt;= mDataCapacity) &#123;</span><br><span class="line">restart_write:</span><br><span class="line">        *<span class="keyword">reinterpret_cast</span>&lt;T*&gt;(mData+mDataPos) = val;</span><br><span class="line">        <span class="keyword">return</span> finishWrite(<span class="keyword">sizeof</span>(val));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">status_t</span> err = growData(<span class="keyword">sizeof</span>(val));</span><br><span class="line">    <span class="keyword">if</span> (err == NO_ERROR) <span class="keyword">goto</span> restart_write;</span><br><span class="line">    <span class="keyword">return</span> err;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-手写个Native层的Parcel-cpp，便于理解"><a href="#3-手写个Native层的Parcel-cpp，便于理解" class="headerlink" title="3.手写个Native层的Parcel.cpp，便于理解"></a>3.手写个Native层的Parcel.cpp，便于理解</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"com_east_jni09_Parcel.h"</span></span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span></span><br><span class="line"></span><br><span class="line">JNIEXPORT jstring JNICALL Java_com_east_jni09_MainActivity_stringFromJNI</span><br><span class="line">(JNIEnv* env,jobject jobj)&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> hello = <span class="string">"Hello from C++"</span>;</span><br><span class="line">    <span class="keyword">return</span> env-&gt;NewStringUTF(hello.c_str());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结构体 == C++ 中对象 Parcel.cpp</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parcel</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span>* mData; <span class="comment">// char 1 共享内存的首地址</span></span><br><span class="line">    <span class="keyword">int</span> mDataPos = <span class="number">0</span>; <span class="comment">// 必须初始化 结构体没有默认值，除非在 &#125; 后跟上几个默认的子项</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Parcel()&#123;</span><br><span class="line">        mData = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span> *&gt;(<span class="built_in">malloc</span>(<span class="number">1024</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">writeInt</span><span class="params">(jint value)</span> </span>&#123;</span><br><span class="line">        *<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">int</span>*&gt;(mData+mDataPos) = value; <span class="comment">// 0 ,4</span></span><br><span class="line">        mDataPos += <span class="keyword">sizeof</span>(<span class="keyword">int</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setDataPosition</span><span class="params">(jint value)</span> </span>&#123;</span><br><span class="line">        mDataPos = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">jint <span class="title">readInt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = *<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">int</span>*&gt;(mData+mDataPos);</span><br><span class="line">        mDataPos += <span class="keyword">sizeof</span>(<span class="keyword">int</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT jlong JNICALL Java_com_east_jni09_Parcel_nativeCreate</span><br><span class="line">        (JNIEnv * env, jobject jobj)&#123;</span><br><span class="line">    Parcel* parcel = <span class="keyword">new</span> Parcel();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">reinterpret_cast</span>&lt;jlong&gt;(parcel);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni09_Parcel_nativeWriteInt</span><br><span class="line">        (JNIEnv * env, jobject jobj,jlong nativePtr,jint value)&#123;</span><br><span class="line">    Parcel* parcel = <span class="keyword">reinterpret_cast</span>&lt;Parcel*&gt;(nativePtr);</span><br><span class="line">    parcel -&gt; writeInt(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni09_Parcel_nativeSetDataPosition</span><br><span class="line">        (JNIEnv * env, jobject jobj,jlong nativePtr,jint value)&#123;</span><br><span class="line">    Parcel* parcel = <span class="keyword">reinterpret_cast</span>&lt;Parcel*&gt;(nativePtr);</span><br><span class="line">    parcel -&gt; setDataPosition(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span>  JNIEXPORT jint JNICALL Java_com_east_jni09_Parcel_nativeReadInt</span><br><span class="line">        (JNIEnv * env, jobject jobj,jlong nativePtr)&#123;</span><br><span class="line">    Parcel* parcel = <span class="keyword">reinterpret_cast</span>&lt;Parcel*&gt;(nativePtr);</span><br><span class="line">    <span class="keyword">return</span> parcel-&gt;readInt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-手写个Native层的Parcel-cpp，便于理解"><a href="#3-手写个Native层的Parcel-cpp，便于理解" class="headerlink" title="3.手写个Native层的Parcel.cpp，便于理解"></a>3.手写个Native层的Parcel.cpp，便于理解</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"com_east_jni09_Parcel.h"</span></span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span></span><br><span class="line"></span><br><span class="line">JNIEXPORT jstring JNICALL Java_com_east_jni09_MainActivity_stringFromJNI</span><br><span class="line">(JNIEnv* env,jobject jobj)&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> hello = <span class="string">"Hello from C++"</span>;</span><br><span class="line">    <span class="keyword">return</span> env-&gt;NewStringUTF(hello.c_str());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结构体 == C++ 中对象 Parcel.cpp</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parcel</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span>* mData; <span class="comment">// char 1 共享内存的首地址</span></span><br><span class="line">    <span class="keyword">int</span> mDataPos = <span class="number">0</span>; <span class="comment">// 必须初始化 结构体没有默认值，除非在 &#125; 后跟上几个默认的子项</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Parcel()&#123;</span><br><span class="line">        mData = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span> *&gt;(<span class="built_in">malloc</span>(<span class="number">1024</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">writeInt</span><span class="params">(jint value)</span> </span>&#123;</span><br><span class="line">        *<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">int</span>*&gt;(mData+mDataPos) = value; <span class="comment">// 0 ,4</span></span><br><span class="line">        mDataPos += <span class="keyword">sizeof</span>(<span class="keyword">int</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setDataPosition</span><span class="params">(jint value)</span> </span>&#123;</span><br><span class="line">        mDataPos = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">jint <span class="title">readInt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = *<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">int</span>*&gt;(mData+mDataPos);</span><br><span class="line">        mDataPos += <span class="keyword">sizeof</span>(<span class="keyword">int</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT jlong JNICALL Java_com_east_jni09_Parcel_nativeCreate</span><br><span class="line">        (JNIEnv * env, jobject jobj)&#123;</span><br><span class="line">    Parcel* parcel = <span class="keyword">new</span> Parcel();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">reinterpret_cast</span>&lt;jlong&gt;(parcel);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni09_Parcel_nativeWriteInt</span><br><span class="line">        (JNIEnv * env, jobject jobj,jlong nativePtr,jint value)&#123;</span><br><span class="line">    Parcel* parcel = <span class="keyword">reinterpret_cast</span>&lt;Parcel*&gt;(nativePtr);</span><br><span class="line">    parcel -&gt; writeInt(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT <span class="keyword">void</span> JNICALL Java_com_east_jni09_Parcel_nativeSetDataPosition</span><br><span class="line">        (JNIEnv * env, jobject jobj,jlong nativePtr,jint value)&#123;</span><br><span class="line">    Parcel* parcel = <span class="keyword">reinterpret_cast</span>&lt;Parcel*&gt;(nativePtr);</span><br><span class="line">    parcel -&gt; setDataPosition(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span>  JNIEXPORT jint JNICALL Java_com_east_jni09_Parcel_nativeReadInt</span><br><span class="line">        (JNIEnv * env, jobject jobj,jlong nativePtr)&#123;</span><br><span class="line">    Parcel* parcel = <span class="keyword">reinterpret_cast</span>&lt;Parcel*&gt;(nativePtr);</span><br><span class="line">    <span class="keyword">return</span> parcel-&gt;readInt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>java 层调用：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> parcel = Parcel()</span><br><span class="line">       parcel.writeInt(<span class="number">12</span>)</span><br><span class="line">       parcel.writeInt(<span class="number">24</span>)</span><br><span class="line"></span><br><span class="line">       parcel.setDataPosition(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">val</span> number1 = parcel.readInt()</span><br><span class="line">       <span class="keyword">val</span> number2 = parcel.readInt()</span><br><span class="line"></span><br><span class="line">       Log.e(<span class="string">"TAG"</span>,<span class="string">"number1 = <span class="variable">$number1</span> , number2 = <span class="variable">$number2</span>"</span>) <span class="comment">// 12,24</span></span><br></pre></td></tr></table></figure>
@@ -579,6 +580,8 @@
           
             <a href="/tags/Android/" rel="tag"># Android</a>
           
+            <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+          
         </div>
       
 
@@ -590,8 +593,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/08.JNI%E5%9F%BA%E7%A1%80-Native%E5%B1%82%E6%9E%84%E5%BB%BAjava%E5%AF%B9%E8%B1%A1/" rel="next" title="02.数据类型，签名，Native层构建java对象，指针常量和常量指针">
-                <i class="fa fa-chevron-left"></i> 02.数据类型，签名，Native层构建java对象，指针常量和常量指针
+              <a href="/08.JNI%E5%9F%BA%E7%A1%80-Native%E5%B1%82%E6%9E%84%E5%BB%BAjava%E5%AF%B9%E8%B1%A1/" rel="next" title="JNI:02.数据类型，签名，Native层构建java对象，指针常量和常量指针">
+                <i class="fa fa-chevron-left"></i> JNI:02.数据类型，签名，Native层构建java对象，指针常量和常量指针
               </a>
             
           </div>
@@ -600,8 +603,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/10.JNI%E5%9F%BA%E7%A1%80-%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E5%92%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="prev" title="04.缓存策略和异常处理">
-                04.缓存策略和异常处理 <i class="fa fa-chevron-right"></i>
+              <a href="/10.JNI%E5%9F%BA%E7%A1%80-%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5%E5%92%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="prev" title="JNI:04.缓存策略和异常处理">
+                JNI:04.缓存策略和异常处理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -694,7 +697,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -705,7 +708,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -716,7 +719,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1303,7 +1306,7 @@ if(canvas.getContext){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android共享内存的序列化过程"><span class="nav-text">Android共享内存的序列化过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点："><span class="nav-text">知识点：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-面试题："><span class="nav-text">1. 面试题：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-重点：-Native-构建对象如何与-Java-层对应"><span class="nav-text">2. 重点： Native 构建对象如何与 Java 层对应</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-opencv-Mat-源码阅读"><span class="nav-text">2.1 opencv Mat 源码阅读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Parcel-java-的源码"><span class="nav-text">2.2 Parcel.java 的源码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-手写个Native层的Parcel-cpp，便于理解"><span class="nav-text">3.手写个Native层的Parcel.cpp，便于理解</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-面试题："><span class="nav-text">1. 面试题：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-重点：-Native-构建对象如何与-Java-层对应"><span class="nav-text">2. 重点： Native 构建对象如何与 Java 层对应</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-opencv-Mat-源码阅读"><span class="nav-text">2.1 opencv Mat 源码阅读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Parcel-java-的源码"><span class="nav-text">2.2 Parcel.java 的源码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-手写个Native层的Parcel-cpp，便于理解"><span class="nav-text">3.手写个Native层的Parcel.cpp，便于理解</span></a></li></ol></div>
             
 
           </div>
@@ -1337,7 +1340,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">73.9k</span>
+    <span title="Site words total count">88.1k</span>
   
 </div>
 

@@ -88,12 +88,12 @@
 
 
 
-<meta name="description" content="人脸识别 - HOG 和 LBP 特征检测具体代码请看：NDKPractice项目的opencv69 人脸检测分为以下几步  特征提取：边缘，角点，点，线，平坦区 训练样本：正向样，负向样本 （xml文件） 特征匹配：DDM , detection (发现)  description (描述)  matching (匹配)   1. HOG(Histogram of Oriented Gradie">
+<meta name="description" content="具体代码请看：NDKPractice项目的opencv69 人脸检测分为以下几步  特征提取：边缘，角点，点，线，平坦区 训练样本：正向样，负向样本 （xml文件） 特征匹配：DDM , detection (发现)  description (描述)  matching (匹配)   1. HOG(Histogram of Oriented Gradient) 特征检测的实现原理 HOG特征提取">
 <meta property="og:type" content="article">
-<meta property="og:title" content="21.人脸识别 - HOG 和 LBP 特征检测">
+<meta property="og:title" content="OpenCV：21.人脸识别 - HOG 和 LBP 特征检测">
 <meta property="og:url" content="http://eastup.github.io/69.OpenCV-%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%20-%20HOG%20%E5%92%8C%20LBP%20%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B/index.html">
 <meta property="og:site_name" content="Jamin">
-<meta property="og:description" content="人脸识别 - HOG 和 LBP 特征检测具体代码请看：NDKPractice项目的opencv69 人脸检测分为以下几步  特征提取：边缘，角点，点，线，平坦区 训练样本：正向样，负向样本 （xml文件） 特征匹配：DDM , detection (发现)  description (描述)  matching (匹配)   1. HOG(Histogram of Oriented Gradie">
+<meta property="og:description" content="具体代码请看：NDKPractice项目的opencv69 人脸检测分为以下几步  特征提取：边缘，角点，点，线，平坦区 训练样本：正向样，负向样本 （xml文件） 特征匹配：DDM , detection (发现)  description (描述)  matching (匹配)   1. HOG(Histogram of Oriented Gradient) 特征检测的实现原理 HOG特征提取">
 <meta property="og:image" content="http://eastup.github.io/images/69.hog%E7%89%B9%E5%BE%81.png">
 <meta property="og:image" content="http://eastup.github.io/images/69.hog%E5%88%86%E7%BD%91%E6%A0%BC%E7%9A%84%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E7%9B%B4%E6%96%B9%E5%9B%BE.png">
 <meta property="og:image" content="http://eastup.github.io/images/69.hog%E5%9D%97%E6%8F%8F%E8%BF%B0%E5%AD%90.png">
@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://eastup.github.io/images/69.lbp%E8%A1%A8%E8%BE%BE.png">
 <meta property="og:image" content="http://eastup.github.io/images/69.Haar%E7%89%B9%E5%BE%81.png">
 <meta property="article:published_time" content="2019-04-20T00:12:43.000Z">
-<meta property="article:modified_time" content="2020-11-04T08:07:57.108Z">
+<meta property="article:modified_time" content="2020-11-11T07:09:45.305Z">
 <meta property="article:author" content="jamin">
 <meta property="article:tag" content="OpenCV">
 <meta name="twitter:card" content="summary">
@@ -142,7 +142,7 @@
 
 
 
-  <title>21.人脸识别 - HOG 和 LBP 特征检测 | Jamin</title>
+  <title>OpenCV：21.人脸识别 - HOG 和 LBP 特征检测 | Jamin</title>
   
 
 
@@ -352,7 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">21.人脸识别 - HOG 和 LBP 特征检测</h1>
+          <h1 class="post-title" itemprop="name headline">OpenCV：21.人脸识别 - HOG 和 LBP 特征检测</h1>
         
 
         <div class="post-meta">
@@ -414,7 +414,7 @@
 
           
           
-             <span id="/69.OpenCV-%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%20-%20HOG%20%E5%92%8C%20LBP%20%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B/" class="leancloud_visitors" data-flag-title="21.人脸识别 - HOG 和 LBP 特征检测">
+             <span id="/69.OpenCV-%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%20-%20HOG%20%E5%92%8C%20LBP%20%E7%89%B9%E5%BE%81%E6%A3%80%E6%B5%8B/" class="leancloud_visitors" data-flag-title="OpenCV：21.人脸识别 - HOG 和 LBP 特征检测">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -439,7 +439,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  669
+                  658
                 </span>
               
 
@@ -476,7 +476,7 @@
       
 
       
-        <h1 id="人脸识别-HOG-和-LBP-特征检测"><a href="#人脸识别-HOG-和-LBP-特征检测" class="headerlink" title="人脸识别 - HOG 和 LBP 特征检测"></a><center>人脸识别 - HOG 和 LBP 特征检测<center></center></center></h1><p>具体代码请看：<strong><a href="https://github.com/EastUp/NDKPractice/tree/master/opencv69" target="_blank" rel="noopener">NDKPractice项目的opencv69</a></strong></p>
+        <p>具体代码请看：<strong><a href="https://github.com/EastUp/NDKPractice/tree/master/opencv69" target="_blank" rel="noopener">NDKPractice项目的opencv69</a></strong></p>
 <p>人脸检测分为以下几步</p>
 <ol>
 <li>特征提取：边缘，角点，点，线，平坦区</li>
@@ -485,7 +485,7 @@
 </ol>
 <h1 id="1-HOG-Histogram-of-Oriented-Gradient-特征检测的实现原理"><a href="#1-HOG-Histogram-of-Oriented-Gradient-特征检测的实现原理" class="headerlink" title="1. HOG(Histogram of Oriented Gradient) 特征检测的实现原理"></a>1. HOG(Histogram of Oriented Gradient) 特征检测的实现原理</h1><p><img src="/images/69.hog%E7%89%B9%E5%BE%81.png" alt><br><img src="/images/69.hog%E5%88%86%E7%BD%91%E6%A0%BC%E7%9A%84%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E7%9B%B4%E6%96%B9%E5%9B%BE.png" alt><br><img src="/images/69.hog%E5%9D%97%E6%8F%8F%E8%BF%B0%E5%AD%90.png" alt></p>
 <p>HOG特征提取流程可分为5个部分：检测窗口、归一化图像、计算梯度、统计直方图、梯度直方图归一化、得到HOG特征向量，以下介绍下检测窗口</p>
-<h3 id="1-1-检测窗口："><a href="#1-1-检测窗口：" class="headerlink" title="1.1 检测窗口："></a>1.1 检测窗口：</h3><p>HOG通过窗口（window)和块(block)将图像进行分割。通过以细胞(cell)为单位，对图像某一区域的像素值进行数学计算处理。在此先介绍窗口(window)、块(block)和细胞（cell）的概念及之间的联系。</p>
+<h2 id="1-1-检测窗口："><a href="#1-1-检测窗口：" class="headerlink" title="1.1 检测窗口："></a>1.1 检测窗口：</h2><p>HOG通过窗口（window)和块(block)将图像进行分割。通过以细胞(cell)为单位，对图像某一区域的像素值进行数学计算处理。在此先介绍窗口(window)、块(block)和细胞（cell）的概念及之间的联系。</p>
 <ul>
 <li>窗口(window)：将图像按一定大小分割成多个相同的窗口，滑动。</li>
 <li>块（block)：将每个窗口按一定大小分割成多个相同的块，滑动。</li>
@@ -568,8 +568,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/68.OpenCV-%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%A3%80%E6%B5%8B/" rel="next" title="20.二维码检测">
-                <i class="fa fa-chevron-left"></i> 20.二维码检测
+              <a href="/68.OpenCV-%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%A3%80%E6%B5%8B/" rel="next" title="OpenCV：20.二维码检测">
+                <i class="fa fa-chevron-left"></i> OpenCV：20.二维码检测
               </a>
             
           </div>
@@ -578,8 +578,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/70.OpenCV-%E5%AE%9E%E6%97%B6%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="prev" title="22.实时人脸检测">
-                22.实时人脸检测 <i class="fa fa-chevron-right"></i>
+              <a href="/70.OpenCV-%E5%AE%9E%E6%97%B6%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="prev" title="OpenCV：22.实时人脸检测">
+                OpenCV：22.实时人脸检测 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -672,7 +672,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -683,7 +683,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -694,7 +694,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1281,7 +1281,7 @@ if(canvas.getContext){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#人脸识别-HOG-和-LBP-特征检测"><span class="nav-text">人脸识别 - HOG 和 LBP 特征检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-HOG-Histogram-of-Oriented-Gradient-特征检测的实现原理"><span class="nav-text">1. HOG(Histogram of Oriented Gradient) 特征检测的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-检测窗口："><span class="nav-text">1.1 检测窗口：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-实现行人检测"><span class="nav-text">2. 实现行人检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-LBP-（Local-Binary-Patterns）特征介绍"><span class="nav-text">3.LBP （Local Binary Patterns）特征介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-手写-LBP-特征算法实现"><span class="nav-text">4.手写 LBP 特征算法实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-haar-特征介绍"><span class="nav-text">5.haar 特征介绍</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-HOG-Histogram-of-Oriented-Gradient-特征检测的实现原理"><span class="nav-text">1. HOG(Histogram of Oriented Gradient) 特征检测的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-检测窗口："><span class="nav-text">1.1 检测窗口：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-实现行人检测"><span class="nav-text">2. 实现行人检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-LBP-（Local-Binary-Patterns）特征介绍"><span class="nav-text">3.LBP （Local Binary Patterns）特征介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-手写-LBP-特征算法实现"><span class="nav-text">4.手写 LBP 特征算法实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-haar-特征介绍"><span class="nav-text">5.haar 特征介绍</span></a></li></ol></div>
             
 
           </div>
@@ -1315,7 +1315,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">73.9k</span>
+    <span title="Site words total count">88.1k</span>
   
 </div>
 

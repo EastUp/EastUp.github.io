@@ -88,16 +88,16 @@
 
 
 
-<meta name="description" content="边缘类型、自定义线性滤波、阈值1. 了解下卷积操作概念：把kernel（卷积核）放到我们图像的矩阵之上，求锚点周围覆盖的像素乘积之和（包括锚点），用来计算锚点的像素值覆盖图片下面的像素值，称之为卷积操作。  2. 处理边缘类型copyMakeBorder(src,dst,src.rows&#x2F;8,src.rows&#x2F;8,src.cols&#x2F;8,src.cols&#x2F;8,BORDER_DEFAULT);  BO">
+<meta name="description" content="1. 了解下卷积操作概念：把kernel（卷积核）放到我们图像的矩阵之上，求锚点周围覆盖的像素乘积之和（包括锚点），用来计算锚点的像素值覆盖图片下面的像素值，称之为卷积操作。  2. 处理边缘类型copyMakeBorder(src,dst,src.rows&#x2F;8,src.rows&#x2F;8,src.cols&#x2F;8,src.cols&#x2F;8,BORDER_DEFAULT);  BORDER_DEFAULT：用周">
 <meta property="og:type" content="article">
-<meta property="og:title" content="08.边缘类型、自定义线性滤波、阈值">
+<meta property="og:title" content="OpenCV：08.边缘类型、自定义线性滤波、阈值">
 <meta property="og:url" content="http://eastup.github.io/56.OpenCV-%E8%BE%B9%E7%BC%98%E7%B1%BB%E5%9E%8B%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%BF%E6%80%A7%E6%BB%A4%E6%B3%A2%E3%80%81%E9%98%88%E5%80%BC/index.html">
 <meta property="og:site_name" content="Jamin">
-<meta property="og:description" content="边缘类型、自定义线性滤波、阈值1. 了解下卷积操作概念：把kernel（卷积核）放到我们图像的矩阵之上，求锚点周围覆盖的像素乘积之和（包括锚点），用来计算锚点的像素值覆盖图片下面的像素值，称之为卷积操作。  2. 处理边缘类型copyMakeBorder(src,dst,src.rows&#x2F;8,src.rows&#x2F;8,src.cols&#x2F;8,src.cols&#x2F;8,BORDER_DEFAULT);  BO">
+<meta property="og:description" content="1. 了解下卷积操作概念：把kernel（卷积核）放到我们图像的矩阵之上，求锚点周围覆盖的像素乘积之和（包括锚点），用来计算锚点的像素值覆盖图片下面的像素值，称之为卷积操作。  2. 处理边缘类型copyMakeBorder(src,dst,src.rows&#x2F;8,src.rows&#x2F;8,src.cols&#x2F;8,src.cols&#x2F;8,BORDER_DEFAULT);  BORDER_DEFAULT：用周">
 <meta property="og:image" content="http://eastup.github.io/images/56.%E5%8D%B7%E7%A7%AF%E6%93%8D%E4%BD%9C.png">
 <meta property="og:image" content="http://eastup.github.io/images/56.%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E5%AD%90.png">
 <meta property="article:published_time" content="2019-04-07T00:12:43.000Z">
-<meta property="article:modified_time" content="2020-11-04T07:57:25.930Z">
+<meta property="article:modified_time" content="2020-11-11T07:07:01.889Z">
 <meta property="article:author" content="jamin">
 <meta property="article:tag" content="OpenCV">
 <meta name="twitter:card" content="summary">
@@ -137,7 +137,7 @@
 
 
 
-  <title>08.边缘类型、自定义线性滤波、阈值 | Jamin</title>
+  <title>OpenCV：08.边缘类型、自定义线性滤波、阈值 | Jamin</title>
   
 
 
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">08.边缘类型、自定义线性滤波、阈值</h1>
+          <h1 class="post-title" itemprop="name headline">OpenCV：08.边缘类型、自定义线性滤波、阈值</h1>
         
 
         <div class="post-meta">
@@ -409,7 +409,7 @@
 
           
           
-             <span id="/56.OpenCV-%E8%BE%B9%E7%BC%98%E7%B1%BB%E5%9E%8B%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%BF%E6%80%A7%E6%BB%A4%E6%B3%A2%E3%80%81%E9%98%88%E5%80%BC/" class="leancloud_visitors" data-flag-title="08.边缘类型、自定义线性滤波、阈值">
+             <span id="/56.OpenCV-%E8%BE%B9%E7%BC%98%E7%B1%BB%E5%9E%8B%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%BF%E6%80%A7%E6%BB%A4%E6%B3%A2%E3%80%81%E9%98%88%E5%80%BC/" class="leancloud_visitors" data-flag-title="OpenCV：08.边缘类型、自定义线性滤波、阈值">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -434,7 +434,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  620
+                  607
                 </span>
               
 
@@ -471,7 +471,7 @@
       
 
       
-        <h1 id="边缘类型、自定义线性滤波、阈值"><a href="#边缘类型、自定义线性滤波、阈值" class="headerlink" title="边缘类型、自定义线性滤波、阈值"></a><center>边缘类型、自定义线性滤波、阈值<center></center></center></h1><h1 id="1-了解下卷积操作"><a href="#1-了解下卷积操作" class="headerlink" title="1. 了解下卷积操作"></a>1. 了解下卷积操作</h1><p>概念：<code>把kernel（卷积核）放到我们图像的矩阵之上，求锚点周围覆盖的像素乘积之和（包括锚点），用来计算锚点的像素值覆盖图片下面的像素值，称之为卷积操作。</code></p>
+        <h1 id="1-了解下卷积操作"><a href="#1-了解下卷积操作" class="headerlink" title="1. 了解下卷积操作"></a>1. 了解下卷积操作</h1><p>概念：<code>把kernel（卷积核）放到我们图像的矩阵之上，求锚点周围覆盖的像素乘积之和（包括锚点），用来计算锚点的像素值覆盖图片下面的像素值，称之为卷积操作。</code></p>
 <p><img src="/images/56.%E5%8D%B7%E7%A7%AF%E6%93%8D%E4%BD%9C.png" alt></p>
 <h1 id="2-处理边缘类型"><a href="#2-处理边缘类型" class="headerlink" title="2. 处理边缘类型"></a>2. 处理边缘类型</h1><p><code>copyMakeBorder(src,dst,src.rows/8,src.rows/8,src.cols/8,src.cols/8,BORDER_DEFAULT);</code></p>
 <ul>
@@ -573,8 +573,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/55.OpenCV-%E5%BD%A2%E6%80%81%E5%AD%A6%EF%BC%8C%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%8C%E6%8F%90%E5%8F%96%E6%B0%B4%E5%B9%B3%E7%BA%BF%EF%BC%8C%E4%B8%8A%E3%80%81%E9%99%8D%E9%87%87%E6%A0%B7/" rel="next" title="07.形态学，验证码，提取水平线，上、降采样">
-                <i class="fa fa-chevron-left"></i> 07.形态学，验证码，提取水平线，上、降采样
+              <a href="/55.OpenCV-%E5%BD%A2%E6%80%81%E5%AD%A6%EF%BC%8C%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%8C%E6%8F%90%E5%8F%96%E6%B0%B4%E5%B9%B3%E7%BA%BF%EF%BC%8C%E4%B8%8A%E3%80%81%E9%99%8D%E9%87%87%E6%A0%B7/" rel="next" title="OpenCV：07.形态学，验证码，提取水平线，上、降采样">
+                <i class="fa fa-chevron-left"></i> OpenCV：07.形态学，验证码，提取水平线，上、降采样
               </a>
             
           </div>
@@ -583,8 +583,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/57.OpenCV-%E5%9B%BE%E7%89%87%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/" rel="prev" title="09.图片边缘检测">
-                09.图片边缘检测 <i class="fa fa-chevron-right"></i>
+              <a href="/57.OpenCV-%E5%9B%BE%E7%89%87%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/" rel="prev" title="OpenCV：09.图片边缘检测">
+                OpenCV：09.图片边缘检测 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -677,7 +677,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -688,7 +688,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -699,7 +699,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1286,7 +1286,7 @@ if(canvas.getContext){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#边缘类型、自定义线性滤波、阈值"><span class="nav-text">边缘类型、自定义线性滤波、阈值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-了解下卷积操作"><span class="nav-text">1. 了解下卷积操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-处理边缘类型"><span class="nav-text">2. 处理边缘类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-自定义线性滤波与图片模糊-算子也叫作-核"><span class="nav-text">3. 自定义线性滤波与图片模糊(算子也叫作 核)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-阈值（图像二值化）"><span class="nav-text">4.阈值（图像二值化）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-了解下卷积操作"><span class="nav-text">1. 了解下卷积操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-处理边缘类型"><span class="nav-text">2. 处理边缘类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-自定义线性滤波与图片模糊-算子也叫作-核"><span class="nav-text">3. 自定义线性滤波与图片模糊(算子也叫作 核)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-阈值（图像二值化）"><span class="nav-text">4.阈值（图像二值化）</span></a></li></ol></div>
             
 
           </div>
@@ -1320,7 +1320,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">73.9k</span>
+    <span title="Site words total count">88.1k</span>
   
 </div>
 

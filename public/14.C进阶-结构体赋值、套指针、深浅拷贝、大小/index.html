@@ -88,14 +88,14 @@
 
 
 
-<meta name="description" content="结构体赋值、套指针、深浅拷贝、大小知识点：1. 结构体赋值操作结构体赋值相当于是（内容）赋值操作 12345678910111213Student stu1 &#x3D; &amp;#123;&quot;Eastrise&quot;,25&amp;#125;;Student stu2;&#x2F;&#x2F; strcpy(stu2.name,stu1.name);&#x2F;&#x2F; stu2.age &#x3D; stu1.age;stu2 &#x3D; stu1;&#x2F;&#x2F; &#x3D; 赋值操作，java">
+<meta name="description" content="1. 结构体赋值操作结构体赋值相当于是（内容）赋值操作 12345678910111213Student stu1 &#x3D; &amp;#123;&quot;Eastrise&quot;,25&amp;#125;;Student stu2;&#x2F;&#x2F; strcpy(stu2.name,stu1.name);&#x2F;&#x2F; stu2.age &#x3D; stu1.age;stu2 &#x3D; stu1;&#x2F;&#x2F; &#x3D; 赋值操作，java 中 stu2 对象就会变成 stu1&#x2F;&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="10.结构体赋值、套指针、深浅拷贝、大小">
+<meta property="og:title" content="C进阶：10.结构体赋值、套指针、深浅拷贝、大小">
 <meta property="og:url" content="http://eastup.github.io/14.C%E8%BF%9B%E9%98%B6-%E7%BB%93%E6%9E%84%E4%BD%93%E8%B5%8B%E5%80%BC%E3%80%81%E5%A5%97%E6%8C%87%E9%92%88%E3%80%81%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E3%80%81%E5%A4%A7%E5%B0%8F/index.html">
 <meta property="og:site_name" content="Jamin">
-<meta property="og:description" content="结构体赋值、套指针、深浅拷贝、大小知识点：1. 结构体赋值操作结构体赋值相当于是（内容）赋值操作 12345678910111213Student stu1 &#x3D; &amp;#123;&quot;Eastrise&quot;,25&amp;#125;;Student stu2;&#x2F;&#x2F; strcpy(stu2.name,stu1.name);&#x2F;&#x2F; stu2.age &#x3D; stu1.age;stu2 &#x3D; stu1;&#x2F;&#x2F; &#x3D; 赋值操作，java">
+<meta property="og:description" content="1. 结构体赋值操作结构体赋值相当于是（内容）赋值操作 12345678910111213Student stu1 &#x3D; &amp;#123;&quot;Eastrise&quot;,25&amp;#125;;Student stu2;&#x2F;&#x2F; strcpy(stu2.name,stu1.name);&#x2F;&#x2F; stu2.age &#x3D; stu1.age;stu2 &#x3D; stu1;&#x2F;&#x2F; &#x3D; 赋值操作，java 中 stu2 对象就会变成 stu1&#x2F;&#x2F;">
 <meta property="article:published_time" content="2018-02-24T00:12:43.000Z">
-<meta property="article:modified_time" content="2020-10-29T05:30:53.070Z">
+<meta property="article:modified_time" content="2020-11-11T07:22:15.268Z">
 <meta property="article:author" content="jamin">
 <meta property="article:tag" content="C学习">
 <meta property="article:tag" content="C进阶">
@@ -135,7 +135,7 @@
 
 
 
-  <title>10.结构体赋值、套指针、深浅拷贝、大小 | Jamin</title>
+  <title>C进阶：10.结构体赋值、套指针、深浅拷贝、大小 | Jamin</title>
   
 
 
@@ -345,7 +345,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">10.结构体赋值、套指针、深浅拷贝、大小</h1>
+          <h1 class="post-title" itemprop="name headline">C进阶：10.结构体赋值、套指针、深浅拷贝、大小</h1>
         
 
         <div class="post-meta">
@@ -380,8 +380,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
+                  <a href="/categories/C%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index">
+                    <span itemprop="name">C知识</span>
                   </a>
                 </span>
 
@@ -407,7 +407,7 @@
 
           
           
-             <span id="/14.C%E8%BF%9B%E9%98%B6-%E7%BB%93%E6%9E%84%E4%BD%93%E8%B5%8B%E5%80%BC%E3%80%81%E5%A5%97%E6%8C%87%E9%92%88%E3%80%81%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E3%80%81%E5%A4%A7%E5%B0%8F/" class="leancloud_visitors" data-flag-title="10.结构体赋值、套指针、深浅拷贝、大小">
+             <span id="/14.C%E8%BF%9B%E9%98%B6-%E7%BB%93%E6%9E%84%E4%BD%93%E8%B5%8B%E5%80%BC%E3%80%81%E5%A5%97%E6%8C%87%E9%92%88%E3%80%81%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E3%80%81%E5%A4%A7%E5%B0%8F/" class="leancloud_visitors" data-flag-title="C进阶：10.结构体赋值、套指针、深浅拷贝、大小">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -432,7 +432,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  913
+                  896
                 </span>
               
 
@@ -469,10 +469,10 @@
       
 
       
-        <h1 id="结构体赋值、套指针、深浅拷贝、大小"><a href="#结构体赋值、套指针、深浅拷贝、大小" class="headerlink" title="结构体赋值、套指针、深浅拷贝、大小"></a><center>结构体赋值、套指针、深浅拷贝、大小<center></center></center></h1><h1 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h1><h2 id="1-结构体赋值操作"><a href="#1-结构体赋值操作" class="headerlink" title="1. 结构体赋值操作"></a>1. 结构体赋值操作</h2><p><strong><code>结构体赋值相当于是（内容）赋值操作</code></strong></p>
+        <h1 id="1-结构体赋值操作"><a href="#1-结构体赋值操作" class="headerlink" title="1. 结构体赋值操作"></a>1. 结构体赋值操作</h1><p><strong><code>结构体赋值相当于是（内容）赋值操作</code></strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Student stu1 = &#123;<span class="string">"Eastrise"</span>,<span class="number">25</span>&#125;;</span><br><span class="line"></span><br><span class="line">Student stu2;</span><br><span class="line"></span><br><span class="line"><span class="comment">// strcpy(stu2.name,stu1.name);</span></span><br><span class="line"><span class="comment">// stu2.age = stu1.age;</span></span><br><span class="line"></span><br><span class="line">stu2 = stu1;<span class="comment">// = 赋值操作，java 中 stu2 对象就会变成 stu1</span></span><br><span class="line"><span class="comment">// 在 c 中相当于是（内容）赋值操作，是把 stu1 的值赋值给 stu2;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p,%p\n"</span>,stu1,stu2);</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s,%d"</span>,stu2.name,stu2.age);</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-结构体套指针"><a href="#2-结构体套指针" class="headerlink" title="2. 结构体套指针"></a>2. 结构体套指针</h2><p>注意：  </p>
+<h1 id="2-结构体套指针"><a href="#2-结构体套指针" class="headerlink" title="2. 结构体套指针"></a>2. 结构体套指针</h1><p>注意：  </p>
 <ol>
 <li><code>结构体套指针，我们必须对结构体指针进行初始化（赋值）</code></li>
 <li><code>如果需要调用 strcpy 给结构体的char* 赋值就必须要开辟内存</code></li>
@@ -489,7 +489,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Eastrise,24,16</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="3-深拷贝和浅拷贝"><a href="#3-深拷贝和浅拷贝" class="headerlink" title="3. 深拷贝和浅拷贝"></a>3. 深拷贝和浅拷贝</h2><ul>
+<h1 id="3-深拷贝和浅拷贝"><a href="#3-深拷贝和浅拷贝" class="headerlink" title="3. 深拷贝和浅拷贝"></a>3. 深拷贝和浅拷贝</h1><ul>
 <li><code>浅拷贝（shallowCopy）</code>：只是增加了一个指针指向已存在的内存地址，</li>
 <li><code>深拷贝（deepCopy）</code>：是增加了一个指针并且申请了一个新的内存，使这个增加的指针指向这个新的内存，</li>
 </ul>
@@ -499,7 +499,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Eastrise,24</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="4-结构体的偏移量强化"><a href="#4-结构体的偏移量强化" class="headerlink" title="4. 结构体的偏移量强化"></a>4. 结构体的偏移量强化</h2><p>结构体大小的偏移量问题：</p>
+<h1 id="4-结构体的偏移量强化"><a href="#4-结构体的偏移量强化" class="headerlink" title="4. 结构体的偏移量强化"></a>4. 结构体的偏移量强化</h1><p>结构体大小的偏移量问题：</p>
 <ol>
 <li>获取内存元素的偏移量 &amp;(stu-&gt;name) - (int)stu</li>
 <li>获取结构体的大小 sizeof(student)</li>
@@ -578,8 +578,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/13.C%E8%BF%9B%E9%98%B6-%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88%E5%92%8C%E5%A4%9A%E7%BA%A7%E6%8C%87%E9%92%88/" rel="next" title="09.二级指针和多级指针">
-                <i class="fa fa-chevron-left"></i> 09.二级指针和多级指针
+              <a href="/13.C%E8%BF%9B%E9%98%B6-%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88%E5%92%8C%E5%A4%9A%E7%BA%A7%E6%8C%87%E9%92%88/" rel="next" title="C进阶：09.二级指针和多级指针">
+                <i class="fa fa-chevron-left"></i> C进阶：09.二级指针和多级指针
               </a>
             
           </div>
@@ -588,8 +588,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/15.C++%E5%9F%BA%E7%A1%80-%E5%BC%95%E7%94%A8%E5%92%8C%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/" rel="prev" title="01.引用和函数重载">
-                01.引用和函数重载 <i class="fa fa-chevron-right"></i>
+              <a href="/15.C++%E5%9F%BA%E7%A1%80-%E5%BC%95%E7%94%A8%E5%92%8C%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/" rel="prev" title="C++：01.引用和函数重载">
+                C++：01.引用和函数重载 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -682,7 +682,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -693,7 +693,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -704,7 +704,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1291,7 +1291,7 @@ if(canvas.getContext){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#结构体赋值、套指针、深浅拷贝、大小"><span class="nav-text">结构体赋值、套指针、深浅拷贝、大小</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点："><span class="nav-text">知识点：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-结构体赋值操作"><span class="nav-text">1. 结构体赋值操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-结构体套指针"><span class="nav-text">2. 结构体套指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-深拷贝和浅拷贝"><span class="nav-text">3. 深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-结构体的偏移量强化"><span class="nav-text">4. 结构体的偏移量强化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-结构体赋值操作"><span class="nav-text">1. 结构体赋值操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-结构体套指针"><span class="nav-text">2. 结构体套指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-深拷贝和浅拷贝"><span class="nav-text">3. 深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-结构体的偏移量强化"><span class="nav-text">4. 结构体的偏移量强化</span></a></li></ol></div>
             
 
           </div>
@@ -1325,7 +1325,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">73.9k</span>
+    <span title="Site words total count">88.1k</span>
   
 </div>
 
