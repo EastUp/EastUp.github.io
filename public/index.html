@@ -326,6 +326,1874 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jamin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jamin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/" itemprop="url">音视频：20.FFmpeg-直播推流到服务器、加滤镜效果</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-20T08:12:43+08:00">
+                2020-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/" class="leancloud_visitors" data-flag-title="音视频：20.FFmpeg-直播推流到服务器、加滤镜效果">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          具体代码请看：NDKPractice项目的ffmpeg88livepush
+ffmpeg测试流媒体服务器播放地址windows ffmpeg下载地址
+mac 和 linux 类似，进入官网下载 。
+下面以windows为例测试步骤：
+
+进入下载好的ffmpeg解压目录的/bin目录文件夹下
+使用命令
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/90.FFmpeg-%E8%A7%86%E9%A2%91%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E3%80%81H.264%E5%8D%8F%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jamin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jamin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/90.FFmpeg-%E8%A7%86%E9%A2%91%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E3%80%81H.264%E5%8D%8F%E8%AE%AE/" itemprop="url">音视频：19.FFmpeg-视频加背景音乐、H.264协议</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-19T08:12:43+08:00">
+                2020-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/90.FFmpeg-%E8%A7%86%E9%A2%91%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E3%80%81H.264%E5%8D%8F%E8%AE%AE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/90.FFmpeg-%E8%A7%86%E9%A2%91%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E3%80%81H.264%E5%8D%8F%E8%AE%AE/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/90.FFmpeg-%E8%A7%86%E9%A2%91%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E3%80%81H.264%E5%8D%8F%E8%AE%AE/" class="leancloud_visitors" data-flag-title="音视频：19.FFmpeg-视频加背景音乐、H.264协议">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          具体代码请看：NDKPractice项目的ffmpeg88livepush
+1.实现视频加背景音乐12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/90.FFmpeg-%E8%A7%86%E9%A2%91%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E3%80%81H.264%E5%8D%8F%E8%AE%AE/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/89.FFmpeg-OpenGL%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%BD%95%E5%88%B6%E8%A7%86%E9%A2%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jamin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jamin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/89.FFmpeg-OpenGL%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%BD%95%E5%88%B6%E8%A7%86%E9%A2%91/" itemprop="url">音视频：18.FFmpeg-OpenGL朋友圈录制视频</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-18T08:12:43+08:00">
+                2020-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/89.FFmpeg-OpenGL%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%BD%95%E5%88%B6%E8%A7%86%E9%A2%91/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/89.FFmpeg-OpenGL%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%BD%95%E5%88%B6%E8%A7%86%E9%A2%91/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/89.FFmpeg-OpenGL%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%BD%95%E5%88%B6%E8%A7%86%E9%A2%91/" class="leancloud_visitors" data-flag-title="音视频：18.FFmpeg-OpenGL朋友圈录制视频">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  774
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          具体代码请看：NDKPractice项目的ffmpeg88livepush
+1.OpenGL渲染流程介绍怎么渲染一张图片：
+
+继承GLSurfaceView
+继承GLSurfaceView.Renderer
+写顶点和纹理渲染的代码
+编译链接生成程序
+生成加载 bitmap 的纹理
+绘制到屏幕
+
+介绍
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/89.FFmpeg-OpenGL%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%BD%95%E5%88%B6%E8%A7%86%E9%A2%91/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/88.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E3%80%81%E6%8B%89%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jamin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jamin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/88.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E3%80%81%E6%8B%89%E6%B5%81/" itemprop="url">音视频：17.FFmpeg-直播推、拉流</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-17T08:12:43+08:00">
+                2020-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/88.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E3%80%81%E6%8B%89%E6%B5%81/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/88.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E3%80%81%E6%8B%89%E6%B5%81/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/88.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E3%80%81%E6%8B%89%E6%B5%81/" class="leancloud_visitors" data-flag-title="音视频：17.FFmpeg-直播推、拉流">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+           以下使用&nbsp;&nbsp;&nbsp;&nbsp;Ubuntu&nbsp;&nbsp;&nbsp;&nbsp;环境搭建的
+具体代码请看：NDKPractice项目的ffmpeg88livepush
+1.搭建流媒体服务器1.1 安装
+在ubuntu系统中首先切换到root用户,然后cd到lib
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/88.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E3%80%81%E6%8B%89%E6%B5%81/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/87.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jamin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jamin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/87.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A82/" itemprop="url">音视频：16.FFmpeg-视频播放器2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-16T08:12:43+08:00">
+                2020-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/87.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A82/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/87.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A82/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/87.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A82/" class="leancloud_visitors" data-flag-title="音视频：16.FFmpeg-视频播放器2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  719
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          具体代码请看：NDKPractice项目的ffmpeg87
+1.调整音乐播放器项目架构解码的流程 Video 和 Audio 很多相同的，所以抽离出来了公共类: Media.cpp
+音频和视频单独处理成：Audio.cpp 和 Video.cpp，都继承自Media,cpp
+遇到的问题：下面这个方法
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/87.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A82/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/86.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jamin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jamin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/86.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A81/" itemprop="url">音视频：15.FFmpeg-视频播放器1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-15T08:12:43+08:00">
+                2020-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/86.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A81/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/86.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A81/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/86.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A81/" class="leancloud_visitors" data-flag-title="音视频：15.FFmpeg-视频播放器1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  861
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          具体代码请看：NDKPractice项目的ffmpeg86
+将之前的音乐播放器代码整合进来
+1.使用FFmpeg解码视频跟使用FFmpeg解码音频流程一致，但需要判断是否能硬解码
+123456789101112131415161718192021222324252627282930313233343
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/86.FFmpeg-%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A81/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/85.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jamin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jamin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/85.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A83/" itemprop="url">音视频：14.FFmpeg-音乐播放器3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-14T08:12:43+08:00">
+                2020-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/85.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A83/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/85.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A83/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/85.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A83/" class="leancloud_visitors" data-flag-title="音视频：14.FFmpeg-音乐播放器3">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  873
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          具体代码请看：NDKPractice项目的ffmpeg83
+1.添加准备完毕回调123456789101112131415161718192021222324252627JNICall::JNICall(JavaVM *javaVM, JNIEnv *jniEnv, jobject jPlayerO
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/85.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A83/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/84.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jamin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jamin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/84.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A82/" itemprop="url">音视频：13.FFmpeg-音乐播放器2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-13T08:12:43+08:00">
+                2020-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/84.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A82/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/84.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A82/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/84.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A82/" class="leancloud_visitors" data-flag-title="音视频：13.FFmpeg-音乐播放器2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  964
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          具体代码请看：NDKPractice项目的ffmpeg83
+1.解决内存上涨的问题将循环中新建数组操作提到循环外面去
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546jbyteArr
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/84.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A82/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/83.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jamin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jamin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/83.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A81/" itemprop="url">音视频：12.FFmpeg-音乐播放器1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-12T08:12:43+08:00">
+                2020-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/83.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A81/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/83.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A81/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/83.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A81/" class="leancloud_visitors" data-flag-title="音视频：12.FFmpeg-音乐播放器1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          具体代码请看：NDKPractice项目的ffmpeg83
+先来看下流程图：
+
+1.获取音频 Meta 信息12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152e
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/83.FFmpeg-%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A81/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://eastup.github.io/82.Shell%E8%84%9A%E6%9C%AC-%E5%8A%A8%E6%89%8B%E7%BC%96%E8%AF%91FFmpeg/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -520,1893 +2388,11 @@ ndk 16的以上版本自带交叉编译工具链
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/81.Shell%E8%84%9A%E6%9C%AC-%E8%AF%A6%E8%A7%A3Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jamin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jamin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/81.Shell%E8%84%9A%E6%9C%AC-%E8%AF%A6%E8%A7%A3Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" itemprop="url">音视频：10.Shell脚本-详解Shell脚本基础语法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-10T08:12:43+08:00">
-                2020-08-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/81.Shell%E8%84%9A%E6%9C%AC-%E8%AF%A6%E8%A7%A3Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/81.Shell%E8%84%9A%E6%9C%AC-%E8%AF%A6%E8%A7%A3Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/81.Shell%E8%84%9A%E6%9C%AC-%E8%AF%A6%E8%A7%A3Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="leancloud_visitors" data-flag-title="音视频：10.Shell脚本-详解Shell脚本基础语法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1.shell 脚本创建与执行(01.sh)一般都是**.sh文件
-
-#!：需要用谁来解析执行该 shell 脚本
-echo：打印输出
-
-12345678910111213141516171819# 需要用谁来解析执行该 shell 脚本#!&#x2F;bin&#x2F;bash# echo 打印输
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/81.Shell%E8%84%9A%E6%9C%AC-%E8%AF%A6%E8%A7%A3Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/80.Cmake%E8%AF%AD%E6%B3%95-%E8%AF%A6%E8%A7%A3CmakeLists.txt/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jamin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jamin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/80.Cmake%E8%AF%AD%E6%B3%95-%E8%AF%A6%E8%A7%A3CmakeLists.txt/" itemprop="url">音视频：09.Cmake语法-详解CmakeLists.txt</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-09T08:12:43+08:00">
-                2020-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/80.Cmake%E8%AF%AD%E6%B3%95-%E8%AF%A6%E8%A7%A3CmakeLists.txt/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/80.Cmake%E8%AF%AD%E6%B3%95-%E8%AF%A6%E8%A7%A3CmakeLists.txt/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/80.Cmake%E8%AF%AD%E6%B3%95-%E8%AF%A6%E8%A7%A3CmakeLists.txt/" class="leancloud_visitors" data-flag-title="音视频：09.Cmake语法-详解CmakeLists.txt">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1.初试 CMake 的 HelloWorld注意：PROJECT、这些不区分大小写，但是${HELLO_BINARY_DIR}这些，必须大写
-
-PROJECT(HELLO)：给工程取一个名字
-SET(SRC_LIST hello.cpp)：定义一个变量
-MESSAGE(STATUS &quot;t
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/80.Cmake%E8%AF%AD%E6%B3%95-%E8%AF%A6%E8%A7%A3CmakeLists.txt/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/79.Cmake%E8%AF%AD%E6%B3%95-makefile%E3%80%81cmake%E3%80%81shell%20%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E5%92%8C%E9%93%BE%E6%8E%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jamin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jamin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/79.Cmake%E8%AF%AD%E6%B3%95-makefile%E3%80%81cmake%E3%80%81shell%20%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E5%92%8C%E9%93%BE%E6%8E%A5/" itemprop="url">音视频：08.Cmake语法-makefile、cmake、shell 自动编译和链接</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-08T08:12:43+08:00">
-                2020-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/79.Cmake%E8%AF%AD%E6%B3%95-makefile%E3%80%81cmake%E3%80%81shell%20%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E5%92%8C%E9%93%BE%E6%8E%A5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/79.Cmake%E8%AF%AD%E6%B3%95-makefile%E3%80%81cmake%E3%80%81shell%20%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E5%92%8C%E9%93%BE%E6%8E%A5/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/79.Cmake%E8%AF%AD%E6%B3%95-makefile%E3%80%81cmake%E3%80%81shell%20%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E5%92%8C%E9%93%BE%E6%8E%A5/" class="leancloud_visitors" data-flag-title="音视频：08.Cmake语法-makefile、cmake、shell 自动编译和链接">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.6k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1.makefile、cmake 与 shell 之间的联系
-makefile ： 帮助我们管理编译项目   
-
-cmake：是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。他能够输出各种各样的 Makefile 或者 project 文件，CMake 并不直接建构
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/79.Cmake%E8%AF%AD%E6%B3%95-makefile%E3%80%81cmake%E3%80%81shell%20%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91%E5%92%8C%E9%93%BE%E6%8E%A5/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/78.linux%E7%B3%BB%E7%BB%9F-%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jamin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jamin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/78.linux%E7%B3%BB%E7%BB%9F-%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/" itemprop="url">音视频：07.linux系统-线程和多线程同步</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-07T08:12:43+08:00">
-                2020-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/78.linux%E7%B3%BB%E7%BB%9F-%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/78.linux%E7%B3%BB%E7%BB%9F-%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/78.linux%E7%B3%BB%E7%BB%9F-%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/" class="leancloud_visitors" data-flag-title="音视频：07.linux系统-线程和多线程同步">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.9k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1.线程的本质线程与进程的区别：线程大家可以简单理解为一个轻量级的进程，线程共享了栈和堆（变量），没有复制 0-3 G 的进程空间，但线程会有自己的工作空间，会有自己的 pcb 块。跟 Java 是类似的。
-
-linux线程执行和windows不同，pthread有两种状态joinable状态和un
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/78.linux%E7%B3%BB%E7%BB%9F-%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/77.linux%E7%B3%BB%E7%BB%9F-IPC%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jamin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jamin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/77.linux%E7%B3%BB%E7%BB%9F-IPC%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" itemprop="url">音视频：06.linux系统-IPC进程间通信</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-06T08:12:43+08:00">
-                2020-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/77.linux%E7%B3%BB%E7%BB%9F-IPC%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/77.linux%E7%B3%BB%E7%BB%9F-IPC%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/77.linux%E7%B3%BB%E7%BB%9F-IPC%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="leancloud_visitors" data-flag-title="音视频：06.linux系统-IPC进程间通信">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.9k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1.进程间通信的方式文件，管道，信号、信号量，共享映射区（共享内存），消息队列，管道，套接字（socket）
-着重讲下：
-
-管道（使用简单）
-信号（开销比较小）
-共享映射区
-套接字（低速稳定）
-
-一般都是通过内核共享空间进行通信
-
-2.管道(pipe)
-
-无名管道，半双工的通信方式(数据流向固定：只
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/77.linux%E7%B3%BB%E7%BB%9F-IPC%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/76.linux%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jamin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jamin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/76.linux%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" itemprop="url">音视频：05.linux系统-进程创建和进程管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-05T08:12:43+08:00">
-                2020-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/76.linux%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/76.linux%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/76.linux%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" class="leancloud_visitors" data-flag-title="音视频：05.linux系统-进程创建和进程管理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  938
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1.pcb(process control block)进程控制块结构体的路径：~/usr/src/linux-headers-3.5.0-23/include/linux/sched.h
-结构体：
-123456789101112131415161718struct task_struct &#12
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/76.linux%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/75.linux%E7%B3%BB%E7%BB%9F-%E5%86%85%E6%A0%B8%E7%BC%96%E7%A8%8B%EF%BC%8C%E6%96%87%E4%BB%B6IO%E4%B8%8E%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jamin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jamin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/75.linux%E7%B3%BB%E7%BB%9F-%E5%86%85%E6%A0%B8%E7%BC%96%E7%A8%8B%EF%BC%8C%E6%96%87%E4%BB%B6IO%E4%B8%8E%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/" itemprop="url">音视频：04.linux系统-内核编程，文件IO与文件描述符</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-04T08:12:43+08:00">
-                2020-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/75.linux%E7%B3%BB%E7%BB%9F-%E5%86%85%E6%A0%B8%E7%BC%96%E7%A8%8B%EF%BC%8C%E6%96%87%E4%BB%B6IO%E4%B8%8E%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/75.linux%E7%B3%BB%E7%BB%9F-%E5%86%85%E6%A0%B8%E7%BC%96%E7%A8%8B%EF%BC%8C%E6%96%87%E4%BB%B6IO%E4%B8%8E%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/75.linux%E7%B3%BB%E7%BB%9F-%E5%86%85%E6%A0%B8%E7%BC%96%E7%A8%8B%EF%BC%8C%E6%96%87%E4%BB%B6IO%E4%B8%8E%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/" class="leancloud_visitors" data-flag-title="音视频：04.linux系统-内核编程，文件IO与文件描述符">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  986
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1. 系统内核调用3-4G 是系统的空间（内核空间），这部分是由操作系统来管理，那么如果我们要操作这部分数据，只能借助系统提供的一些函数（系统函数），用户调用这些函数就称之为系统调用。
-
-2.普通函数与内核函数系统函数：open , close , write , read
-man 2 ‘系统函数’
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/75.linux%E7%B3%BB%E7%BB%9F-%E5%86%85%E6%A0%B8%E7%BC%96%E7%A8%8B%EF%BC%8C%E6%96%87%E4%BB%B6IO%E4%B8%8E%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/74.linux%E7%B3%BB%E7%BB%9F-%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91%E3%80%81%E5%BA%94%E7%94%A8%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jamin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jamin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/74.linux%E7%B3%BB%E7%BB%9F-%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91%E3%80%81%E5%BA%94%E7%94%A8%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C/" itemprop="url">音视频：03.linux系统-文档编辑、应用编译运行</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-03T08:12:43+08:00">
-                2020-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/74.linux%E7%B3%BB%E7%BB%9F-%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91%E3%80%81%E5%BA%94%E7%94%A8%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/74.linux%E7%B3%BB%E7%BB%9F-%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91%E3%80%81%E5%BA%94%E7%94%A8%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/74.linux%E7%B3%BB%E7%BB%9F-%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91%E3%80%81%E5%BA%94%E7%94%A8%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C/" class="leancloud_visitors" data-flag-title="音视频：03.linux系统-文档编辑、应用编译运行">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          注意：未做说明以下都是在命令模式下进行
-编辑过程中遇到的问题：
-误按了：ctrl + z ： 可以将一个正在前台执行的命令放到后台，并且暂停
-再次打开就变成了以下这样
-123456789101112131415161718192021E325: 注意发现交换文件 &quot;.t.txt.swp&q
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/74.linux%E7%B3%BB%E7%BB%9F-%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91%E3%80%81%E5%BA%94%E7%94%A8%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/73.linux%E7%B3%BB%E7%BB%9F-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jamin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jamin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/73.linux%E7%B3%BB%E7%BB%9F-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="url">音视频：02.linux系统-常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-02T08:12:43+08:00">
-                2020-08-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/73.linux%E7%B3%BB%E7%BB%9F-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/73.linux%E7%B3%BB%E7%BB%9F-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/73.linux%E7%B3%BB%E7%BB%9F-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="leancloud_visitors" data-flag-title="音视频：02.linux系统-常用命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.6k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          1. 常用快捷键
-table 补齐
-ctrl + a : 光标移动到最前
-ctrl + e：光标移动到最后
-ctrl + u：清空
-上，下键：切换命令
-
-2. 文件操作2.1 文件基本操作指令
-cd xxx：进入到某个目录
-cd ..：回退到上一级目录
-ls : 当前文件夹下面的所有文件
-./dat
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/73.linux%E7%B3%BB%E7%BB%9F-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
 
 
@@ -2458,7 +2444,7 @@ ls : 当前文件夹下面的所有文件
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">91</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3085,7 +3071,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">88.1k</span>
+    <span title="Site words total count">98.2k</span>
   
 </div>
 
