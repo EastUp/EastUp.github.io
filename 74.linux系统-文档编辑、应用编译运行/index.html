@@ -476,65 +476,44 @@
 <p>误按了：<code>ctrl + z</code> ： 可以将一个正在前台执行的命令放到后台，并且暂停</p>
 <p>再次打开就变成了以下这样</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">E325: 注意</span><br><span class="line">发现交换文件 &quot;.t.txt.swp&quot;</span><br><span class="line">            所有者: root    日期: Sun Aug 25 23:27:33 2019</span><br><span class="line">            文件名: ~root&#x2F;test&#x2F;t.txt</span><br><span class="line">            修改过: 否</span><br><span class="line">            用户名: root      主机名: master</span><br><span class="line">           进程 ID: 4803 (仍在运行)</span><br><span class="line">正在打开文件 &quot;t.txt&quot;</span><br><span class="line">              日期: Sun Aug 25 22:17:30 2019</span><br><span class="line"></span><br><span class="line">(1) Another program may be editing the same file.  If this is the case,</span><br><span class="line">    be careful not to end up with two different instances of the same</span><br><span class="line">    file when making changes.  Quit, or continue with caution.</span><br><span class="line">(2) An edit session for this file crashed.</span><br><span class="line">    如果是这样，请用 &quot;:recover&quot; 或 &quot;vim -r t.txt&quot;</span><br><span class="line">    恢复修改的内容 (请见 &quot;:help recovery&quot;)。</span><br><span class="line">    如果你已经进行了恢复，请删除交换文件 &quot;.t.txt.swp&quot;</span><br><span class="line">    以避免再看到此消息。</span><br><span class="line"></span><br><span class="line">交换文件 &quot;.t.txt.swp&quot; 已存在！</span><br><span class="line">以只读方式打开([O]), 直接编辑((E)), 恢复((R)), 退出((Q)), 中止((A)):</span><br></pre></td></tr></table></figure>
-
 <p>解决办法：</p>
 <p>使用 <code>fg</code> :将后台中的命令调至前台继续运行</p>
-<h1 id="1-vim-工作模式"><a href="#1-vim-工作模式" class="headerlink" title="1. vim 工作模式"></a>1. vim 工作模式</h1><p><img src="/images/74.vim%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F.png" alt></p>
+<h1 id="1-vim-工作模式"><a href="#1-vim-工作模式" class="headerlink" title="1. vim 工作模式"></a>1. vim 工作模式</h1><p><img src="/images/74.vim三种工作模式.png" alt></p>
 <ul>
 <li><code>gcc hello.c -o a</code>：编译成可执行文件 <code>a</code></li>
 <li><code>./a</code>：运行可执行文件 a</li>
 </ul>
 <h1 id="2-vim-命令模式进入输入模式的快捷键"><a href="#2-vim-命令模式进入输入模式的快捷键" class="headerlink" title="2 vim 命令模式进入输入模式的快捷键"></a>2 vim 命令模式进入输入模式的快捷键</h1><ul>
-<li><p><code>i</code>: 输入,光标前面</p>
-</li>
-<li><p><code>I</code>: 输入,光标前面</p>
-</li>
-<li><p><code>a</code>: 输入,光标会逻动一个位置</p>
-</li>
-<li><p><code>A</code>:输入,光标会逻动到最后</p>
-</li>
-<li><p><code>o</code>:输入,光标会逻动到下一行</p>
-</li>
-<li><p><code>O</code>:输入,光标会逻动到上一行</p>
-</li>
-<li><p><code>s</code>:输入,会删除光标所在字符</p>
-</li>
+<li><code>i</code>: 输入,光标前面</li>
+<li><code>I</code>: 输入,光标前面</li>
+<li><code>a</code>: 输入,光标会逻动一个位置</li>
+<li><code>A</code>:输入,光标会逻动到最后</li>
+<li><code>o</code>:输入,光标会逻动到下一行</li>
+<li><code>O</code>:输入,光标会逻动到上一行</li>
+<li><code>s</code>:输入,会删除光标所在字符</li>
 <li><p><code>S</code>: 输入,会删除光标所在行</p>
 </li>
 <li><p><code>h</code>: 向左移动光标</p>
 </li>
-<li><p><code>l</code>: 向右移动光标</p>
-</li>
-<li><p><code>j</code>: 向下移动光标</p>
-</li>
-<li><p><code>k</code>: 向上移动光标</p>
-</li>
+<li><code>l</code>: 向右移动光标</li>
+<li><code>j</code>: 向下移动光标</li>
+<li><code>k</code>: 向上移动光标</li>
 </ul>
 <h2 id="2-1-跳转和删除"><a href="#2-1-跳转和删除" class="headerlink" title="2.1.跳转和删除"></a>2.1.跳转和删除</h2><ul>
-<li><p><code>5G</code>：跳转到第 5 行</p>
-</li>
-<li><p><code>5回车</code>或者<code>G</code>：跳转到末行行首</p>
-</li>
-<li><p><code>gg</code>: 跳转到首行行首</p>
-</li>
-<li><p><code>$</code>: 跳转到当行行尾</p>
-</li>
-<li><p><code>0</code>: 跳转到当行行首</p>
-</li>
+<li><code>5G</code>：跳转到第 5 行</li>
+<li><code>5回车</code>或者<code>G</code>：跳转到末行行首</li>
+<li><code>gg</code>: 跳转到首行行首</li>
+<li><code>$</code>: 跳转到当行行尾</li>
+<li><code>0</code>: 跳转到当行行首</li>
 <li><p><code>gg=G</code>: 格式化代码</p>
 </li>
 <li><p><code>dw</code>：删除单词从光标到单词结束的地方</p>
 </li>
-<li><p><code>x</code>: 删除某个字母</p>
-</li>
-<li><p><code>d0</code>: 删除光标至行首</p>
-</li>
-<li><p><code>v+h/j/k/l+d</code> 或者 <code>v+上/下/左/右+d</code>：删除选中区域</p>
-</li>
-<li><p><code>dd</code>: 剪切整行，可以当删除</p>
-</li>
-<li><p><code>3dd</code>: 从当前行剪切 3 行，可以当删除</p>
-</li>
+<li><code>x</code>: 删除某个字母</li>
+<li><code>d0</code>: 删除光标至行首</li>
+<li><code>v+h/j/k/l+d</code> 或者 <code>v+上/下/左/右+d</code>：删除选中区域</li>
+<li><code>dd</code>: 剪切整行，可以当删除</li>
+<li><code>3dd</code>: 从当前行剪切 3 行，可以当删除</li>
 </ul>
 <h2 id="2-2-复制、粘贴"><a href="#2-2-复制、粘贴" class="headerlink" title="2.2. 复制、粘贴"></a>2.2. 复制、粘贴</h2><ul>
 <li><code>yy</code>: 复制当前行</li>
@@ -573,21 +552,14 @@
 <p><code>gcc -o hello hello.o</code>：这个时候就可以执行<code>hello</code>了</p>
 <h1 id="4-动态库和静态库"><a href="#4-动态库和静态库" class="headerlink" title="4.动态库和静态库"></a>4.动态库和静态库</h1><p><code>静态库</code>：其实是内容的拷贝(代码)，运行阶段<code>没有 .a 文件</code>了也是可以执行的。<br><code>动态库</code>：不会拷贝内容，运行阶段起的作用（加载），生成 so 的时候要生成与位置无关的代码，没有 so 不能运行。</p>
 <h2 id="4-1-静态库的生成"><a href="#4-1-静态库的生成" class="headerlink" title="4.1 静态库的生成:"></a>4.1 静态库的生成:</h2><h3 id="4-1-1-将-c-生成-o"><a href="#4-1-1-将-c-生成-o" class="headerlink" title="4.1.1 将 c 生成 .o"></a>4.1.1 将 c 生成 .o</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c add.c -o add.o  <span class="comment">// 将 add.c 文件输出为 .o文件</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="4-1-2-使用-ar-工具制作静态库"><a href="#4-1-2-使用-ar-工具制作静态库" class="headerlink" title="4.1.2. 使用 ar 工具制作静态库"></a>4.1.2. 使用 ar 工具制作静态库</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ar rcs libmath.a add.o xxx.o <span class="comment">// 将 add.o 和 xxx.o 文件制作到 libmath.a 中</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="4-1-3-编译静态库到可执行文件"><a href="#4-1-3-编译静态库到可执行文件" class="headerlink" title="4.1.3. 编译静态库到可执行文件"></a>4.1.3. 编译静态库到可执行文件</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc a.c libmath.a -o hello <span class="comment">// 将 a.c 和 libmath.a 输出到可执行文件 hello 中</span></span><br></pre></td></tr></table></figure>
-
-
 <h2 id="4-2-动态库生成"><a href="#4-2-动态库生成" class="headerlink" title="4.2 动态库生成"></a>4.2 动态库生成</h2><h3 id="4-2-1-将-c-生成-o-（要生成与位置无关的代码）"><a href="#4-2-1-将-c-生成-o-（要生成与位置无关的代码）" class="headerlink" title="4.2.1 将 c 生成 .o （要生成与位置无关的代码）"></a>4.2.1 将 c 生成 .o （要生成与位置无关的代码）</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c add.c -o add.o -fPIC  <span class="comment">// // 将 add.c 文件输出为 .o文件 要加 -fPIC</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="4-2-2-使用-gcc-shared-制作动态库"><a href="#4-2-2-使用-gcc-shared-制作动态库" class="headerlink" title="4.2.2 使用 gcc -shared 制作动态库"></a>4.2.2 使用 gcc -shared 制作动态库</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -o libmath.so add.o xxx.o <span class="comment">// // 将 add.o 和 xxx.o 文件制作到 libmath.so 中</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="4-2-3-编译动态库到可执行文件，需要指定动态库的名称-l-指定库路径-L"><a href="#4-2-3-编译动态库到可执行文件，需要指定动态库的名称-l-指定库路径-L" class="headerlink" title="4.2.3 编译动态库到可执行文件，需要指定动态库的名称 -l , 指定库路径 -L"></a>4.2.3 编译动态库到可执行文件，需要指定动态库的名称 -l , 指定库路径 -L</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc a.c -o a -lmath -L./   <span class="comment">// libmath.so 要写成math， ./ 代表当前文件夹</span></span><br></pre></td></tr></table></figure>
-
 <h1 id="5-虚拟内存与物理内存"><a href="#5-虚拟内存与物理内存" class="headerlink" title="5.虚拟内存与物理内存"></a>5.虚拟内存与物理内存</h1><p><code>虚拟内存</code> 是为了缓解<code>物理内存</code>的压力而创建的，他们之间是通过<code>映射</code>来进行的联系</p>
 <p>每个进程都有4G的虚拟地址空间，其中3G用户空间，1G内核空间（linux），每个进程共享内核空间，独立的用户空间：</p>
-<p><img src="/images/74.%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E5%9B%BE.png" alt></p>
+<p><img src="/images/74.虚拟内存布局图.png" alt></p>
 
       
     </div>
@@ -1404,7 +1376,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.4k</span>
+    <span title="Site words total count">100.8k</span>
   
 </div>
 

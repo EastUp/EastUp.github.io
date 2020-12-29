@@ -497,33 +497,14 @@
 <p>Glide 的 <code>MemoryCache</code>的缓存大小为：<code>(一个屏幕图片大小=widthPixels*heightPixels*4)* 2</code>  </p>
 <p>LruCache实际上就是一个 <code>LinkedHashMap( 补充知识：LinkedHashMap是一个双向循环列表，不支持线程安全，LruCache对它进行了封装添加了线程安全操作)，里面保存了一定数量的对象强引用</code>，<br>每次添加的新对象都是在链表的头，当分配的空间用完的时候会把末尾的对象移除，移除的对象就可以被gc回收了</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 缓存图片</span></span><br><span class="line">Lrucache cache = Lrucache(<span class="number">4</span>*<span class="number">1024</span>*<span class="number">1024</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果不重写 Lrucache 的 `sizeOf(K key, V value)`方法 ，则默认可以缓存 4*1024*1024 张图片</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="keyword">private</span> LruCache&lt;<span class="keyword">String</span>, Bitmap&gt; mMemoryCache;<span class="comment">//声明缓存空间</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> maxMemory = (<span class="keyword">int</span>) (Runtime.getRuntime().maxMemory() / <span class="number">1024</span>);<span class="comment">//获取应用在系统中的最大内存分配</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//分配1/8的应用内存作为缓存空间</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> cacheSize = maxMemory / <span class="number">8</span>;</span><br><span class="line"> </span><br><span class="line">mMemoryCache = <span class="keyword">new</span> LruCache&lt;<span class="keyword">String</span>, Bitmap&gt;(cacheSize) &#123;</span><br><span class="line"> </span><br><span class="line">@Override</span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">int</span> sizeOf(<span class="keyword">String</span> key, Bitmap bitmap) &#123;</span><br><span class="line">    <span class="comment">//重写sizeOf方法，返回图片的占用字节数而不是图片的个数，每次添加图片是会被调用</span></span><br><span class="line">    <span class="keyword">return</span> bitmap.getByteCount() / <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-图像模糊"><a href="#2-图像模糊" class="headerlink" title="2. 图像模糊"></a>2. 图像模糊</h1><p><img src="/images/52.%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E5%92%8C%E5%9D%87%E5%80%BC%E6%A8%A1%E7%B3%8A.png" alt></p>
+<h1 id="2-图像模糊"><a href="#2-图像模糊" class="headerlink" title="2. 图像模糊"></a>2. 图像模糊</h1><p><img src="/images/52.高斯模糊和均值模糊.png" alt></p>
 <h2 id="2-1-均值模糊"><a href="#2-1-均值模糊" class="headerlink" title="2.1 均值模糊"></a>2.1 均值模糊</h2><p>操作：对当前像素点的周边半径，进行相加然后取平均值，赋值给当前像素点。</p>
 <h2 id="2-2-高斯模糊"><a href="#2-2-高斯模糊" class="headerlink" title="2.2 高斯模糊"></a>2.2 高斯模糊</h2><p>操作： 对当前像素点的周边半径，求权重计算周边像素值，然后相加赋值给当前像素点。</p>
-<p><font color="red">每个像素点都要处理，还有就是要去计算我们的正太分布的值（卷积核）</font><br><font color="red">如果半径越大，算法的复杂度越大，如果图片的宽高像素点越多，算法的复杂度也越大</font></p>
+<font color="red">每个像素点都要处理，还有就是要去计算我们的正太分布的值（卷积核）</font>  
+<font color="red">如果半径越大，算法的复杂度越大，如果图片的宽高像素点越多，算法的复杂度也越大</font>
+
 <p>高斯和均值模糊的区别：<code>高斯保留了一些轮廓，毛玻璃的效果</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Mat src = imread(<span class="string">"E:/copy.png"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (src.empty())&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"src read error"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	imshow(<span class="string">"src"</span>, src);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 均值模糊</span></span><br><span class="line">	Mat dst;</span><br><span class="line">	<span class="comment">// Size（w,h）只能是基数，这样才能找到中心点</span></span><br><span class="line">	<span class="comment">// Point(-1,-1) 代表中心店</span></span><br><span class="line">	blur(src,dst,Size(<span class="number">151</span>,<span class="number">151</span>),Point(<span class="number">-1</span>,<span class="number">-1</span>));</span><br><span class="line">	imshow(<span class="string">"dst"</span>, dst);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 高斯模糊</span></span><br><span class="line">	Mat gaussian;</span><br><span class="line">	<span class="comment">// sigmaX sigmaY 代表 作用</span></span><br><span class="line">	<span class="comment">// sigmaY 不传代表和 sigmaX 一样</span></span><br><span class="line">	<span class="comment">// 如果 sigmaX &lt;= 0 ,自己会计算 0.3*((ksize-1)*0.5 - 1) + 0.8</span></span><br><span class="line">	<span class="comment">// sigmaX 越小越没效果</span></span><br><span class="line">	GaussianBlur(src, gaussian, Size(<span class="number">151</span>, <span class="number">151</span>), <span class="number">0</span>);</span><br><span class="line">	imshow(<span class="string">"gaussian"</span>, gaussian);</span><br><span class="line"></span><br><span class="line">	waitKey(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       
     </div>
@@ -1344,7 +1325,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.4k</span>
+    <span title="Site words total count">100.8k</span>
   
 </div>
 

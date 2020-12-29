@@ -472,7 +472,7 @@
 
       
         <h1 id="1-了解下卷积操作"><a href="#1-了解下卷积操作" class="headerlink" title="1. 了解下卷积操作"></a>1. 了解下卷积操作</h1><p>概念：<code>把kernel（卷积核）放到我们图像的矩阵之上，求锚点周围覆盖的像素乘积之和（包括锚点），用来计算锚点的像素值覆盖图片下面的像素值，称之为卷积操作。</code></p>
-<p><img src="/images/56.%E5%8D%B7%E7%A7%AF%E6%93%8D%E4%BD%9C.png" alt></p>
+<p><img src="/images/56.卷积操作.png" alt></p>
 <h1 id="2-处理边缘类型"><a href="#2-处理边缘类型" class="headerlink" title="2. 处理边缘类型"></a>2. 处理边缘类型</h1><p><code>copyMakeBorder(src,dst,src.rows/8,src.rows/8,src.cols/8,src.cols/8,BORDER_DEFAULT);</code></p>
 <ul>
 <li>BORDER_DEFAULT：用周边边缘区域来填充</li>
@@ -486,12 +486,11 @@
 <li>Sobel 算子：x方向：<code>(Mat_&lt;int&gt;(3, 3) &lt;&lt; -1, 0, 1, -2,0,2,-1,0,1);</code>，y方向：<code>(Mat_&lt;int&gt;(3, 3) &lt;&lt; -1, -2, -1, 0, 0, 0, 1, 2, 1);</code></li>
 <li>拉普拉斯算子：它对图片的要求比较高 <code>Mat kernelLpls= (Mat_&lt;int&gt;(3, 3) &lt;&lt; 0, -1, 0, -1, 4, -1, 0, -1, 0);</code></li>
 </ul>
-<p><img src="/images/56.%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E5%AD%90.png" alt></p>
+<p><img src="/images/56.自定义算子.png" alt></p>
 <p>depth:（opencv中的概念）<br>　　矩阵中元素的一个通道的数据类型，这个值和type是相关的。例如 type为 CV_16SC2，一个2通道的16位的有符号整数。那么，depth则是CV_16S。depth也是一系列的预定义值，<br>将type的预定义值去掉通道信息就是depth值: 0 - 6 , type 的精度的层度<br>　　CV_8U 0  CV_8S 1 CV_16U 2 CV_16S 3 CV_32S 4 CV_32F 5 CV_64F 6</p>
 <p>图像深度：像素的 bit 位数</p>
 <p><code>自定义模糊：</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义模糊</span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">size</span> = <span class="number">15</span>;</span><br><span class="line">Mat kernel = Mat::ones(<span class="built_in">size</span>,<span class="built_in">size</span>,CV_32F)/(<span class="built_in">size</span>*<span class="built_in">size</span>);</span><br><span class="line"></span><br><span class="line">Mat dst;</span><br><span class="line">filter2D(src,dst,src.depth(),kernel);</span><br><span class="line">imshow(<span class="string">"dst"</span>,dst);</span><br></pre></td></tr></table></figure>
-
 <h1 id="4-阈值（图像二值化）"><a href="#4-阈值（图像二值化）" class="headerlink" title="4.阈值（图像二值化）"></a>4.阈值（图像二值化）</h1><p><code>threshold(gray,dst,100,255,type);</code></p>
 <p><code>当使用了THRESH_OTSU和THRESH_TRIANGLE两个标志时，输入图像必须为单通道。</code></p>
 <p>type 有以下值：</p>
@@ -1320,7 +1319,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.4k</span>
+    <span title="Site words total count">100.8k</span>
   
 </div>
 

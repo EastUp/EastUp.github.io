@@ -88,12 +88,12 @@
 
 
 
-<meta name="description" content="具体代码请看：NDKPractice项目的datastructure 1. Ndk中，宏定义Log打印123#define TAG &quot;TAG&quot;#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TAG,__VA_ARGS__)&#x2F;&#x2F; 其他方法的定义 __android_log_print 取了一个别名（参数固定，可变）  2. c++ 中的">
+<meta name="description" content="具体代码请看：NDKPractice项目的datastructure 1. Ndk中，宏定义Log打印123#define TAG &quot;TAG&quot;#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TAG,__VA_ARGS__)&#x2F;&#x2F; 其他方法的定义 __android_log_print 取了一个别名（参数固定，可变） 2. c++ 中的r">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构和算法：03.冒泡、选择、插入排序">
 <meta property="og:url" content="http://eastup.github.io/28.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Jamin">
-<meta property="og:description" content="具体代码请看：NDKPractice项目的datastructure 1. Ndk中，宏定义Log打印123#define TAG &quot;TAG&quot;#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TAG,__VA_ARGS__)&#x2F;&#x2F; 其他方法的定义 __android_log_print 取了一个别名（参数固定，可变）  2. c++ 中的">
+<meta property="og:description" content="具体代码请看：NDKPractice项目的datastructure 1. Ndk中，宏定义Log打印123#define TAG &quot;TAG&quot;#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TAG,__VA_ARGS__)&#x2F;&#x2F; 其他方法的定义 __android_log_print 取了一个别名（参数固定，可变） 2. c++ 中的r">
 <meta property="og:image" content="http://eastup.github.io/images/%E5%86%92%E6%B3%A1%E6%80%9D%E6%83%B3.png">
 <meta property="og:image" content="http://eastup.github.io/images/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E6%80%9D%E6%83%B3.png">
 <meta property="og:image" content="http://eastup.github.io/images/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F.png">
@@ -475,27 +475,23 @@
       
         <p>具体代码请看：<strong><a href="https://github.com/EastUp/NDKPractice/tree/master/datastructure28bubbleselectsort" target="_blank" rel="noopener">NDKPractice项目的datastructure</a></strong></p>
 <h1 id="1-Ndk中，宏定义Log打印"><a href="#1-Ndk中，宏定义Log打印" class="headerlink" title="1. Ndk中，宏定义Log打印"></a>1. Ndk中，宏定义<code>Log</code>打印</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TAG <span class="meta-string">"TAG"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TAG,__VA_ARGS__)</span></span><br><span class="line"><span class="comment">// 其他方法的定义 __android_log_print 取了一个别名（参数固定，可变）</span></span><br></pre></td></tr></table></figure>
-
 <h1 id="2-c-中的rand-随机"><a href="#2-c-中的rand-随机" class="headerlink" title="2. c++ 中的rand() 随机"></a>2. c++ 中的rand() 随机</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  输出 0 到 49 之间的随机数</span></span><br><span class="line"> rand() % <span class="number">50</span></span><br></pre></td></tr></table></figure>
-
 <h1 id="3-冒泡排序"><a href="#3-冒泡排序" class="headerlink" title="3. 冒泡排序"></a>3. 冒泡排序</h1><ul>
 <li><code>思想</code>：相邻两个数进行比较，如果前面的比后面的大，就进行交换，否则不需要交换。<strong><code>每次循环完毕都会在末尾选出一个最大的数</code></strong>  </li>
 <li><code>时间复杂度</code>：<strong>O($n^2$)</strong></li>
 <li><code>空间复杂度</code>：<strong>O(1)</strong></li>
 </ul>
-<p>看图：<br><img src="/images/%E5%86%92%E6%B3%A1%E6%80%9D%E6%83%B3.png" alt></p>
+<p>看图：<br><img src="/images/冒泡思想.png" alt></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; ++i) &#123; <span class="comment">// 外循环代表循环次数 n - 1 步</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len - i - <span class="number">1</span>; ++j) &#123; <span class="comment">// 内循环代表一次循环对比的次数 n-1,n-2,n-3,1</span></span><br><span class="line">            <span class="keyword">if</span>(arr[j] &gt; arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="comment">// 交换 一次交换是三次赋值</span></span><br><span class="line">                swap(arr[j],arr[j+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h1 id="4-选择排序"><a href="#4-选择排序" class="headerlink" title="4. 选择排序"></a>4. 选择排序</h1><ul>
 <li><code>思想</code>： 遍历找出最小的位置，最后与第一个位置交换。<strong><code>每次循环完毕都会在开始位置选出一个最小的数</code></strong>  </li>
 <li><code>时间复杂度</code>：<strong>O($n^2$)</strong></li>
 <li><code>空间复杂度</code>：<strong>O(1)</strong></li>
 </ul>
 <p>耗费的时间比上边未优化的冒泡排序要少很多</p>
-<p>看图：<br><img src="/images/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E6%80%9D%E6%83%B3.png" alt></p>
+<p>看图：<br><img src="/images/选择排序思想.png" alt></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; ++i) &#123; <span class="comment">// 外循环代表循环次数 n - 1 步</span></span><br><span class="line">        <span class="keyword">int</span> <span class="built_in">min</span> = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; len; ++j) &#123;  <span class="comment">// 内循环代表一次循环对比的次数</span></span><br><span class="line">            <span class="keyword">if</span>(arr[<span class="built_in">min</span>] &gt; arr[j])&#123;</span><br><span class="line">                <span class="built_in">min</span> = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(arr[<span class="built_in">min</span>],arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="5-插入排序"><a href="#5-插入排序" class="headerlink" title="5. 插入排序:"></a>5. 插入排序:</h1><p><img src="/images/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F.png" alt></p>
+<h1 id="5-插入排序"><a href="#5-插入排序" class="headerlink" title="5. 插入排序:"></a>5. 插入排序:</h1><p><img src="/images/插入排序.png" alt></p>
 <p><strong>像打扑克牌摸排后插入一样</strong></p>
 <ul>
 <li><code>思想</code>： <strong><code>每次循环完毕index在(循环次数+1)前面的数都是排好序的</code></strong>  </li>
@@ -504,52 +500,8 @@
 </ul>
 <p>特点：<code>适用于数组中大部分是排好序的数组</code>,如果大部分都没排好序，那么花费的时间比原来的冒泡排序还多</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt;<span class="number">0</span> &amp;&amp; arr[j] &lt; arr[j<span class="number">-1</span>] ; --j) &#123;</span><br><span class="line">            swap(arr[j],arr[j<span class="number">-1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt;<span class="number">0</span>; --j) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &lt; arr[j<span class="number">-1</span>] )</span><br><span class="line">                swap(arr[j],arr[j<span class="number">-1</span>]);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h1 id="6-两个整数交换不额外开辟新内存"><a href="#6-两个整数交换不额外开辟新内存" class="headerlink" title="6.两个整数交换不额外开辟新内存"></a>6.两个整数交换不额外开辟新内存</h1><p>有以下两种方法</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">    <span class="comment">// 交换</span></span><br><span class="line"></span><br><span class="line">    a = a + b;<span class="comment">// a = 300</span></span><br><span class="line">    b = a - b;<span class="comment">// b = 200</span></span><br><span class="line">    a = a - b;<span class="comment">// a = 100</span></span><br><span class="line"></span><br><span class="line">    System.out.<span class="built_in">println</span>(<span class="string">"交换后ab的值分别是：%d,%d"</span>,a,b); <span class="comment">// 交换后ab的值分别是：200,100</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">2</span>;  <span class="comment">// 二进制 10</span></span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">3</span>;  <span class="comment">// 二进制 11</span></span><br><span class="line">    <span class="comment">// 交换</span></span><br><span class="line"></span><br><span class="line">    a = a ^ b; <span class="comment">// 二进制：10 ^ 11 = 01 = a = 十进制：1</span></span><br><span class="line">    b = a ^ b; <span class="comment">// 二进制：01 ^ 11 = 10 = b = 十进制：2</span></span><br><span class="line">    a = a ^ b; <span class="comment">// 二进制：01 ^ 10 = 11 = a = 十进制：3</span></span><br><span class="line"></span><br><span class="line">    System.out.<span class="built_in">println</span>(<span class="string">"交换后ab的值分别是：%d,%d"</span>,a,b); <span class="comment">// 交换后ab的值分别是：3,2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       
     </div>
@@ -1368,7 +1320,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.4k</span>
+    <span title="Site words total count">100.8k</span>
   
 </div>
 

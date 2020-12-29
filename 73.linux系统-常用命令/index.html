@@ -496,7 +496,7 @@
 <li><code>rwx</code>：表示文件所有者的对该文件所拥有的权限；</li>
 </ul>
 <p><code>-rw-rw-r--：- 文件类型，rw- 所有者可读可写，rw- 同一组用户可读可写，r-- 其他人可读</code></p>
-<p><img src="/images/73.linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90.jpg" alt></p>
+<p><img src="/images/73.linux文件权限.jpg" alt></p>
 <p>linux 系统文件类型：</p>
 <ul>
 <li>普通文件：-</li>
@@ -585,7 +585,8 @@
 
 　　-B  n：显示匹配到的字符串所在的行及其前n行，before
 
-　　-C  n：显示匹配到的字符串所在的行及其前后各n行，context</code></pre><h1 id="5-软件安装"><a href="#5-软件安装" class="headerlink" title="5.软件安装"></a>5.软件安装</h1><h2 id="5-1-命令行安装"><a href="#5-1-命令行安装" class="headerlink" title="5.1 命令行安装"></a>5.1 命令行安装</h2><ul>
+　　-C  n：显示匹配到的字符串所在的行及其前后各n行，context
+</code></pre><h1 id="5-软件安装"><a href="#5-软件安装" class="headerlink" title="5.软件安装"></a>5.软件安装</h1><h2 id="5-1-命令行安装"><a href="#5-1-命令行安装" class="headerlink" title="5.1 命令行安装"></a>5.1 命令行安装</h2><ul>
 <li><code>sudo apt-get install tree</code>：tree 是要安装的程序</li>
 <li><code>sudo apt-get update</code>:更新程序</li>
 <li><code>sudo apt-get remove tree</code>:软件卸载</li>
@@ -603,14 +604,12 @@
 </ul>
 <h1 id="6-压缩和解压缩"><a href="#6-压缩和解压缩" class="headerlink" title="6.压缩和解压缩"></a>6.压缩和解压缩</h1><h2 id="6-1-tar"><a href="#6-1-tar" class="headerlink" title="6.1 tar"></a>6.1 tar</h2><p><code>tar -zcvf &#39;压缩到的文件&#39; ‘需要压缩的文件’ ‘需要压缩的文件’</code><br><code>tar -jcvf test.tar.zip a.c file</code><br><code>tar -zxvf test.tar.zip</code> // 解压文件  </p>
 <ul>
-<li><p><code>-zcvf</code>　<code>z:gzip</code> ,　<code>c: create压缩</code>　<code>f: file</code>　<code>v:显示过程</code> <code>x:解压缩</code> </p>
-</li>
+<li><code>-zcvf</code>　<code>z:gzip</code> ,　<code>c: create压缩</code>　<code>f: file</code>　<code>v:显示过程</code> <code>x:解压缩</code> </li>
 <li><p><code>-jcvf</code>　<code>j:bizp2</code> ,　<code>c: create压缩</code>　<code>f: file</code>　<code>v:显示过程</code> <code>x:解压缩</code></p>
 </li>
 <li><p><code>gzip ‘需要压缩的文件’</code> 只能压缩一个文件</p>
 </li>
-<li><p><code>gunzip a.c.gz</code>：解压文件</p>
-</li>
+<li><code>gunzip a.c.gz</code>：解压文件</li>
 </ul>
 <h2 id="6-2-rar和zip"><a href="#6-2-rar和zip" class="headerlink" title="6.2 rar和zip"></a>6.2 rar和zip</h2><ul>
 <li><code>rar a -r test.rar</code> ：rar 压缩</li>
@@ -1434,7 +1433,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.4k</span>
+    <span title="Site words total count">100.8k</span>
   
 </div>
 

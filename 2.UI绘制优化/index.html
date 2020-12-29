@@ -480,16 +480,16 @@
 
       
         <h1 id="1-CPU与GPU工作流程"><a href="#1-CPU与GPU工作流程" class="headerlink" title="1.CPU与GPU工作流程"></a>1.CPU与GPU工作流程</h1><p>CPU 的任务繁多，做逻辑计算外，还要做内存管理、显示操作，因此在实际运算的时候性能会大打折扣，在没有 GPU 的时代，不能显示复<br>杂的图形，其运算速度远跟不上今天复杂三维游戏的要求。即使 CPU的工作频率超过 2GHz 或更高，对它绘制图形提高也不大。这时 GPU<br>的设计就出来了。</p>
-<p><img src="/images/CPU%E3%80%81GPU%E4%BC%A0%E9%80%92%E5%B7%A5%E4%BD%9C.png" alt></p>
-<p><img src="/images/CPU%E3%80%81GPU%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt></p>
+<p><img src="/images/CPU、GPU传递工作.png" alt></p>
+<p><img src="/images/CPU、GPU结构图.png" alt></p>
 <ul>
 <li>黄色的 Control 为控制器，用于协调控制整个 CPU 的运行，包括取出指令、控制其他模块的运行等；</li>
 <li>绿色的 ALU （ Arithmetic Logic Unit ）是算术逻辑单元，用于进行数学、逻辑运算；</li>
 <li>橙色的 Cache 和 DRAM 分别为缓存和 RAM ，用于存储信息。</li>
 </ul>
 <p>从结构图可以看出， CPU 的控制器较为复杂，而 ALU 数量较少。因此 CPU 擅长各种复杂的逻辑运算，但不擅长数学尤其是浮点运算。</p>
-<p><img src="/images/CPU%E3%80%81GPU%E7%BB%98%E5%88%B6%E7%9A%84%E6%B5%81%E7%A8%8B.png" alt></p>
-<p><img src="/images/CPU%E3%80%81GPU%E7%BB%98%E5%88%B6%E7%9A%84%E6%B5%81%E7%A8%8B2.png" alt></p>
+<p><img src="/images/CPU、GPU绘制的流程.png" alt></p>
+<p><img src="/images/CPU、GPU绘制的流程2.png" alt></p>
 <h1 id="2-60Hz-刷新频率由来"><a href="#2-60Hz-刷新频率由来" class="headerlink" title="2.60Hz 刷新频率由来"></a>2.60Hz 刷新频率由来</h1><ul>
 <li>12 fps ：由于人类眼睛的特殊生理结构，如果所看画面之帧率高于每秒约 10-12 帧的时候，就会认为是连贯的</li>
 <li>24 fps ：有声电影的拍摄及播放帧率均为每秒 24 帧，对一般人而言已算可接受</li>
@@ -514,9 +514,9 @@
 <li>自定义控件中onDraw方法做了过多重复绘制(可以使用裁剪，只绘制用户看的到的地方)</li>
 <li>布局层次太深，重叠性太强。用户看不到的区域GPU也会渲染，导致耗时增加.</li>
 </ol>
-<h2 id="4-3-过度绘制査看工具"><a href="#4-3-过度绘制査看工具" class="headerlink" title="4.3.过度绘制査看工具"></a>4.3.过度绘制査看工具</h2><p>手机端的开发者选项—&gt;<code>调试GPU过度绘制</code>—-&gt;显示过度绘制区域</p>
-<p><img src="/images/%E6%9F%A5%E7%9C%8B%E8%BF%87%E5%BA%A6%E7%BB%98%E5%88%B6%E5%8C%BA%E5%9F%9F.png" alt></p>
-<p><img src="/images/%E6%9F%A5%E7%9C%8B%E8%BF%87%E5%BA%A6%E7%BB%98%E5%88%B6%E5%8C%BA%E5%9F%9F2.png" alt></p>
+<h2 id="4-3-过度绘制査看工具"><a href="#4-3-过度绘制査看工具" class="headerlink" title="4.3.过度绘制査看工具"></a>4.3.过度绘制査看工具</h2><p>手机端的开发者选项—-&gt;<code>调试GPU过度绘制</code>——&gt;显示过度绘制区域</p>
+<p><img src="/images/查看过度绘制区域.png" alt></p>
+<p><img src="/images/查看过度绘制区域2.png" alt></p>
 <ul>
 <li>蓝色过度绘制一次无过度绘制</li>
 <li>淡绿过度绘制两次</li>
@@ -524,18 +524,16 @@
 <li>深红过度绘制四次</li>
 </ul>
 <p>代表了4种不同程度Overdraw情况 我们的目标就是尽量减少红色Overdraw ,看到更多的蓝色区域。</p>
-<h2 id="4-4-优化方案"><a href="#4-4-优化方案" class="headerlink" title="4.4.优化方案"></a><code>4.4.优化方案</code></h2><h3 id="4-4-1-减少背景重复"><a href="#4-4-1-减少背景重复" class="headerlink" title="4.4.1. 减少背景重复"></a>4.4.1. 减少背景重复</h3><p>去掉默认背景<br><img src="/images/%E5%8E%BB%E6%8E%89%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF.png" alt></p>
-<p>去掉二层容器背景<br><img src="/images/%E5%8E%BB%E6%8E%89%E5%AE%B9%E5%99%A8%E8%83%8C%E6%99%AF.png" alt></p>
+<h2 id="4-4-优化方案"><a href="#4-4-优化方案" class="headerlink" title="4.4.优化方案"></a><code>4.4.优化方案</code></h2><h3 id="4-4-1-减少背景重复"><a href="#4-4-1-减少背景重复" class="headerlink" title="4.4.1. 减少背景重复"></a>4.4.1. 减少背景重复</h3><p>去掉默认背景<br><img src="/images/去掉默认背景.png" alt></p>
+<p>去掉二层容器背景<br><img src="/images/去掉容器背景.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.去掉所有activity主题设置中的属性</span><br><span class="line">直接在styles.xml中设置&lt;item name&#x3D;&quot;android:windowBackground&quot;&gt;@null&lt;&#x2F;item&gt;</span><br><span class="line"></span><br><span class="line">2.去掉单个activity的主题设置的属性</span><br><span class="line">可以在setContentView之前getWindow().setBackgroundDrawable(null); </span><br><span class="line"></span><br><span class="line">3.非业务需要，不要去设置背景</span><br></pre></td></tr></table></figure>
 <h3 id="4-4-2-使用裁减减少控件之间的重合部分"><a href="#4-4-2-使用裁减减少控件之间的重合部分" class="headerlink" title="4.4.2. 使用裁减减少控件之间的重合部分"></a>4.4.2. 使用裁减减少控件之间的重合部分</h3><p>Android7.0之后系统做出的优化,<code>invalidate()</code>不再执行测量和布局动作</p>
-<p><img src="/images/%E9%87%8D%E5%90%88%E5%8C%BA%E5%9F%9F%E8%BF%87%E5%BA%A6%E7%BB%98%E5%88%B6%E6%83%85%E5%86%B5.png" alt></p>
+<p><img src="/images/重合区域过度绘制情况.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void drawDroidCard(Canvas canvas,List&lt;DroidCard&gt; mDroidCards,int i) &#123;</span><br><span class="line">    DroidCard c &#x3D; mDroidCards.get(i);</span><br><span class="line">    canvas.save();</span><br><span class="line">    canvas.clipRect((float)c.x,0f,(float)(mDroidCards.get(i+1).x),(float)c.height);</span><br><span class="line">    canvas.drawBitmap(c.bitmap,c.x,0f,paint);</span><br><span class="line">    canvas.restore();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h1 id="5-布局优化-减少CPU工作量"><a href="#5-布局优化-减少CPU工作量" class="headerlink" title="5.布局优化(减少CPU工作量)"></a><code>5.布局优化(减少CPU工作量)</code></h1><h2 id="5-1-布局查看常用工具"><a href="#5-1-布局查看常用工具" class="headerlink" title="5.1.布局查看常用工具"></a>5.1.布局查看常用工具</h2><ol>
-<li>Tool—&gt;<code>Layout Inspector</code>,<code>AndroidStudio自带</code></li>
+<li>Tool—-&gt;<code>Layout Inspector</code>,<code>AndroidStudio自带</code></li>
 <li>sdk目录/tools/bin/uiautomatorviewer.bat</li>
 <li>sdk目录tools\monitor.bat打开<code>Device Monitor</code>中Hierarchy view，<code>AndroidStudio3.1过后已经遗弃，但是真的好用</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">三个点也是代表着View的Measure, Layout和Draw。</span><br><span class="line">绿: 表示该View的此项性能比该View Tree中超过50%的View都要快；例如,代表Measure的是绿点,意味着这个视图的测量时间快于树中的视图对象的50%。</span><br><span class="line">黄: 表示该View的此项性能比该View Tree中超过50%的View都要慢； </span><br><span class="line">红: 表示该View的此项性能是View Tree中最慢的；。</span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
 <p><img src="/images/AndroidDeviceMonitor.png" alt></p>
@@ -1350,7 +1348,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.4k</span>
+    <span title="Site words total count">100.8k</span>
   
 </div>
 

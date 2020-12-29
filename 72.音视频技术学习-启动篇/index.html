@@ -478,7 +478,7 @@
 <p><a href="https://blog.csdn.net/leixiaohua1020" target="_blank" rel="noopener">雷霄骅</a></p>
 <p>Android + NDK　　FFmpeg + SurfaceView + AudioTrack </p>
 <h1 id="2-音视频编解码"><a href="#2-音视频编解码" class="headerlink" title="2. 音视频编解码"></a>2. 音视频编解码</h1><p>先来看下视频的播放流程：</p>
-<p><img src="/images/72.%E8%A7%86%E9%9F%B3%E9%A2%91%E6%92%AD%E6%94%BE%E6%B5%81%E7%A8%8B.png" alt></p>
+<p><img src="/images/72.视音频播放流程.png" alt></p>
 <ul>
 <li>RGB：8字节，24字节，32字节（RGBA）</li>
 <li>YUV：Y黑白电视，亮度；U 色度，V 饱和度  ， YUV440，YUV420，YUV444 </li>
@@ -495,10 +495,8 @@
 <li>位深度　　　　: 16位              16byte 存的   最大值？   8 位   </li>
 </ul>
 <h1 id="3-FFmpeg"><a href="#3-FFmpeg" class="headerlink" title="3. FFmpeg"></a>3. FFmpeg</h1><ul>
-<li><p>ijkplayer ： ffmpeg ， libyuv ， opensl es , 自己代码</p>
-</li>
-<li><p>微视：基于这个 ffmpeg </p>
-</li>
+<li>ijkplayer ： ffmpeg ， libyuv ， opensl es , 自己代码</li>
+<li>微视：基于这个 ffmpeg </li>
 <li><p>音视频通话：基于 webrtc</p>
 <p>ffmpeg 是一个 c 库，要用你的编译 so , 自己去编译，你可以按需加载，减少so库的体积<br>shell 脚本，cmake 语法，linux ， 买最便宜，ubuntu ，mac 可以不用买，终端 -&gt; shell<br>inux 内核基础，android 底层基于 linux 内核 mmap() 等等  </p>
 </li>
@@ -1319,7 +1317,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.4k</span>
+    <span title="Site words total count">100.8k</span>
   
 </div>
 

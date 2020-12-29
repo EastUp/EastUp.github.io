@@ -88,12 +88,12 @@
 
 
 
-<meta name="description" content="以下使用&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Ubuntu&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;环境搭建的 具体代码请看：NDKPractice项目的ffmpeg88livepush 1.搭建流媒体服务器1.1 安装 在ubuntu系统中首先切换到root用户,然后cd到lib目录下，mkdir新建nginx文件夹。  使用 wget ftp:&#x2F;&#x2F;ftp.pcre.org&#x2F;p">
+<meta name="description" content="以下使用&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Ubuntu&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;环境搭建的  具体代码请看：NDKPractice项目的ffmpeg88livepush 1.搭建流媒体服务器1.1 安装 在ubuntu系统中首先切换到root用户,然后cd到lib目录下，mkdir新建nginx文件夹。  使用 wget ftp:&#x2F;&#x2F;ftp.pcre.org&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="音视频：17.FFmpeg-直播推、拉流">
 <meta property="og:url" content="http://eastup.github.io/88.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E3%80%81%E6%8B%89%E6%B5%81/index.html">
 <meta property="og:site_name" content="Jamin">
-<meta property="og:description" content="以下使用&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Ubuntu&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;环境搭建的 具体代码请看：NDKPractice项目的ffmpeg88livepush 1.搭建流媒体服务器1.1 安装 在ubuntu系统中首先切换到root用户,然后cd到lib目录下，mkdir新建nginx文件夹。  使用 wget ftp:&#x2F;&#x2F;ftp.pcre.org&#x2F;p">
+<meta property="og:description" content="以下使用&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Ubuntu&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;环境搭建的  具体代码请看：NDKPractice项目的ffmpeg88livepush 1.搭建流媒体服务器1.1 安装 在ubuntu系统中首先切换到root用户,然后cd到lib目录下，mkdir新建nginx文件夹。  使用 wget ftp:&#x2F;&#x2F;ftp.pcre.org&#x2F;">
 <meta property="og:image" content="http://eastup.github.io/images/88.%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%8B%89%E6%B5%81%E5%8E%9F%E7%90%86.png">
 <meta property="og:image" content="http://eastup.github.io/images/91.%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8E%9F%E7%90%86.png">
 <meta property="article:published_time" content="2020-08-17T00:12:43.000Z">
@@ -471,7 +471,8 @@
       
 
       
-        <p><font color="red"> 以下使用&nbsp;&nbsp;&nbsp;&nbsp;Ubuntu&nbsp;&nbsp;&nbsp;&nbsp;环境搭建的</font></p>
+        <font color="red"> 以下使用&nbsp;&nbsp;&nbsp;&nbsp;Ubuntu&nbsp;&nbsp;&nbsp;&nbsp;环境搭建的</font>
+
 <p>具体代码请看：<strong><a href="https://github.com/EastUp/NDKPractice/tree/master/ffmpeg88livepush" target="_blank" rel="noopener">NDKPractice项目的ffmpeg88livepush</a></strong></p>
 <h1 id="1-搭建流媒体服务器"><a href="#1-搭建流媒体服务器" class="headerlink" title="1.搭建流媒体服务器"></a>1.搭建流媒体服务器</h1><h2 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h2><ol>
 <li><p>在ubuntu系统中首先切换到<code>root</code>用户,然后cd到<code>lib</code>目录下，<code>mkdir新建nginx</code>文件夹。</p>
@@ -521,30 +522,23 @@
 <ul>
 <li>nginx:  <a href="https://github.com/nginx/nginx/releases" target="_blank" rel="noopener">https://github.com/nginx/nginx/releases</a></li>
 <li>rtmp:  <a href="https://github.com/arut/nginx-rtmp-module/releases" target="_blank" rel="noopener">https://github.com/arut/nginx-rtmp-module/releases</a></li>
-<li>pcre:  <a href="ftp://ftp.pcre.org/pub/pcre/">ftp://ftp.pcre.org/pub/pcre/</a> 下载最新版本，这边下载 pcre-8.38.zip</li>
+<li>pcre:  ftp://ftp.pcre.org/pub/pcre/ 下载最新版本，这边下载 pcre-8.38.zip</li>
 <li>zlib:  <a href="https://github.com/madler/zlib/releases" target="_blank" rel="noopener">https://github.com/madler/zlib/releases</a></li>
 <li>openssl:  <a href="https://github.com/openssl/openssl" target="_blank" rel="noopener">https://github.com/openssl/openssl</a></li>
 </ul>
 <p><strong>出现的问题</strong>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">checking for OS</span><br><span class="line"> + Linux 5.4.0-48-generic x86_64</span><br><span class="line">checking for C compiler ... not found</span><br><span class="line"></span><br><span class="line">.&#x2F;auto&#x2F;configure: error: C compiler cc is not found</span><br><span class="line"></span><br><span class="line">解决：sudo apt-get install gcc</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">nginx 执行make时出现的问题</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">..&#x2F;nginx-rtmp-module-master&#x2F;ngx_rtmp_eval.c: In function ‘ngx_rtmp_eval’:</span><br><span class="line">..&#x2F;nginx-rtmp-module-master&#x2F;ngx_rtmp_eval.c:160:17: error: this statement may fall through [-Werror&#x3D;implicit-fallthrough&#x3D;]</span><br><span class="line">                 switch (c) &#123;</span><br><span class="line">                 ^~~~~~</span><br><span class="line">..&#x2F;nginx-rtmp-module-master&#x2F;ngx_rtmp_eval.c:170:13: note: here</span><br><span class="line">             case ESCAPE:</span><br><span class="line">             ^~~~</span><br><span class="line">cc1: all warnings being treated as errors</span><br><span class="line">make[1]: *** [objs&#x2F;Makefile:1349: objs&#x2F;addon&#x2F;nginx-rtmp-module-master&#x2F;ngx_rtmp_eval.o] Error 1</span><br><span class="line">make[1]: Leaving directory &#39;&#x2F;home&#x2F;pi&#x2F;nginx-1.19.0&#39;</span><br><span class="line">make: *** [Makefile:8: build] Error 2</span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line"></span><br><span class="line">禁用gcc中的“ fallthrough”，在配置时添加选项</span><br><span class="line">.&#x2F;auto&#x2F;configure --add-module&#x3D;&#x2F;lib&#x2F;nginx&#x2F;nginx-rtmp-module-1.2.1 --with-cc-opt&#x3D;&quot;-Wimplicit-fallthrough&#x3D;0&quot; --with-openssl&#x3D;&#x2F;lib&#x2F;nginx&#x2F;openssl-OpenSSL_1_1_1c</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="1-2-配置"><a href="#1-2-配置" class="headerlink" title="1.2 配置"></a>1.2 配置</h2><p>执行命令<code>cp /lib/nginx/nginx-rtmp-module-1.2.1/test/nginx.conf /usr/local/nginx/conf/</code>  </p>
 <p>替换<code>nginx.cong</code>。具体的可参考<a href="https://github.com/arut/nginx-rtmp-module" target="_blank" rel="noopener">链接</a>中的<code>Example nginx.conf</code></p>
-<p>类似下面这种：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">orker_processes  1;</span><br><span class="line"></span><br><span class="line">error_log  logs&#x2F;error.log debug;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">rtmp &#123;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 1935;</span><br><span class="line"></span><br><span class="line">        application myapp &#123;</span><br><span class="line">            live on;</span><br><span class="line"></span><br><span class="line">            #record keyframes;</span><br><span class="line">            #record_path &#x2F;tmp;</span><br><span class="line">            #record_max_size 128K;</span><br><span class="line">            #record_interval 30s;</span><br><span class="line">            #record_suffix .this.is.flv;</span><br><span class="line"></span><br><span class="line">....</span><br></pre></td></tr></table></figure>
-
+<p>类似下面这种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">orker_processes  1;</span><br><span class="line"></span><br><span class="line">error_log  logs&#x2F;error.log debug;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">rtmp &#123;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 1935;</span><br><span class="line"></span><br><span class="line">        application myapp &#123;</span><br><span class="line">            live on;</span><br><span class="line"></span><br><span class="line">            #record keyframes;</span><br><span class="line">            #record_path &#x2F;tmp;</span><br><span class="line">            #record_max_size 128K;</span><br><span class="line">            #record_interval 30s;</span><br><span class="line">            #record_suffix .this.is.flv;</span><br><span class="line"></span><br><span class="line">....</span><br></pre></td></tr></table></figure></p>
 <h2 id="1-3-启动和停止"><a href="#1-3-启动和停止" class="headerlink" title="1.3 启动和停止"></a>1.3 启动和停止</h2><ul>
 <li>启动：<code>./nginx</code></li>
 <li>停止：<code>./nginx -s stop</code></li>
 </ul>
 <p>常见问题：</p>
 <ol>
-<li><p>端口被占用（默认8080端口）</p>
-</li>
+<li>端口被占用（默认8080端口）</li>
 <li><p>启动错误：比如 xxx.so 找不到。</p>
 <p> 解决：<br> 使用<code>ldd $(which ./nginx)</code>查看依赖包。<br> 调用<code>export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH</code>  </p>
 </li>
@@ -562,8 +556,8 @@
 <li><code>等风来不如追风去.mp4</code>：是要推流的视频绝对路径。</li>
 <li><code>rtmp://192.168.1.20/myapp/mystream</code>：要推流的地址。192.168.1.20为公网地址或局域网的地址。</li>
 </ul>
-<h1 id="2-集成-RTMP-推流源码"><a href="#2-集成-RTMP-推流源码" class="headerlink" title="2.集成 RTMP 推流源码"></a>2.集成 RTMP 推流源码</h1><p><img src="/images/88.%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%8B%89%E6%B5%81%E5%8E%9F%E7%90%86.png" alt>  </p>
-<p><img src="/images/91.%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8E%9F%E7%90%86.png" alt></p>
+<h1 id="2-集成-RTMP-推流源码"><a href="#2-集成-RTMP-推流源码" class="headerlink" title="2.集成 RTMP 推流源码"></a>2.集成 RTMP 推流源码</h1><p><img src="/images/88.直播推拉流原理.png" alt>  </p>
+<p><img src="/images/91.直播推流原理.png" alt></p>
 <p>采用一种 socket 通讯方案 <a href="http://rtmpdump.mplayerhq.hu/" target="_blank" rel="noopener">RTMPDump</a></p>
 <ol>
 <li>git clone 上面网站中的地址 <code>git clone git://git.ffmpeg.org/rtmpdump</code></li>
@@ -571,7 +565,6 @@
 <li>如果出现下面的错误就在CMakeLists.txt 中添加 <code>set(CMAKE_C_FLAGS &quot;${CMAKE_C_FLAGS} -DNO_CRYPTO&quot;)</code></li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">****\src\main\cpp\rtmp\hashswf.c:56:10: fatal error: &#39;openssl&#x2F;ssl.h&#39; file not found</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">threadInitConnect</span><span class="params">(<span class="keyword">void</span> *args)</span> </span>&#123;</span><br><span class="line">    LivePush *livePush = (LivePush *) args;</span><br><span class="line">    <span class="comment">// 1.创建RTMP</span></span><br><span class="line">    livePush-&gt;pRtmp = RTMP_Alloc();</span><br><span class="line">    <span class="comment">// 2. 初始化</span></span><br><span class="line">    RTMP_Init(livePush-&gt;pRtmp);</span><br><span class="line">    <span class="comment">// 3. 设置参数</span></span><br><span class="line">    livePush-&gt;pRtmp-&gt;Link.timeout = <span class="number">10</span>; <span class="comment">// 超时时间 10 秒</span></span><br><span class="line">    livePush-&gt;pRtmp-&gt;Link.lFlags = RTMP_LF_LIVE; <span class="comment">// 长连接</span></span><br><span class="line">    RTMP_SetupURL(livePush-&gt;pRtmp, livePush-&gt;liveUrl);<span class="comment">// 设置推流的地址</span></span><br><span class="line">    RTMP_EnableWrite(livePush-&gt;pRtmp);<span class="comment">// 可写</span></span><br><span class="line">    <span class="comment">// 4. 开始连接</span></span><br><span class="line">    <span class="keyword">if</span> (!RTMP_Connect(livePush-&gt;pRtmp, <span class="literal">nullptr</span>)) &#123;</span><br><span class="line">        <span class="comment">// 回调到java层</span></span><br><span class="line">        LOGE(<span class="string">"rtmp connect error"</span>);</span><br><span class="line">        livePush-&gt;pJniCall-&gt;callConnectError(THREAD_CHILD, INIT_RTMP_CONNECT_ERROR_CODE,</span><br><span class="line">                                             <span class="string">"rtmp connect error"</span>);</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">void</span> *)(INIT_RTMP_CONNECT_ERROR_CODE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!RTMP_ConnectStream(livePush-&gt;pRtmp, <span class="number">0</span>)) &#123;</span><br><span class="line">        <span class="comment">// 回调到java层</span></span><br><span class="line">        LOGE(<span class="string">"rtmp connect stream error"</span>);</span><br><span class="line">        livePush-&gt;pJniCall-&gt;callConnectError(THREAD_CHILD, INIT_RTMP_CONNECT_STREAM_ERROR_CODE,</span><br><span class="line">                                             <span class="string">"rtmp connect stream error"</span>);</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">void</span> *)(INIT_RTMP_CONNECT_STREAM_ERROR_CODE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOGE(<span class="string">"rtmp connect success"</span>);</span><br><span class="line">    livePush-&gt;pJniCall-&gt;callConnectSuccess(THREAD_CHILD);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1388,7 +1381,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.4k</span>
+    <span title="Site words total count">100.8k</span>
   
 </div>
 

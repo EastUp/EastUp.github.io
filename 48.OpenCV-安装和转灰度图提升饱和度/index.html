@@ -475,10 +475,10 @@
 <li>配置windows环境变量：path : <code>opencv解压目录\build\x64\vc14\bin</code></li>
 <li>配置头文件包含目录：<code>调试</code>-&gt;<code>xx属性</code>-&gt; <code>配置属性</code> -&gt;<code>VC++ 目录</code>-&gt; <code>包含目录</code>: <code>opencv解压目录\build\include</code></li>
 <li>配置库目录：<code>调试</code>-&gt;<code>xx属性</code> -&gt; <code>配置属性</code> -&gt;<code>VC++ 目录</code>-&gt; <code>库目录</code>：<code>opencv解压目录\build\x64\vc14\lib</code></li>
-<li>链接器：<code>opencv解压目录\build\x64\vc14\lib</code> 中的 <code>opencv_world440d.lib</code> 复制文件名至<br> <code>调试</code>-&gt;<code>xx属性</code> -&gt; <code>配置属性</code> -&gt;<code>VC++ 目录</code>-&gt; <code>链接器</code> -&gt; <code>输入</code> -&gt; <code>附加依赖项</code>。<br> <font color="red">注意：带d的适用于debug模式，不带d的使用于release模式</font></li>
+<li>链接器：<code>opencv解压目录\build\x64\vc14\lib</code> 中的 <code>opencv_world440d.lib</code> 复制文件名至<br> <code>调试</code>-&gt;<code>xx属性</code> -&gt; <code>配置属性</code> -&gt;<code>VC++ 目录</code>-&gt; <code>链接器</code> -&gt; <code>输入</code> -&gt; <code>附加依赖项</code>。  <font color="red">注意：带d的适用于debug模式，不带d的使用于release模式</font></li>
 <li>.dll 系统适配，如果第6步完成后报错<code>xxx.dll</code>未找到，则先把<code>opencv解压目录\build\x64\vc14\bin</code>中的dll文件<br> 复制到<code>系统盘\windows\System32</code>和<code>系统盘\windows\SysWOW54</code>,如果还是不是，则将第6步的文件换成release模式下的文件</li>
 </ol>
-<h1 id="c-中-uchar"><a href="#c-中-uchar" class="headerlink" title="c++ 中 uchar"></a>c++ 中 uchar</h1><p>char 是有符号的 unsigned char 是无符号的,char 整数范围为-128到127( 0x80__0x7F)， 而unsigned char 整数范围为0到255( 0__0xFF )<br>有时候想把整数数值限在255范围内，也用unsigned char，这个类型在嵌入式用的多,<code>所以 uchar 一般用于图片处理</code></p>
+<h1 id="c-中-uchar"><a href="#c-中-uchar" class="headerlink" title="c++ 中 uchar"></a>c++ 中 uchar</h1><p>char 是有符号的 unsigned char 是无符号的,char 整数范围为-128到127( 0x80<strong>0x7F)， 而unsigned char 整数范围为0到255( 0</strong>0xFF )<br>有时候想把整数数值限在255范围内，也用unsigned char，这个类型在嵌入式用的多,<code>所以 uchar 一般用于图片处理</code></p>
 <h1 id="2-opencv方法介绍："><a href="#2-opencv方法介绍：" class="headerlink" title="2. opencv方法介绍："></a>2. opencv方法介绍：</h1><ul>
 <li>Mat src = cv::imread(“图片路径”) ：读取读片，注意 windows 中路径分隔符一定得修改为：<code>/</code></li>
 <li>cv::imwrite(“保存路径”,mat); 把 mat 写入文件,注意 windows 中路径分隔符一定得修改为：<code>/</code></li>
@@ -489,22 +489,6 @@
 <li>saturate_cast<uchar>(b_w); // 大于 255 就变成 255 ，如果小于 0 就变成 0 </uchar></li>
 </ul>
 <h1 id="3-彩色图转灰度图及黑白图（手写）"><a href="#3-彩色图转灰度图及黑白图（手写）" class="headerlink" title="3. 彩色图转灰度图及黑白图（手写）"></a>3. 彩色图转灰度图及黑白图（手写）</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; src.rows; i++)&#123;</span><br><span class="line">	<span class="comment">// 读取当前行的首地址</span></span><br><span class="line">	uchar* start_pixels = src.ptr&lt;uchar&gt;(i);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; src.cols; j++)&#123;</span><br><span class="line">		uchar b = start_pixels[<span class="number">0</span>];</span><br><span class="line">		uchar g = start_pixels[<span class="number">1</span>];</span><br><span class="line">		uchar r = start_pixels[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 彩色转灰度</span></span><br><span class="line">		<span class="comment">// 公式计算 f =  0.11R + 0.59G + 0.30B   gery 最大255 ，其他处理可能会超过 255</span></span><br><span class="line">		<span class="comment">// uchar gery = 0.11f*r + 0.59f*g + 0.30f*b;</span></span><br><span class="line">		uchar gray = <span class="number">0.11f</span>*r + <span class="number">0.59f</span>*g + <span class="number">0.30f</span>*b;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 彩色转黑白</span></span><br><span class="line">		uchar bw = (b + g + r) / <span class="number">3</span> &gt; <span class="number">125</span> ? <span class="number">255</span> : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// saturate_cast 大于 255就变成255 ，小于0 就变成0</span></span><br><span class="line">		<span class="comment">/* start_pixels[0] = saturate_cast&lt;uchar&gt;(bw);</span></span><br><span class="line"><span class="comment">		start_pixels[1] = saturate_cast&lt;uchar&gt;(bw);</span></span><br><span class="line"><span class="comment">		start_pixels[2] = saturate_cast&lt;uchar&gt;(bw);*/</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 饱和度提升会更亮些</span></span><br><span class="line">		start_pixels[<span class="number">0</span>] = saturate_cast&lt;uchar&gt;(<span class="number">1.2f</span> * b);</span><br><span class="line">		start_pixels[<span class="number">1</span>] = saturate_cast&lt;uchar&gt;(<span class="number">1.2f</span> * g);</span><br><span class="line">		start_pixels[<span class="number">2</span>] = saturate_cast&lt;uchar&gt;(<span class="number">1.2f</span> * r);</span><br><span class="line"></span><br><span class="line">		start_pixels += <span class="number">3</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       
     </div>
@@ -1321,7 +1305,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.4k</span>
+    <span title="Site words total count">100.8k</span>
   
 </div>
 

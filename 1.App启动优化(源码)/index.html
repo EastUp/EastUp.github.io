@@ -480,31 +480,32 @@
 <li>启动Binder线程沲和SystemServiceManager,并启动各种服务</li>
 <li>AMS启动Launcher</li>
 </ol>
-<p><img src="/images/%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B.png" alt></p>
+<p><img src="/images/系统的启动流程.png" alt></p>
 <h1 id="2-Launcher启动应用程序"><a href="#2-Launcher启动应用程序" class="headerlink" title="2.Launcher启动应用程序"></a>2.Launcher启动应用程序</h1><p>当我们用手点击一个图标时，就到了这个类<code>public final class Launcher extends Activity</code>,<br>类路径在<code>E:\tools\android-src\android-6.0.1_r1\packages\apps\Launcher2\src\com\android\launcher2\Launcher.java</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">执行&#96;onClick(View view)&#96;方法，会把这个应用的相关信息传入  </span><br><span class="line">先获取一个intent---&gt;startActivitySafely(v, intent, tag)--&gt;startActivity(v, intent, tag);--&gt;startActivity(intent);</span><br><span class="line">startActivity(intent)会开一个APP进程</span><br><span class="line"></span><br><span class="line">ActivityThread.java的main方法作为入口     用attach开启app    再加载application和activity</span><br><span class="line">thread.attach(false);---&gt;mgr.attachApplication(mAppThread)会通过远端进程去回调private void handleBindApplication(AppBindData data)</span><br><span class="line">Application app &#x3D; data.info.makeApplication()----创建Application对象</span><br><span class="line">mInstrumentation.callApplicationOnCreate(app);---- Application调用onCreate方法</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/%E6%96%B0%E5%BA%94%E7%94%A8%E7%9A%84%E5%90%AF%E5%8A%A8.png" alt></p>
+<p><img src="/images/新应用的启动.png" alt></p>
 <h1 id="3-adb一些命令说明"><a href="#3-adb一些命令说明" class="headerlink" title="3.adb一些命令说明"></a>3.adb一些命令说明</h1><ol>
 <li>通过<code>adb shell dumpsys activity activities</code>查看当前的activity名</li>
 <li>查看进程   <code>adb shell ps</code></li>
 </ol>
 <h1 id="4-黑白屏问题"><a href="#4-黑白屏问题" class="headerlink" title="4.黑白屏问题"></a>4.黑白屏问题</h1><p>原因：</p>
-<pre><code>在res/values/styles.xml文件中  
-白屏   `&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light&quot;&gt;`
-黑屏   ` &lt;style name=&quot;AppTheme&quot;&gt;（在以前的老版本上有效，现在的版本默认使用透明处理了）`</code></pre><p>伪解决办法：</p>
-<pre><code>1.在自己的&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light&quot;&gt;中加入windowsbackground，可用于打广告
-2.设置windowbackground为透明的  &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;true&lt;/item&gt;
-但这2种方法会有个问题，所有的activity启动都会显示
-3.单独做成一个主题
-&lt;style name=&quot;AppTheme.Launcher&quot;&gt;
-        &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/bg&lt;/item&gt;
-&lt;/style&gt;
-再在功能清单中的单独activity下设置
-&lt;activity
-      android:theme=&quot;@style/AppTheme.Launcher&quot;
-然后在程序中使用setTheme(R.style.AppTheme)
-让APP中所有的activity还是使用以前的样式，这样做就只有启动时才使用自己的样式</code></pre><h1 id="5-启动时间查看"><a href="#5-启动时间查看" class="headerlink" title="5.启动时间查看"></a>5.启动时间查看</h1><p>4.4以前 <code>adb shell am start -W com.lqr.wechat/com.lqr.wechat.activity.SplashActivity</code></p>
+<pre><code>    在res/values/styles.xml文件中  
+    白屏   `&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light&quot;&gt;`
+    黑屏   ` &lt;style name=&quot;AppTheme&quot;&gt;（在以前的老版本上有效，现在的版本默认使用透明处理了）`
+</code></pre><p>伪解决办法：</p>
+<pre><code>    1.在自己的&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light&quot;&gt;中加入windowsbackground，可用于打广告
+    2.设置windowbackground为透明的  &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;true&lt;/item&gt;
+    但这2种方法会有个问题，所有的activity启动都会显示
+    3.单独做成一个主题
+    &lt;style name=&quot;AppTheme.Launcher&quot;&gt;
+            &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/bg&lt;/item&gt;
+    &lt;/style&gt;
+    再在功能清单中的单独activity下设置
+    &lt;activity
+          android:theme=&quot;@style/AppTheme.Launcher&quot;
+    然后在程序中使用setTheme(R.style.AppTheme)
+    让APP中所有的activity还是使用以前的样式，这样做就只有启动时才使用自己的样式
+</code></pre><h1 id="5-启动时间查看"><a href="#5-启动时间查看" class="headerlink" title="5.启动时间查看"></a>5.启动时间查看</h1><p>4.4以前 <code>adb shell am start -W com.lqr.wechat/com.lqr.wechat.activity.SplashActivity</code></p>
 <pre><code>ThisTime:最后一个启动的Activity的启动耗时；
 TotalTime:自己的所有Activity的启动耗时；
 WaitTime: ActivityManagerService启动App的Activity时的总时间（包括当前Activity的onPause()和自己Activity的启动）
@@ -514,7 +515,8 @@ Am.java   946行开始打印启动时间信息
 其中一个result对象，在871行初始化 result = mAm.startActivityAndWait(。。。）
 在这个初始化时就已经进行了时间的计算：
 在android-src\android-6.0.1_r1\frameworks\base\services\core\java\com\android\server\am\ActivityRecord.java文件中计算
-void windowsDrawnLocked() ---&gt;reportLaunchTimeLocked(SystemClock.uptimeMillis())中完成时间的统计;</code></pre><p>4.4版本以后Logcat输入<code>Display</code>筛选系统日志  <code>不过滤信息No Filters</code></p>
+void windowsDrawnLocked() ---&gt;reportLaunchTimeLocked(SystemClock.uptimeMillis())中完成时间的统计;
+</code></pre><p>4.4版本以后Logcat输入<code>Display</code>筛选系统日志  <code>不过滤信息No Filters</code></p>
 <h1 id="6-TRACE工具分析代码执行时间"><a href="#6-TRACE工具分析代码执行时间" class="headerlink" title="6.TRACE工具分析代码执行时间"></a>6.TRACE工具分析代码执行时间</h1><h1 id="6-1-代码"><a href="#6-1-代码" class="headerlink" title="6.1.代码"></a>6.1.代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Debug.startMethodTracing(filePath);</span><br><span class="line">中间为需要统计执行时间的代码</span><br><span class="line">Debug.stopMethodTracing();</span><br></pre></td></tr></table></figure>
 <h1 id="6-2-分析"><a href="#6-2-分析" class="headerlink" title="6.2. 分析"></a>6.2. 分析</h1><p><code>adb pull /storage/emulated/0/app1.trace</code>把文件拉出来分析，把pull到电脑上的文件拖到AS中就可以分析了</p>
 <h1 id="6-3-优化方案"><a href="#6-3-优化方案" class="headerlink" title="6.3. 优化方案"></a>6.3. 优化方案</h1><ol>
@@ -1337,7 +1339,7 @@ if(canvas.getContext){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">100.4k</span>
+    <span title="Site words total count">100.8k</span>
   
 </div>
 
