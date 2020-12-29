@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-corner-indicator.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="音视频," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jamin" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="具体代码请看：NDKPractice项目的ffmpeg88livepush ffmpeg测试流媒体服务器播放地址windows ffmpeg下载地址 mac 和 linux 类似，进入官网下载 。 下面以windows为例测试步骤：  进入下载好的ffmpeg解压目录的&#x2F;bin目录文件夹下 使用命令拉流：ffplay.exe rtmp:&#x2F;&#x2F;192.168.1.20&#x2F;myapp&#x2F;mystream">
+<meta property="og:type" content="article">
+<meta property="og:title" content="音视频：20.FFmpeg-直播推流到服务器、加滤镜效果">
+<meta property="og:url" content="http://eastup.github.io/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/index.html">
+<meta property="og:site_name" content="Jamin">
+<meta property="og:description" content="具体代码请看：NDKPractice项目的ffmpeg88livepush ffmpeg测试流媒体服务器播放地址windows ffmpeg下载地址 mac 和 linux 类似，进入官网下载 。 下面以windows为例测试步骤：  进入下载好的ffmpeg解压目录的&#x2F;bin目录文件夹下 使用命令拉流：ffplay.exe rtmp:&#x2F;&#x2F;192.168.1.20&#x2F;myapp&#x2F;mystream">
+<meta property="og:image" content="http://eastup.github.io/images/91.%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8E%9F%E7%90%86.png">
+<meta property="article:published_time" content="2020-08-20T00:12:43.000Z">
+<meta property="article:modified_time" content="2020-11-12T07:36:03.324Z">
+<meta property="article:author" content="jamin">
+<meta property="article:tag" content="音视频">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://eastup.github.io/images/91.%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8E%9F%E7%90%86.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://eastup.github.io/91.FFmpeg-直播推流到服务器、加滤镜效果/"/>
+
+
+
+
+
+  <title>音视频：20.FFmpeg-直播推流到服务器、加滤镜效果 | Jamin</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5a1bfb0778a2d116ef780d1ca4ce4f8b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  <!-- <script src="/live2d-widget/autoload.js"></script> -->
+  <script src="/live2d-widget/autoload.js"></script>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jamin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">人生没有终点！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eastup.github.io/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jamin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jamin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">音视频：20.FFmpeg-直播推流到服务器、加滤镜效果</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-20T08:12:43+08:00">
+                2020-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/91.FFmpeg-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E5%8A%A0%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/" class="leancloud_visitors" data-flag-title="音视频：20.FFmpeg-直播推流到服务器、加滤镜效果">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>具体代码请看：<strong><a href="https://github.com/EastUp/NDKPractice/tree/master/ffmpeg88livepush" target="_blank" rel="noopener">NDKPractice项目的ffmpeg88livepush</a></strong></p>
+<h1 id="ffmpeg测试流媒体服务器播放地址"><a href="#ffmpeg测试流媒体服务器播放地址" class="headerlink" title="ffmpeg测试流媒体服务器播放地址"></a>ffmpeg测试流媒体服务器播放地址</h1><p>windows ffmpeg<a href="https://github.com/BtbN/FFmpeg-Builds/releases" target="_blank" rel="noopener">下载地址</a></p>
+<p>mac 和 linux 类似，进入<a href="http://www.ffmpeg.org/download.html" target="_blank" rel="noopener">官网下载</a> 。</p>
+<p>下面以windows为例测试步骤：</p>
+<ol>
+<li>进入下载好的ffmpeg解压目录的/bin目录文件夹下</li>
+<li>使用命令拉流：<code>ffplay.exe rtmp://192.168.1.20/myapp/mystream</code></li>
+</ol>
+<h1 id="1-录制声音获取-PCM-数据"><a href="#1-录制声音获取-PCM-数据" class="headerlink" title="1.录制声音获取 PCM 数据"></a>1.录制声音获取 PCM 数据</h1><p>使用<code>AudioRecord</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 音频的采集线程</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">AudioRecordThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mMinBufferSize;</span><br><span class="line">    <span class="keyword">private</span> WeakReference&lt;BaseVideoPush&gt; mVideoRecorderWr;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> mShouldExit = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">private</span> MediaCodec mAudioCodec;</span><br><span class="line">    <span class="keyword">private</span> MediaCodec.BufferInfo mBufferInfo;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mAudioTrackIndex = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> mAudioPts = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> AudioRecord mAudioRecord; <span class="comment">//录音的类</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span>[] mAudioData;<span class="comment">// 这是 pcm 数据</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AudioRecordThread</span><span class="params">(WeakReference&lt;BaseVideoPush&gt; videoRecorderWr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mVideoRecorderWr = videoRecorderWr;</span><br><span class="line">        mAudioCodec = videoRecorderWr.get().mAudioCodec;</span><br><span class="line">        mBufferInfo = <span class="keyword">new</span> MediaCodec.BufferInfo();</span><br><span class="line"></span><br><span class="line">        mMinBufferSize = AudioRecord.getMinBufferSize(</span><br><span class="line">                BaseVideoPush.AUDIO_SAMPLE_RATE,</span><br><span class="line">                AudioFormat.CHANNEL_IN_STEREO,<span class="comment">//立体声</span></span><br><span class="line">                AudioFormat.ENCODING_PCM_16BIT);</span><br><span class="line"></span><br><span class="line">        mAudioRecord = <span class="keyword">new</span> AudioRecord(MediaRecorder.AudioSource.MIC,</span><br><span class="line">                BaseVideoPush.AUDIO_SAMPLE_RATE,</span><br><span class="line">                AudioFormat.CHANNEL_IN_STEREO,<span class="comment">//立体声</span></span><br><span class="line">                AudioFormat.ENCODING_PCM_16BIT,</span><br><span class="line">                mMinBufferSize);</span><br><span class="line"></span><br><span class="line">        mAudioData = <span class="keyword">new</span> <span class="keyword">byte</span>[mMinBufferSize];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 开启录制</span></span><br><span class="line">            mAudioRecord.startRecording();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (mShouldExit) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 不断读取 pcm 数据</span></span><br><span class="line">                mAudioRecord.read(mAudioData, <span class="number">0</span>, mMinBufferSize);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 把数据写入到 mAudioCodec 的 InputBuffer</span></span><br><span class="line">                <span class="keyword">int</span> inputBufferIndex = mAudioCodec.dequeueInputBuffer(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span> (inputBufferIndex &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    ByteBuffer byteBuffer = mAudioCodec.getInputBuffers()[inputBufferIndex];</span><br><span class="line">                    byteBuffer.clear();</span><br><span class="line">                    byteBuffer.put(mAudioData);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// pts  44100 * 2 *2</span></span><br><span class="line">                    mAudioPts += mMinBufferSize * <span class="number">1000000</span> / BaseVideoPush.AUDIO_SAMPLE_RATE * BaseVideoPush.AUDIO_CHANNELS * <span class="number">2</span>;</span><br><span class="line">                    <span class="comment">// size 22050*2*2</span></span><br><span class="line">                    mAudioCodec.queueInputBuffer(inputBufferIndex, <span class="number">0</span>, mMinBufferSize, mAudioPts, <span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            onDestroy();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mAudioCodec.stop();</span><br><span class="line">            mAudioCodec.release();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">requestExit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mShouldExit = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-推送视频画面到媒体房间"><a href="#2-推送视频画面到媒体房间" class="headerlink" title="2.推送视频画面到媒体房间"></a>2.推送视频画面到媒体房间</h1><p><img src="/images/91.%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8E%9F%E7%90%86.png" alt></p>
+<p>为什么要封装成<code>flv</code>：为了不定死 <code>h264</code>协议</p>
+<p>flv 封装格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; FLV 的封装格式</span><br><span class="line">&#x2F;&#x2F; frame type : 1关键帧，2 非关键帧（4Bit）</span><br><span class="line">&#x2F;&#x2F; CodecID : 7表示 AVC(4bit) , 与 frame type组合起来刚好是 1 个字节 0x17</span><br><span class="line">&#x2F;&#x2F; fixed ： 0x00 0x00 0x00 0x00 (4byte)</span><br><span class="line">&#x2F;&#x2F; configurationVersion  (1byte) 0x01版本</span><br><span class="line">&#x2F;&#x2F; AVCProfileIndication  (1byte) sps[1] profile</span><br><span class="line">&#x2F;&#x2F; profile_compatibility (1byte) sps[2] compatibility</span><br><span class="line">&#x2F;&#x2F; AVCLevelIndication    (1byte) sps[3] Profile level</span><br><span class="line">&#x2F;&#x2F; lengthSizeMinusOne    (1byte) 0xff   包长数据所使用的字节数</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; sps + pps 的数据</span><br><span class="line">&#x2F;&#x2F; sps number            (1byte) 0xe1   sps 个数</span><br><span class="line">&#x2F;&#x2F; sps data length       (2byte) sps 长度</span><br><span class="line">&#x2F;&#x2F; sps data                      sps 的内容</span><br><span class="line">&#x2F;&#x2F; pps number            (1byte) 0x01 pps 个数</span><br><span class="line">&#x2F;&#x2F; pps data length       (2byte) pps 长度</span><br><span class="line">&#x2F;&#x2F; pps data                      pps 的内容</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">BaseVideoPush：VideoEncoderThread</span><br><span class="line"></span><br><span class="line"> private static final class VideoEncoderThread extends Thread &#123;</span><br><span class="line">        private WeakReference&lt;BaseVideoPush&gt; mVideoRecorderWr;</span><br><span class="line">        private volatile boolean mShouldExit &#x3D; false;</span><br><span class="line">        private MediaCodec mVideoCodec;</span><br><span class="line">        private MediaCodec.BufferInfo mBufferInfo;</span><br><span class="line">        private long mVideoPts &#x3D; 0;</span><br><span class="line">        private byte[] mVideoSps, mVideoPps;</span><br><span class="line"></span><br><span class="line">        public VideoEncoderThread(WeakReference&lt;BaseVideoPush&gt; videoRecorderWr) &#123;</span><br><span class="line">            this.mVideoRecorderWr &#x3D; videoRecorderWr;</span><br><span class="line">            mVideoCodec &#x3D; videoRecorderWr.get().mVideoCodec;</span><br><span class="line">            mBufferInfo &#x3D; new MediaCodec.BufferInfo();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                mVideoCodec.start();</span><br><span class="line"></span><br><span class="line">                while (true) &#123;</span><br><span class="line">                    if (mShouldExit) &#123;</span><br><span class="line">                        return;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    BaseVideoPush videoRecorder &#x3D; mVideoRecorderWr.get();</span><br><span class="line">                    if (videoRecorder &#x3D;&#x3D; null) &#123;</span><br><span class="line">                        return;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    &#x2F;&#x2F; 代码先不写，先测试，从 surface 上获取数据，编码成 h264 ,通过 MediaMuxer 合成 mp4</span><br><span class="line">                    int outputBufferIndex &#x3D; mVideoCodec.dequeueOutputBuffer(mBufferInfo, 0);</span><br><span class="line">                    if (outputBufferIndex &#x3D;&#x3D; MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) &#123;</span><br><span class="line"></span><br><span class="line">                        &#x2F;&#x2F; 获取 sps 和 pps</span><br><span class="line">&#x2F;&#x2F;                        Log.e(&quot;TAG&quot;, &quot;获取 sps 和 pps&quot;);</span><br><span class="line">                        ByteBuffer byteBuffer &#x3D; mVideoCodec.getOutputFormat().getByteBuffer(&quot;csd-0&quot;);</span><br><span class="line">                        mVideoSps &#x3D; new byte[byteBuffer.remaining()];</span><br><span class="line">                        byteBuffer.get(mVideoSps, 0, mVideoSps.length);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;                        Log.e(&quot;sps&quot;, bytesToHexString(mVideoSps));</span><br><span class="line"></span><br><span class="line">                        byteBuffer &#x3D; mVideoCodec.getOutputFormat().getByteBuffer(&quot;csd-1&quot;);</span><br><span class="line">                        mVideoPps &#x3D; new byte[byteBuffer.remaining()];</span><br><span class="line">                        byteBuffer.get(mVideoPps, 0, mVideoPps.length);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;                        Log.e(&quot;pps&quot;, bytesToHexString(mVideoPps));</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        while (outputBufferIndex &gt;&#x3D; 0) &#123;</span><br><span class="line">                            &#x2F;&#x2F; 获取数据</span><br><span class="line">                            ByteBuffer outBuffer &#x3D; mVideoCodec.getOutputBuffers()[outputBufferIndex];</span><br><span class="line">                            outBuffer.position(mBufferInfo.offset);</span><br><span class="line">                            outBuffer.limit(mBufferInfo.offset + mBufferInfo.size);</span><br><span class="line"></span><br><span class="line">                            &#x2F;&#x2F; 修改 pts</span><br><span class="line">                            if (mVideoPts &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                                mVideoPts &#x3D; mBufferInfo.presentationTimeUs;</span><br><span class="line">                            &#125;</span><br><span class="line">                            mBufferInfo.presentationTimeUs -&#x3D; mVideoPts;</span><br><span class="line"></span><br><span class="line">                            &#x2F;&#x2F; 在关键帧之前先把 sps 和 pps 推到流媒体服务器</span><br><span class="line">                            if(mBufferInfo.flags &#x3D;&#x3D; MediaCodec.BUFFER_FLAG_KEY_FRAME)&#123;</span><br><span class="line">                                mVideoRecorderWr.get().mLivePush.pushSpsPps(mVideoSps,mVideoSps.length,</span><br><span class="line">                                        mVideoPps,mVideoPps.length);</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                            byte[] data &#x3D; new byte[outBuffer.remaining()];</span><br><span class="line">                            outBuffer.get(data, 0, data.length);</span><br><span class="line">                            &#x2F;&#x2F; 推送视频到流媒体服务器上</span><br><span class="line">                            mVideoRecorderWr.get().mLivePush.pushVideo(data,data.length,</span><br><span class="line">                                    mBufferInfo.flags &#x3D;&#x3D; MediaCodec.BUFFER_FLAG_KEY_FRAME);</span><br><span class="line"></span><br><span class="line">                            &#x2F;&#x2F; 回调当前录制的时间</span><br><span class="line">                            if (videoRecorder.mRecordListener !&#x3D; null) &#123;</span><br><span class="line">                                videoRecorder.mRecordListener.onTime(mBufferInfo.presentationTimeUs &#x2F; 1000);</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                            mVideoCodec.releaseOutputBuffer(outputBufferIndex, false);</span><br><span class="line">                            outputBufferIndex &#x3D; mVideoCodec.dequeueOutputBuffer(mBufferInfo, 0);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; finally &#123;</span><br><span class="line">                onDestroy();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private void onDestroy() &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                mVideoCodec.stop();</span><br><span class="line">                mVideoCodec.release();</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private void requestExit() &#123;</span><br><span class="line">            mShouldExit &#x3D; true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> LivePush::pushSpsPps(jbyte *spsData, jint spsLen, jbyte *ppsData, jint ppsLen) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// FLV 的封装格式</span></span><br><span class="line">    <span class="comment">// frame type : 1关键帧，2 非关键帧（4Bit）</span></span><br><span class="line">    <span class="comment">// CodecID : 7表示 AVC(4bit) , 与 frame type组合起来刚好是 1 个字节 0x17</span></span><br><span class="line">    <span class="comment">// fixed ： 0x00 0x00 0x00 0x00 (4byte)</span></span><br><span class="line">    <span class="comment">// configurationVersion  (1byte) 0x01版本</span></span><br><span class="line">    <span class="comment">// AVCProfileIndication  (1byte) sps[1] profile</span></span><br><span class="line">    <span class="comment">// profile_compatibility (1byte) sps[2] compatibility</span></span><br><span class="line">    <span class="comment">// AVCLevelIndication    (1byte) sps[3] Profile level</span></span><br><span class="line">    <span class="comment">// lengthSizeMinusOne    (1byte) 0xff   包长数据所使用的字节数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// sps + pps 的数据</span></span><br><span class="line">    <span class="comment">// sps number            (1byte) 0xe1   sps 个数</span></span><br><span class="line">    <span class="comment">// sps data length       (2byte) sps 长度</span></span><br><span class="line">    <span class="comment">// sps data                      sps 的内容</span></span><br><span class="line">    <span class="comment">// pps number            (1byte) 0x01 pps 个数</span></span><br><span class="line">    <span class="comment">// pps data length       (2byte) pps 长度</span></span><br><span class="line">    <span class="comment">// pps data                      pps 的内容</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 数据的长度（大小） = sps 大小 + pps 大小 + 头 16字节</span></span><br><span class="line">    <span class="keyword">int</span> bodySize = spsLen + ppsLen + <span class="number">16</span>;</span><br><span class="line">    <span class="comment">// 构建 RTMPPacket</span></span><br><span class="line">    RTMPPacket *pPacket = (RTMPPacket *) malloc(sizeof(RTMPPacket));</span><br><span class="line">    RTMPPacket_Alloc(pPacket, bodySize);</span><br><span class="line">    RTMPPacket_Reset(pPacket);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构建 body 按上面的一个一个开始赋值</span></span><br><span class="line">    <span class="keyword">char</span> *body = pPacket-&gt;m_body;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    body[index++] = <span class="number">0x17</span>;</span><br><span class="line">    <span class="comment">// fixed ： 0x00 0x00 0x00 0x00 (4byte)</span></span><br><span class="line">    body[index++] = <span class="number">0x00</span>;</span><br><span class="line">    body[index++] = <span class="number">0x00</span>;</span><br><span class="line">    body[index++] = <span class="number">0x00</span>;</span><br><span class="line">    body[index++] = <span class="number">0x00</span>;</span><br><span class="line">    <span class="comment">// configurationVersion  (1byte) 0x01版本</span></span><br><span class="line">    body[index++] = <span class="number">0x01</span>;</span><br><span class="line">    <span class="comment">// AVCProfileIndication  (1byte) sps[1] profile</span></span><br><span class="line">    body[index++] = spsData[<span class="number">1</span>];</span><br><span class="line">    <span class="comment">// profile_compatibility (1byte) sps[2] compatibility</span></span><br><span class="line">    body[index++] = spsData[<span class="number">2</span>];</span><br><span class="line">    <span class="comment">// AVCLevelIndication    (1byte) sps[3] Profile level</span></span><br><span class="line">    body[index++] = spsData[<span class="number">3</span>];</span><br><span class="line">    <span class="comment">// lengthSizeMinusOne    (1byte) 0xff   包长数据所使用的字节数</span></span><br><span class="line">    body[index++] = <span class="number">0xff</span>;</span><br><span class="line">    <span class="comment">// sps + pps 的数据</span></span><br><span class="line">    <span class="comment">// sps number            (1byte) 0xe1   sps 个数</span></span><br><span class="line">    body[index++] = <span class="number">0xe1</span>;</span><br><span class="line">    <span class="comment">// sps data length       (2byte) sps 长度</span></span><br><span class="line">    body[index++] = (spsLen &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">    body[index++] = spsLen &amp; <span class="number">0xFF</span>;</span><br><span class="line">    <span class="comment">// sps data                      sps 的内容</span></span><br><span class="line">    memcpy(&amp;body[index], spsData, spsLen);</span><br><span class="line">    index += spsLen;</span><br><span class="line">    <span class="comment">// pps number            (1byte) 0x01 pps 个数</span></span><br><span class="line">    body[index++] = <span class="number">0x01</span>;</span><br><span class="line">    <span class="comment">// pps data length       (2byte) pps 长度</span></span><br><span class="line">    body[index++] = (ppsLen &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">    body[index++] = ppsLen &amp; <span class="number">0xFF</span>;</span><br><span class="line">    <span class="comment">// pps data                      pps 的内容</span></span><br><span class="line">    memcpy(&amp;body[index], ppsData, ppsLen);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// RTMPPacket 设置一些信息</span></span><br><span class="line">    pPacket-&gt;m_hasAbsTimestamp = <span class="number">0</span>;</span><br><span class="line">    pPacket-&gt;m_nTimeStamp = <span class="number">0</span>;</span><br><span class="line">    pPacket-&gt;m_headerType = RTMP_PACKET_SIZE_MEDIUM;</span><br><span class="line">    pPacket-&gt;m_packetType = RTMP_PACKET_TYPE_VIDEO;</span><br><span class="line">    pPacket-&gt;m_nBodySize = bodySize;</span><br><span class="line">    pPacket-&gt;m_nChannel = <span class="number">0x04</span>;</span><br><span class="line">    pPacket-&gt;m_nInfoField2 = <span class="keyword">this</span>-&gt;pRtmp-&gt;m_stream_id;</span><br><span class="line"></span><br><span class="line">    pPacketQueue-&gt;push(pPacket);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">void LivePush::pushVideoData(jbyte *videoData, jint dataLen, jboolean keyFrame) &#123;</span><br><span class="line">    &#x2F;&#x2F; frame type : 1关键帧，2非关键帧 (4bit)</span><br><span class="line">    &#x2F;&#x2F; CodecID: 7表示 AVC(4bit),与 frame type 组合起来刚好是 1 个字节 0x17</span><br><span class="line">    &#x2F;&#x2F; fixed：0x01 0x00 0x00 0x00 (4byte),0x01 表示 NALU 单元</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; video data length  (4byte) video长度</span><br><span class="line">    &#x2F;&#x2F; video data</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 数据的长度（大小） &#x3D; dataLen + 头 9字节</span><br><span class="line">    int bodySize &#x3D; dataLen + 9;</span><br><span class="line">    &#x2F;&#x2F; 构建 RTMPPacket</span><br><span class="line">    RTMPPacket *pPacket &#x3D; (RTMPPacket *) malloc(sizeof(RTMPPacket));</span><br><span class="line">    RTMPPacket_Alloc(pPacket, bodySize);</span><br><span class="line">    RTMPPacket_Reset(pPacket);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 构建 body 按上面的一个一个开始赋值</span><br><span class="line">    char *body &#x3D; pPacket-&gt;m_body;</span><br><span class="line">    int index &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F; frame type : 1关键帧，2非关键帧 (4bit)</span><br><span class="line">    &#x2F;&#x2F; CodecID: 7表示 AVC(4bit),与 frame type 组合起来刚好是 1 个字节 0x17</span><br><span class="line">    if (keyFrame)</span><br><span class="line">        body[index++] &#x3D; 0x17;</span><br><span class="line">    else</span><br><span class="line">        body[index++] &#x3D; 0x27;</span><br><span class="line">    &#x2F;&#x2F; fixed：0x01 0x00 0x00 0x00 (4byte),0x01 表示 NALU 单元</span><br><span class="line">    body[index++] &#x3D; 0x01;</span><br><span class="line">    body[index++] &#x3D; 0x00;</span><br><span class="line">    body[index++] &#x3D; 0x00;</span><br><span class="line">    body[index++] &#x3D; 0x00;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; video data length  (4byte) video长度</span><br><span class="line">    body[index++] &#x3D; (dataLen &gt;&gt; 24) &amp; 0xFF;</span><br><span class="line">    body[index++] &#x3D; (dataLen &gt;&gt; 16) &amp; 0xFF;</span><br><span class="line">    body[index++] &#x3D; (dataLen &gt;&gt; 8) &amp; 0xFF;</span><br><span class="line">    body[index++] &#x3D; dataLen &amp; 0xFF;</span><br><span class="line">    &#x2F;&#x2F; video data</span><br><span class="line">    memcpy(&amp;body[index], videoData, dataLen);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; RTMPPacket 设置一些信息</span><br><span class="line">    pPacket-&gt;m_headerType &#x3D; RTMP_PACKET_SIZE_LARGE;</span><br><span class="line">    pPacket-&gt;m_packetType &#x3D; RTMP_PACKET_TYPE_VIDEO;</span><br><span class="line">    pPacket-&gt;m_hasAbsTimestamp &#x3D; 0;</span><br><span class="line">    pPacket-&gt;m_nTimeStamp &#x3D; RTMP_GetTime() - startTime;</span><br><span class="line">    pPacket-&gt;m_nBodySize &#x3D; bodySize;</span><br><span class="line">    pPacket-&gt;m_nChannel &#x3D; 0x04;</span><br><span class="line">    pPacket-&gt;m_nInfoField2 &#x3D; this-&gt;pRtmp-&gt;m_stream_id;</span><br><span class="line"></span><br><span class="line">    pPacketQueue-&gt;push(pPacket);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="3-推送声音到媒体房间"><a href="#3-推送声音到媒体房间" class="headerlink" title="3.推送声音到媒体房间"></a>3.推送声音到媒体房间</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 音频的编码线程</span><br><span class="line"> *&#x2F;</span><br><span class="line">private static final class AudioEncoderThread extends Thread &#123;</span><br><span class="line">    private WeakReference&lt;BaseVideoPush&gt; mVideoRecorderWr;</span><br><span class="line">    private volatile boolean mShouldExit &#x3D; false;</span><br><span class="line">    private MediaCodec mAudioCodec;</span><br><span class="line">    private MediaCodec.BufferInfo mBufferInfo;</span><br><span class="line">    private long mAudioPts &#x3D; 0;</span><br><span class="line"></span><br><span class="line">    public AudioEncoderThread(WeakReference&lt;BaseVideoPush&gt; videoRecorderWr) &#123;</span><br><span class="line">        this.mVideoRecorderWr &#x3D; videoRecorderWr;</span><br><span class="line">        mAudioCodec &#x3D; videoRecorderWr.get().mAudioCodec;</span><br><span class="line">        mBufferInfo &#x3D; new MediaCodec.BufferInfo();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            &#x2F;&#x2F; 开启 start AudioCodec</span><br><span class="line">            mAudioCodec.start();</span><br><span class="line"></span><br><span class="line">            while (true) &#123;</span><br><span class="line">                if (mShouldExit) &#123;</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                BaseVideoPush videoRecorder &#x3D; mVideoRecorderWr.get();</span><br><span class="line">                if (videoRecorder &#x3D;&#x3D; null) &#123;</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F; 获取音频数据，那这个音频数据从哪里来？音乐播放器里面来，pcm 数据</span><br><span class="line">                int outputBufferIndex &#x3D; mAudioCodec.dequeueOutputBuffer(mBufferInfo, 0);</span><br><span class="line"></span><br><span class="line">                while (outputBufferIndex &gt;&#x3D; 0) &#123;</span><br><span class="line">                    &#x2F;&#x2F; 获取数据</span><br><span class="line">                    ByteBuffer outBuffer &#x3D; mAudioCodec.getOutputBuffers()[outputBufferIndex];</span><br><span class="line">                    outBuffer.position(mBufferInfo.offset);</span><br><span class="line">                    outBuffer.limit(mBufferInfo.offset + mBufferInfo.size);</span><br><span class="line"></span><br><span class="line">                    &#x2F;&#x2F; 修改 pts</span><br><span class="line">                    if (mAudioPts &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                        mAudioPts &#x3D; mBufferInfo.presentationTimeUs;</span><br><span class="line">                    &#125;</span><br><span class="line">                    mBufferInfo.presentationTimeUs -&#x3D; mAudioPts;</span><br><span class="line"></span><br><span class="line">                    &#x2F;&#x2F; 打印一下音频的 AAC 数据</span><br><span class="line">                    byte[] data &#x3D; new byte[outBuffer.remaining()];</span><br><span class="line">                    outBuffer.get(data, 0, data.length);</span><br><span class="line">                    &#x2F;&#x2F; 推送音频数据到流媒体</span><br><span class="line">                    mVideoRecorderWr.get().mLivePush.pushAudio(data,data.length);</span><br><span class="line"></span><br><span class="line">                    mAudioCodec.releaseOutputBuffer(outputBufferIndex, false);</span><br><span class="line">                    outputBufferIndex &#x3D; mAudioCodec.dequeueOutputBuffer(mBufferInfo, 0);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            onDestroy();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void onDestroy() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            mAudioCodec.stop();</span><br><span class="line">            mAudioCodec.release();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void requestExit() &#123;</span><br><span class="line">        mShouldExit &#x3D; true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">void LivePush::pushAudioData(jbyte *audioData, jint dataLen) &#123;</span><br><span class="line">    &#x2F;&#x2F; 2个字节头信息：</span><br><span class="line">        &#x2F;&#x2F; 前四位表示音频数据格式 AAC ：十进制的10(A) -&gt; 二进制：1010 -&gt; 十六进制：A</span><br><span class="line">        &#x2F;&#x2F; 五六位表示采样率 十进制：0&#x3D;5.5k   十进制：1&#x3D;11k   十进制：2&#x3D;22k   十进制：3(二进制：11)&#x3D;44k</span><br><span class="line">        &#x2F;&#x2F; 七位表示采样的精度 0&#x3D;8bits  1&#x3D;16bits</span><br><span class="line">        &#x2F;&#x2F; 八位表示音频类型 0&#x3D;mono   1&#x3D;stereo</span><br><span class="line">        &#x2F;&#x2F; 我们这里算出来第一个字节是 0xAF &#x3D; 1010 1111</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 0x01 代表 aac 原始数据</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 数据的长度（大小） &#x3D; dataLen + 2</span><br><span class="line">    int bodySize &#x3D; dataLen + 2;</span><br><span class="line">    &#x2F;&#x2F; 构建 RTMPPacket</span><br><span class="line">    RTMPPacket *pPacket &#x3D; (RTMPPacket *) malloc(sizeof(RTMPPacket));</span><br><span class="line">    RTMPPacket_Alloc(pPacket, bodySize);</span><br><span class="line">    RTMPPacket_Reset(pPacket);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 构建 body 按上面的一个一个开始赋值</span><br><span class="line">    char *body &#x3D; pPacket-&gt;m_body;</span><br><span class="line">    int index &#x3D; 0;</span><br><span class="line">    body[index++] &#x3D; 0xAF;</span><br><span class="line">    &#x2F;&#x2F; 0x01 代表 aac 原始数据</span><br><span class="line">    body[index++] &#x3D; 0x01;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; audio data</span><br><span class="line">    memcpy(&amp;body[index], audioData, dataLen);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; RTMPPacket 设置一些信息</span><br><span class="line">    pPacket-&gt;m_headerType &#x3D; RTMP_PACKET_SIZE_LARGE;</span><br><span class="line">    pPacket-&gt;m_packetType &#x3D; RTMP_PACKET_TYPE_AUDIO;</span><br><span class="line">    pPacket-&gt;m_hasAbsTimestamp &#x3D; 0;</span><br><span class="line">    pPacket-&gt;m_nTimeStamp &#x3D; RTMP_GetTime() - startTime;</span><br><span class="line">    pPacket-&gt;m_nBodySize &#x3D; bodySize;</span><br><span class="line">    pPacket-&gt;m_nChannel &#x3D; 0x04;</span><br><span class="line">    pPacket-&gt;m_nInfoField2 &#x3D; this-&gt;pRtmp-&gt;m_stream_id;</span><br><span class="line"></span><br><span class="line">    pPacketQueue-&gt;push(pPacket);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-滤镜效果处理"><a href="#4-滤镜效果处理" class="headerlink" title="4.滤镜效果处理"></a>4.滤镜效果处理</h1><p>// 设置纹理渲染</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * |---------------------------------------------------------------------------------------------------------------|</span><br><span class="line"> *  @description:  灰色视频的推流</span><br><span class="line"> *  @author: jamin</span><br><span class="line"> *  @date: 2020&#x2F;10&#x2F;20 13:39</span><br><span class="line"> * |---------------------------------------------------------------------------------------------------------------|</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class GrayVideoPush extends BaseVideoPush &#123;</span><br><span class="line">    private PushRenderer mPushRenderer;</span><br><span class="line"></span><br><span class="line">    public GrayVideoPush(Context context, EGLContext eglContext, int textureId) &#123;</span><br><span class="line">        super(context, eglContext);</span><br><span class="line">        mPushRenderer &#x3D; new PushRenderer(context, textureId);</span><br><span class="line">        setRenderer(mPushRenderer);</span><br><span class="line">        mPushRenderer.setFragmentRender(R.raw.filter_fragment_gray);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wx.png" alt="jamin 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/zfb.png" alt="jamin 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" rel="tag"># 音视频</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/90.FFmpeg-%E8%A7%86%E9%A2%91%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E3%80%81H.264%E5%8D%8F%E8%AE%AE/" rel="next" title="音视频：19.FFmpeg-视频加背景音乐、H.264协议">
+                <i class="fa fa-chevron-left"></i> 音视频：19.FFmpeg-视频加背景音乐、H.264协议
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1.App%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96(%E6%BA%90%E7%A0%81)/" rel="prev" title="性能优化：1.App启动优化(源码)">
+                性能优化：1.App启动优化(源码) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+				<a href="https://eastup.github.io/">
+				  <img class="site-author-image" itemprop="image"
+					src="/images/header.png"
+					alt="jamin" />
+				</a>
+            
+              <p class="site-author-name" itemprop="name">jamin</p>
+              <p class="site-description motion-element" itemprop="description">勤奋养运气，淡薄养志气</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/eastup" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3252601982" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          <div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+
+          <div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ffmpeg测试流媒体服务器播放地址"><span class="nav-text">ffmpeg测试流媒体服务器播放地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-录制声音获取-PCM-数据"><span class="nav-text">1.录制声音获取 PCM 数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-推送视频画面到媒体房间"><span class="nav-text">2.推送视频画面到媒体房间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-推送声音到媒体房间"><span class="nav-text">3.推送声音到媒体房间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-滤镜效果处理"><span class="nav-text">4.滤镜效果处理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jamin</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">100.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+<script type="text/javascript" src="/custom/fold_action.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'nGS6I8Lhxl6RuW9rWHtlzQgi-gzGzoHsz',
+        appKey: 'osxkNrrnKC4USSNpLUJyfsCb',
+        placeholder: 'Just go go',
+        avatar:'/images/header.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("nGS6I8Lhxl6RuW9rWHtlzQgi-gzGzoHsz", "osxkNrrnKC4USSNpLUJyfsCb");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+</body>
+</html>
