@@ -128,4 +128,72 @@ git clone https://github.com/iissnan/hexo-theme-next themes/next
 
 然后修改 hexo的 `_config.yml` 中的 `theme` 为新主题名称 `next`。
 
+# 7.<font color=red>遇到的问题</color>
+
+```
+$ hexo d -g
+(node:3908) Warning: Accessing non-existent property 'lineno' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3908) Warning: Accessing non-existent property 'column' of module exports inside circular dependency
+(node:3908) Warning: Accessing non-existent property 'filename' of module exports inside circular dependency
+(node:3908) Warning: Accessing non-existent property 'lineno' of module exports inside circular dependency
+(node:3908) Warning: Accessing non-existent property 'column' of module exports inside circular dependency
+(node:3908) Warning: Accessing non-existent property 'filename' of module exports inside circular dependency
+INFO  Start processing
+INFO  Files loaded in 94 ms
+INFO  0 files generated in 22 ms
+INFO  Deploying: git
+INFO  Clearing .deploy_git folder...
+INFO  Copying files from public folder...
+FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html
+TypeError [ERR_INVALID_ARG_TYPE]: The "mode" argument must be integer. Received an instance of Object
+    at copyFile (fs.js:1890:10)
+    at tryCatcher (D:\Blog\node_modules\bluebird\js\release\util.js:16:23)
+    at ret (eval at makeNodePromisifiedEval (D:\Node\node_global\node_modules\hexo-cli\node_modules\bluebird\js\release\promisify.js:184:12), <anonymous>:13:39)
+    at D:\Blog\node_modules\hexo-fs\lib\fs.js:144:39
+    at tryCatcher (D:\Blog\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (D:\Blog\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (D:\Blog\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (D:\Blog\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (D:\Blog\node_modules\bluebird\js\release\promise.js:729:18)
+    at Promise._fulfill (D:\Blog\node_modules\bluebird\js\release\promise.js:673:18)
+    at Promise._resolveCallback (D:\Blog\node_modules\bluebird\js\release\promise.js:466:57)
+    at Promise._settlePromiseFromHandler (D:\Blog\node_modules\bluebird\js\release\promise.js:559:17)
+    at Promise._settlePromise (D:\Blog\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (D:\Blog\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (D:\Blog\node_modules\bluebird\js\release\promise.js:729:18)
+    at Promise._fulfill (D:\Blog\node_modules\bluebird\js\release\promise.js:673:18)
+    at Promise._resolveCallback (D:\Blog\node_modules\bluebird\js\release\promise.js:466:57)
+    at Promise._settlePromiseFromHandler (D:\Blog\node_modules\bluebird\js\release\promise.js:559:17)
+    at Promise._settlePromise (D:\Blog\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (D:\Blog\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (D:\Blog\node_modules\bluebird\js\release\promise.js:729:18)
+    at Promise._fulfill (D:\Blog\node_modules\bluebird\js\release\promise.js:673:18)
+```
+
+出现这些是因为node版本太高，切换成低版本的node来安装Hexo就可以了。
+
+我安装的是 `hexo: 4.2.0`  `node: 13.6.0`
+
+```
+$ hexo -v
+hexo: 4.2.0
+hexo-cli: 4.2.0
+os: Windows_NT 10.0.18363 win32 x64
+node: 13.6.0
+v8: 7.9.317.25-node.26
+uv: 1.34.0
+zlib: 1.2.11
+brotli: 1.0.7
+ares: 1.15.0
+modules: 79
+nghttp2: 1.40.0
+napi: 5
+llhttp: 2.0.1
+openssl: 1.1.1d
+cldr: 36.0
+icu: 65.1
+tz: 2019c
+unicode: 12.1
+```
 
