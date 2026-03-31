@@ -28,7 +28,7 @@ user_invocable: true
 使用项目脚本 `scripts/extract_docx.py` 解析 docx 的 XML 结构：
 
 ```bash
-py scripts/extract_docx.py "<docx_path>" "<output_path>"
+py .claude/skills/docx-to-post/scripts/extract_docx.py "<docx_path>" "<output_path>"
 ```
 
 脚本解析原理：
