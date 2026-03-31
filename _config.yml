@@ -96,6 +96,7 @@ ignore:
 # RSS订阅
 #plugins: hexo-generate-feed
 theme: next
+# NexT v8 通过 npm 安装，配置文件使用项目根目录的 _config.next.yml
 
 #RSS订阅
 plugin:
