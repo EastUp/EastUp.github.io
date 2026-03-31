@@ -25,29 +25,18 @@ user_invocable: true
 
 ### 第一步：提取文档内容
 
-使用 Python 脚本解析 docx 的 XML 结构，不使用简单的段落文本提取，而是：
+使用项目脚本 `scripts/extract_docx.py` 解析 docx 的 XML 结构：
 
-1. 解析 `word/document.xml` 的完整 XML 结构
-2. **单行表格** → 识别为代码块，提取语言标记（Bash/JSON/YAML 等），保留换行
-3. **多行表格** → 转为 Markdown 表格
-4. **段落样式** → style=1/2/3/4 映射为 h1-h4，自动检测章节标题模式
-5. **内联代码** → 检测 Consolas/monospace 字体 + shading 标记的 run，包裹为 `` `code` ``
-
-关键 Python 脚本结构：
-
-```python
-import zipfile, xml.etree.ElementTree as ET
-ns = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
-
-# 读取 docx（本质是 zip）中的 word/document.xml
-with zipfile.ZipFile(docx_path) as z:
-    xml_content = z.read('word/document.xml')
-
-# 遍历 body 下的元素：
-# - <w:tbl> 表格元素：rows==1 为代码块，rows>1 为普通表格
-# - <w:p> 段落元素：按 pStyle 判断标题级别
-# 提取文本时用 iter() 遍历所有子元素，遇到 <w:br> 插入换行，遇到 <w:t> 拼接文本
+```bash
+py scripts/extract_docx.py "<docx_path>" "<output_path>"
 ```
+
+脚本解析原理：
+1. docx 本质是 zip，读取其中 `word/document.xml`
+2. **单行表格**（`<w:tbl>` rows==1）→ 代码块，自动检测语言标记
+3. **多行表格** → Markdown 表格
+4. **段落样式** → `pStyle` 1/2/3/4 映射为 h1-h4
+5. **内联代码** → Consolas/monospace 字体 + shading 的 run → `` `code` ``
 
 ### 第二步：去除作者信息（如需要）
 
