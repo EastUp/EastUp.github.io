@@ -47,6 +47,22 @@ def get_style(p):
     return ''
 
 
+def get_num_info(p):
+    """获取段落的编号信息（numId, ilvl），用于识别编号标题"""
+    pPr = p.find('w:pPr', NS)
+    if pPr is not None:
+        numPr = pPr.find('w:numPr', NS)
+        if numPr is not None:
+            ilvl_el = numPr.find('w:ilvl', NS)
+            numId_el = numPr.find('w:numId', NS)
+            ilvl = ilvl_el.get(
+                '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}val', '') if ilvl_el is not None else ''
+            numId = numId_el.get(
+                '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}val', '') if numId_el is not None else ''
+            return numId, ilvl
+    return '', ''
+
+
 def detect_lang(text):
     """从代码块首行检测语言标记并剥离"""
     for prefix in LANG_PREFIXES:
@@ -78,8 +94,18 @@ def process_table(tbl):
         return '\n' + '\n'.join(result) + '\n'
 
 
+def is_short_title_like(text):
+    """判断文本是否像标题（较短、非普通段落）"""
+    return len(text) < 80 and not text.endswith(('。', '，', '；', '.', ',', ';'))
+
+
+# 记录已出现的 numId，用于判断编号标题层级
+_seen_num_ids = {}
+_num_id_counter = [0]
+
+
 def process_paragraph(p):
-    """处理段落：识别标题级别，保留内联代码"""
+    """处理段落：识别标题级别（pStyle 或 numPr 编号），保留内联代码"""
     text = get_para_text(p).strip()
     if not text:
         return ''
@@ -95,11 +121,23 @@ def process_paragraph(p):
     if re.match(r'^#{1,4}\s', text):
         return text
 
+    # 编号段落：numPr 且 ilvl=0 且内容像标题 → 视为 ## 章节标题
+    numId, ilvl = get_num_info(p)
+    if numId and ilvl == '0' and is_short_title_like(text):
+        if numId not in _seen_num_ids:
+            _seen_num_ids[numId] = _num_id_counter[0]
+            _num_id_counter[0] += 1
+        # 仅前几个独立 numId（每章一个 numId）识别为章节标题
+        if _seen_num_ids[numId] < 20:
+            return f'## {text}'
+
     return text
 
 
 def extract(docx_path):
     """从 docx 提取 Markdown 内容"""
+    _seen_num_ids.clear()
+    _num_id_counter[0] = 0
     with zipfile.ZipFile(docx_path) as z:
         xml_content = z.read('word/document.xml')
 
