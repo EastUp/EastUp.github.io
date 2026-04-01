@@ -95,20 +95,20 @@
 <meta property="og:site_name" content="Jamin">
 <meta property="og:description" content="具体代码请看：NDKPractice项目的datastructure43graph 1. 图的基本概念：图（Graph）是由顶点的有穷非空集合和顶点之间边的集合组成，通常表示为：G（V，E），其中，G表示一个图，V是图G中顶点的集合，E是图G中边的集合。 图就是由 点 和 边组成。 注意：线性表中可以没有元素，称为空表。树中可以没有结点，叫做空树。但是在图中不允许没有顶点，可以没有边。 2. 基本">
 <meta property="og:locale">
-<meta property="og:image" content="http://eastup.github.io/images/43.无向图.png">
-<meta property="og:image" content="http://eastup.github.io/images/43.有向图.png">
-<meta property="og:image" content="http://eastup.github.io/images/43.无向边存储方式.png">
-<meta property="og:image" content="http://eastup.github.io/images/43.有向边存储方式.png">
-<meta property="og:image" content="http://eastup.github.io/images/43.邻接表.png">
-<meta property="og:image" content="http://eastup.github.io/images/43.十字链表.png">
-<meta property="og:image" content="http://eastup.github.io/images/43.广度优先遍历.png">
+<meta property="og:image" content="http://eastup.github.io/images/43.%E6%97%A0%E5%90%91%E5%9B%BE.png">
+<meta property="og:image" content="http://eastup.github.io/images/43.%E6%9C%89%E5%90%91%E5%9B%BE.png">
+<meta property="og:image" content="http://eastup.github.io/images/43.%E6%97%A0%E5%90%91%E8%BE%B9%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F.png">
+<meta property="og:image" content="http://eastup.github.io/images/43.%E6%9C%89%E5%90%91%E8%BE%B9%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F.png">
+<meta property="og:image" content="http://eastup.github.io/images/43.%E9%82%BB%E6%8E%A5%E8%A1%A8.png">
+<meta property="og:image" content="http://eastup.github.io/images/43.%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8.png">
+<meta property="og:image" content="http://eastup.github.io/images/43.%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86.png">
 <meta property="article:published_time" content="2019-03-26T00:12:43.000Z">
 <meta property="article:modified_time" content="2025-11-14T01:41:57.945Z">
 <meta property="article:author" content="jamin">
 <meta property="article:tag" content="数据结构和算法学习">
 <meta property="article:tag" content="图">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://eastup.github.io/images/43.无向图.png">
+<meta name="twitter:image" content="http://eastup.github.io/images/43.%E6%97%A0%E5%90%91%E5%9B%BE.png">
 
 
 
@@ -169,6 +169,9 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <!-- <script src="/live2d-widget/autoload.js"></script> -->
   <script src="/live2d-widget/autoload.js"></script>
+
+  
+  <div id="reading-progress" style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,#fc6423,#f7877f);width:0;z-index:9999;transition:width 0.1s;"></div>
 
   
   
@@ -488,14 +491,14 @@
 <li><p>无向图（Undirected graphs）：图中任意两个顶点的边都是无向边。</p>
 </li>
 </ul>
-<p><img src="/images/43.无向图.png" alt=""></p>
+<p><img src="/images/43.%E6%97%A0%E5%90%91%E5%9B%BE.png" alt=""></p>
 <ul>
-<li><p>有向边：若从顶点V1到V2的边有方向，称这条边为有向边，也称为弧（Arc），用<V2, V1>来表示，其中V1称为弧尾（Tail），V2称为弧头（Head）。</p>
+<li><p>有向边：若从顶点V1到V2的边有方向，称这条边为有向边，也称为弧（Arc），用&lt;V2, V1&gt;来表示，其中V1称为弧尾（Tail），V2称为弧头（Head）。</p>
 </li>
 <li><p>有向图（Directed graphs）：图中任意两个顶点的边都是有向边。</p>
 </li>
 </ul>
-<p><img src="/images/43.有向图.png" alt=""></p>
+<p><img src="/images/43.%E6%9C%89%E5%90%91%E5%9B%BE.png" alt=""></p>
 <ul>
 <li><p>无向完全图：无向图中，任意两个顶点之间都存在边。</p>
 </li>
@@ -518,15 +521,38 @@
 <li><p>最小生成树：此生成树的边的权重之和是所有生成树中最小的；</p>
 </li>
 </ul>
-<h1 id="3-图的存储结构"><a href="#3-图的存储结构" class="headerlink" title="3. 图的存储结构"></a>3. 图的存储结构</h1><h2 id="3-1-无向边存储图如下："><a href="#3-1-无向边存储图如下：" class="headerlink" title="3.1 无向边存储图如下："></a>3.1 无向边存储图如下：</h2><p><img src="/images/43.无向边存储方式.png" alt=""></p>
-<h2 id="3-2-有向边存储图如下："><a href="#3-2-有向边存储图如下：" class="headerlink" title="3.2 有向边存储图如下："></a>3.2 有向边存储图如下：</h2><p><img src="/images/43.有向边存储方式.png" alt=""></p>
-<h2 id="3-3-邻接表"><a href="#3-3-邻接表" class="headerlink" title="3.3  邻接表"></a>3.3  邻接表</h2><p><img src="/images/43.邻接表.png" alt=""></p>
-<h2 id="3-4-十字链表"><a href="#3-4-十字链表" class="headerlink" title="3.4 十字链表"></a>3.4 十字链表</h2><p><img src="/images/43.十字链表.png" alt=""></p>
-<h1 id="4-深度优先遍历和广度优先遍历"><a href="#4-深度优先遍历和广度优先遍历" class="headerlink" title="4. 深度优先遍历和广度优先遍历"></a>4. 深度优先遍历和广度优先遍历</h1><p><img src="/images/43.广度优先遍历.png" alt=""></p>
+<h1 id="3-图的存储结构"><a href="#3-图的存储结构" class="headerlink" title="3. 图的存储结构"></a>3. 图的存储结构</h1><h2 id="3-1-无向边存储图如下："><a href="#3-1-无向边存储图如下：" class="headerlink" title="3.1 无向边存储图如下："></a>3.1 无向边存储图如下：</h2><p><img src="/images/43.%E6%97%A0%E5%90%91%E8%BE%B9%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F.png" alt=""></p>
+<h2 id="3-2-有向边存储图如下："><a href="#3-2-有向边存储图如下：" class="headerlink" title="3.2 有向边存储图如下："></a>3.2 有向边存储图如下：</h2><p><img src="/images/43.%E6%9C%89%E5%90%91%E8%BE%B9%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F.png" alt=""></p>
+<h2 id="3-3-邻接表"><a href="#3-3-邻接表" class="headerlink" title="3.3  邻接表"></a>3.3  邻接表</h2><p><img src="/images/43.%E9%82%BB%E6%8E%A5%E8%A1%A8.png" alt=""></p>
+<h2 id="3-4-十字链表"><a href="#3-4-十字链表" class="headerlink" title="3.4 十字链表"></a>3.4 十字链表</h2><p><img src="/images/43.%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8.png" alt=""></p>
+<h1 id="4-深度优先遍历和广度优先遍历"><a href="#4-深度优先遍历和广度优先遍历" class="headerlink" title="4. 深度优先遍历和广度优先遍历"></a>4. 深度优先遍历和广度优先遍历</h1><p><img src="/images/43.%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86.png" alt=""></p>
 <h1 id="5-最小生成树和最短路径"><a href="#5-最小生成树和最短路径" class="headerlink" title="5. 最小生成树和最短路径"></a>5. 最小生成树和最短路径</h1><p><code>普里姆算法</code> : 每次都找最近的，与它相连的考虑进去，边修路边淘汰</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">    // 最小生成树（普里姆算法）</span><br><span class="line">    public void prim()&#123;</span><br><span class="line">        // 定义一个数组内存，当前修好村庄，lowcost = 0 代表已经修了</span><br><span class="line">        int[] lowcost = new int[vertexSize];</span><br><span class="line"></span><br><span class="line">        // 第一行的数据先放到 lowcost</span><br><span class="line">        for (int i = 0; i &lt; vertexSize; i++) &#123;</span><br><span class="line">            lowcost[i] = matrix[0][i];        // [0,1,5,max,max,max,max,max,max]</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int sum = 0;</span><br><span class="line"></span><br><span class="line">        for (int i = 1; i &lt; vertexSize; i++) &#123;</span><br><span class="line">            int min = MAX_WEIGHT;</span><br><span class="line">            int minId = 0;</span><br><span class="line"></span><br><span class="line">            // 找最小的，之间是否连通</span><br><span class="line">            for (int j = 1; j &lt; vertexSize; j++) &#123;</span><br><span class="line">                if(lowcost[j] &lt; min &amp;&amp; lowcost[j] != 0)&#123;</span><br><span class="line">                    min = lowcost[j];</span><br><span class="line">                    minId = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            // min = 1, minId = 1;</span><br><span class="line"></span><br><span class="line">            Log.e(&quot;TAG&quot;,&quot;找到村庄：&quot;+vertexs[minId] + &quot;, 修路距离：&quot; + min);</span><br><span class="line">            lowcost[minId] = 0;</span><br><span class="line">            sum += min;</span><br><span class="line"></span><br><span class="line">            for (int k = 0; k &lt; vertexSize; k++) &#123;</span><br><span class="line">                // 边考虑边淘汰</span><br><span class="line">                if(matrix[minId][k] &lt; lowcost[k] &amp;&amp; lowcost[k] &gt; 0)&#123;</span><br><span class="line">                    lowcost[k] = matrix[minId][k];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">//            for (int o = 0; o&lt; vertexSize; o++)&#123;</span><br><span class="line">//                Log.e(&quot;TAG&quot;,&quot;i = &quot;+o+&quot;,  number = &quot; + lowcost[o]); //[0,0,3,7,5,max,max,max,max]</span><br><span class="line">//            &#125;</span><br><span class="line">//            Log.e(&quot;TAG&quot;,&quot;==================================== &quot;);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Log.e(&quot;TAG&quot;,&quot;最短路径是：&quot; + sum);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
 <p><code>迪杰斯特拉算法</code>:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成最短路径（迪杰斯特拉算法）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">dijstra</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 有没找到最短路径</span></span><br><span class="line">    <span class="type">boolean</span>[] isPath = <span class="keyword">new</span> <span class="title class_">boolean</span>[vertexSize];</span><br><span class="line">    <span class="comment">// 存放每个村庄的最短路径</span></span><br><span class="line">    <span class="type">int</span>[] shortPath = <span class="keyword">new</span> <span class="title class_">int</span>[vertexSize];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;vertexSize; i++) &#123;</span><br><span class="line">        shortPath[i] = matrix[<span class="number">0</span>][i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    shortPath[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    isPath[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; vertexSize; i++) &#123; <span class="comment">// 外循环每次找到下一个村庄最短的路径</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">minId</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">min</span> <span class="operator">=</span> MAX_WEIGHT;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt; vertexSize; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(shortPath[j] &lt; min &amp;&amp; !isPath[j])&#123;</span><br><span class="line">                min = shortPath[j];   <span class="comment">// 1 4</span></span><br><span class="line">                minId = j;            <span class="comment">// 1 2</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        isPath[minId] = <span class="literal">true</span>; <span class="comment">// 已经找到了最短的路径</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>; k &lt; vertexSize; k++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!isPath[k] &amp;&amp; (matrix[minId][k] + min) &lt; shortPath[k])&#123;</span><br><span class="line">                shortPath[k] = matrix[minId][k] + min;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>; k &lt; vertexSize; k++) &#123;</span><br><span class="line">            Log.e(<span class="string">&quot;TAG&quot;</span>, shortPath[k]+<span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Log.e(<span class="string">&quot;TAG&quot;</span>, <span class="string">&quot;===================&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; vertexSize; i++) &#123;</span><br><span class="line">        Log.e(<span class="string">&quot;TAG&quot;</span>, <span class="string">&quot;顶点 0 到顶点 &quot;</span> + i + <span class="string">&quot; 的最短距离为：&quot;</span> + shortPath[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       
     </div>
@@ -2020,6 +2046,52 @@ if(canvas.getContext){
     document.body.addEventListener('input', POWERMODE);
   </script>
 
+
+
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', function(){
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    bar.style.width = progress + '%';
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var el = document.querySelector('.site-subtitle');
+  if (!el) return;
+  var text = el.textContent;
+  el.textContent = '';
+  el.style.borderRight = '2px solid #555';
+  var i = 0;
+  function type(){
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 150);
+    } else {
+      // 打完后光标闪烁 3 次后消失
+      var blink = 0;
+      var timer = setInterval(function(){
+        el.style.borderRight = el.style.borderRight === 'none' ? '2px solid #555' : 'none';
+        blink++;
+        if (blink >= 6) {
+          clearInterval(timer);
+          el.style.borderRight = 'none';
+        }
+      }, 400);
+    }
+  }
+  // 页面加载后延迟 500ms 开始打字
+  setTimeout(type, 500);
+})();
+</script>
   
   <style>
     .copy-btn {

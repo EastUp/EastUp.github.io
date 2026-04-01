@@ -160,6 +160,9 @@
   <script src="/live2d-widget/autoload.js"></script>
 
   
+  <div id="reading-progress" style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,#fc6423,#f7877f);width:0;z-index:9999;transition:width 0.1s;"></div>
+
+  
   
     
   
@@ -885,7 +888,8 @@
         
           
           具体代码请看：NDKPractice项目的ffmpeg83
-1.解决内存上涨的问题将循环中新建数组操作提到循环外面去12345678910111213141516171819202122232425262728293031323334353637383940414243444546jbyteArra
+1.解决内存上涨的问题将循环中新建数组操作提到循环外面去
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546jbyteArr
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1509,7 +1513,8 @@ ndk 16的以上版本自带交叉编译工具链
 echo：打印输出
 
 12345# 需要用谁来解析执行该 shell 脚本#!/bin/bash# echo 打印输出echo &quot;Hello Shell!&quot;
-2.自
+
+2.
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -3744,6 +3749,52 @@ if(canvas.getContext){
     document.body.addEventListener('input', POWERMODE);
   </script>
 
+
+
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', function(){
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    bar.style.width = progress + '%';
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var el = document.querySelector('.site-subtitle');
+  if (!el) return;
+  var text = el.textContent;
+  el.textContent = '';
+  el.style.borderRight = '2px solid #555';
+  var i = 0;
+  function type(){
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 150);
+    } else {
+      // 打完后光标闪烁 3 次后消失
+      var blink = 0;
+      var timer = setInterval(function(){
+        el.style.borderRight = el.style.borderRight === 'none' ? '2px solid #555' : 'none';
+        blink++;
+        if (blink >= 6) {
+          clearInterval(timer);
+          el.style.borderRight = 'none';
+        }
+      }, 400);
+    }
+  }
+  // 页面加载后延迟 500ms 开始打字
+  setTimeout(type, 500);
+})();
+</script>
   
   <style>
     .copy-btn {

@@ -95,14 +95,14 @@
 <meta property="og:site_name" content="Jamin">
 <meta property="og:description" content="1. 霍夫直线检测作用：检测图片当中点集合中的直线。（比如提取图片中的直线：车道线） 先来看下原理图： 再来看下opencv中的代码 123456789101112131415161718192021222324252627282930313233343536373839404142int main()&amp;#123;	Mat src &#x3D; imread(&quot;E:&#x2F;houghLine.jpg&amp;q">
 <meta property="og:locale">
-<meta property="og:image" content="http://eastup.github.io/images/58.霍夫直线检测.png">
-<meta property="og:image" content="http://eastup.github.io/images/58.霍夫圆检测.png">
+<meta property="og:image" content="http://eastup.github.io/images/58.%E9%9C%8D%E5%A4%AB%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B.png">
+<meta property="og:image" content="http://eastup.github.io/images/58.%E9%9C%8D%E5%A4%AB%E5%9C%86%E6%A3%80%E6%B5%8B.png">
 <meta property="article:published_time" content="2019-04-09T00:12:43.000Z">
 <meta property="article:modified_time" content="2025-11-14T01:41:57.948Z">
 <meta property="article:author" content="jamin">
 <meta property="article:tag" content="OpenCV">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://eastup.github.io/images/58.霍夫直线检测.png">
+<meta name="twitter:image" content="http://eastup.github.io/images/58.%E9%9C%8D%E5%A4%AB%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B.png">
 
 
 
@@ -163,6 +163,9 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <!-- <script src="/live2d-widget/autoload.js"></script> -->
   <script src="/live2d-widget/autoload.js"></script>
+
+  
+  <div id="reading-progress" style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,#fc6423,#f7877f);width:0;z-index:9999;transition:width 0.1s;"></div>
 
   
   
@@ -473,18 +476,23 @@
 
       
         <h1 id="1-霍夫直线检测"><a href="#1-霍夫直线检测" class="headerlink" title="1. 霍夫直线检测"></a>1. 霍夫直线检测</h1><p>作用：检测图片当中点集合中的直线。（比如提取图片中的直线：车道线）</p>
-<p>先来看下原理图：<br><img src="/images/58.霍夫直线检测.png" alt=""></p>
+<p>先来看下原理图：<br><img src="/images/58.%E9%9C%8D%E5%A4%AB%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B.png" alt=""></p>
 <p>再来看下<code>opencv</code>中的代码</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Mat src = <span class="built_in">imread</span>(<span class="string">&quot;E:/houghLine.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!src.data)&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;read error&quot;</span> &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;src&quot;</span>,src);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. Canny 边缘检测</span></span><br><span class="line">	Mat gray;</span><br><span class="line">	<span class="built_in">cvtColor</span>(src,gray,COLOR_BGR2GRAY);</span><br><span class="line"></span><br><span class="line">	Mat cannyImage;</span><br><span class="line">	<span class="built_in">Canny</span>(gray,cannyImage,<span class="number">200</span>,<span class="number">250</span>,<span class="number">3</span>);</span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;cannyImage&quot;</span>, cannyImage);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. HoughLineP</span></span><br><span class="line">	vector&lt;Vec4f&gt; plines;</span><br><span class="line">	<span class="comment">// lines 信息里面包含多条直线，每条直线两个点</span></span><br><span class="line">	<span class="comment">// rho 像素间隙扫描</span></span><br><span class="line">	<span class="comment">// theta 每次增加的角度 CV_PI / 180 = 1度</span></span><br><span class="line">	<span class="comment">// threshold 低阈值</span></span><br><span class="line">	<span class="comment">// minLineLength 线的最小长度</span></span><br><span class="line">	<span class="comment">// maxLineGap 线点之间的间隙</span></span><br><span class="line">	<span class="built_in">HoughLinesP</span>(cannyImage, plines, <span class="number">1</span>, CV_PI / <span class="number">360</span>, <span class="number">170</span>, <span class="number">30</span>, <span class="number">15</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; plines.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Vec4f pline = plines[i];</span><br><span class="line"></span><br><span class="line">		<span class="built_in">line</span>(src, <span class="built_in">Point</span>(pline[<span class="number">0</span>], pline[<span class="number">1</span>]), <span class="built_in">Point</span>(pline[<span class="number">1</span>], pline[<span class="number">2</span>]), <span class="built_in">Scalar</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;result&quot;</span>,src);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//HoughLines</span></span><br><span class="line">	<span class="built_in">waitKey</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="2-霍夫圆检测"><a href="#2-霍夫圆检测" class="headerlink" title="2. 霍夫圆检测"></a>2. 霍夫圆检测</h1><p>先来看下原理图：<br><img src="/images/58.霍夫圆检测.png" alt=""></p>
+
+<h1 id="2-霍夫圆检测"><a href="#2-霍夫圆检测" class="headerlink" title="2. 霍夫圆检测"></a>2. 霍夫圆检测</h1><p>先来看下原理图：<br><img src="/images/58.%E9%9C%8D%E5%A4%AB%E5%9C%86%E6%A3%80%E6%B5%8B.png" alt=""></p>
 <p>解释：  </p>
 <ul>
 <li>梯度的求取：类似于 x、y 轴的垂直，梯度求取就是<code>取各个点各个方向直线的垂直线</code> ，投票将 相交的次数大于多少的才算作圆</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Mat src = <span class="built_in">imread</span>(<span class="string">&quot;E:/HoughCircle.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!src.data)&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;read error&quot;</span> &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;src&quot;</span>, src);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 转灰度图</span></span><br><span class="line">	Mat gray;</span><br><span class="line">	<span class="built_in">cvtColor</span>(src, gray, COLOR_BGR2GRAY);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. HoughLineP</span></span><br><span class="line">	vector&lt;Vec3f&gt; circles;</span><br><span class="line">	<span class="comment">// minDist:10 两个圆之间的最小距离 越大越能减少同心圆的现象</span></span><br><span class="line">	<span class="comment">// param1:100 投票累加结果超过多少才能算圆</span></span><br><span class="line">	<span class="comment">// params2:30 低阈值</span></span><br><span class="line">	<span class="comment">// minRadius: 5 最小的半径</span></span><br><span class="line">	<span class="comment">// maxRadius: 50 最大的半径</span></span><br><span class="line">	<span class="built_in">HoughCircles</span>(gray, circles, HOUGH_GRADIENT, <span class="number">1</span>, <span class="number">40</span>, <span class="number">100</span>, <span class="number">30</span>,<span class="number">5</span>,<span class="number">50</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; circles.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Vec3f cc = circles[i];</span><br><span class="line">		<span class="built_in">circle</span>(src, <span class="built_in">Point</span>(cc[<span class="number">0</span>], cc[<span class="number">1</span>]), cc[<span class="number">2</span>], <span class="built_in">Scalar</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>),<span class="number">1</span>,LINE_AA);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;result&quot;</span>, src);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//HoughLines</span></span><br><span class="line">	<span class="built_in">waitKey</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="3-重映射"><a href="#3-重映射" class="headerlink" title="3.重映射"></a>3.重映射</h1><p>remap 根据原图按照新定的满足一定规律重新赋值的操作。<br>g(x,y) = f(h(x,y))  g 新的图片 = h 原图 ， f 函数，</p>
 <p>可用于<code>镜像翻转</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Mat src = <span class="built_in">imread</span>(<span class="string">&quot;E:/copy.png&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!src.data)&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;read error&quot;</span> &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;src&quot;</span>, src);</span><br><span class="line"></span><br><span class="line">	<span class="function">Mat <span class="title">map_x</span><span class="params">(src.size(),CV_32F)</span></span>;</span><br><span class="line">	<span class="function">Mat <span class="title">map_y</span><span class="params">(src.size(), CV_32F)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> row = <span class="number">0</span>; row &lt; src.rows; row++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> col = <span class="number">0</span>; col &lt; src.cols; col++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// x 轴的翻转</span></span><br><span class="line">			<span class="comment">//map_x.at&lt;float&gt;(row, col) = src.cols - col - 1;</span></span><br><span class="line">			<span class="comment">//map_y.at&lt;float&gt;(row, col) = row;</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// y 轴的翻转</span></span><br><span class="line">			map_x.<span class="built_in">at</span>&lt;<span class="type">float</span>&gt;(row, col) = col;</span><br><span class="line">			map_y.<span class="built_in">at</span>&lt;<span class="type">float</span>&gt;(row, col) = src.rows - row;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Mat dst;</span><br><span class="line">	<span class="built_in">remap</span>(src, dst, map_x, map_y, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;dst&quot;</span>, dst);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//HoughLines</span></span><br><span class="line">	<span class="built_in">waitKey</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
       
     </div>
@@ -1976,6 +1984,52 @@ if(canvas.getContext){
     document.body.addEventListener('input', POWERMODE);
   </script>
 
+
+
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', function(){
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    bar.style.width = progress + '%';
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var el = document.querySelector('.site-subtitle');
+  if (!el) return;
+  var text = el.textContent;
+  el.textContent = '';
+  el.style.borderRight = '2px solid #555';
+  var i = 0;
+  function type(){
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 150);
+    } else {
+      // 打完后光标闪烁 3 次后消失
+      var blink = 0;
+      var timer = setInterval(function(){
+        el.style.borderRight = el.style.borderRight === 'none' ? '2px solid #555' : 'none';
+        blink++;
+        if (blink >= 6) {
+          clearInterval(timer);
+          el.style.borderRight = 'none';
+        }
+      }, 400);
+    }
+  }
+  // 页面加载后延迟 500ms 开始打字
+  setTimeout(type, 500);
+})();
+</script>
   
   <style>
     .copy-btn {

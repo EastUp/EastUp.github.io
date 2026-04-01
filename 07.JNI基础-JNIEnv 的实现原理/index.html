@@ -162,6 +162,9 @@
   <script src="/live2d-widget/autoload.js"></script>
 
   
+  <div id="reading-progress" style="position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,#fc6423,#f7877f);width:0;z-index:9999;transition:width 0.1s;"></div>
+
+  
   
     
   
@@ -491,13 +494,17 @@
 </ul>
 <h1 id="2-详解-h-文件和实现文件"><a href="#2-详解-h-文件和实现文件" class="headerlink" title="2. 详解 .h 文件和实现文件"></a>2. 详解 .h 文件和实现文件</h1><p>com_east_NdkSample.h：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;jni.h&quot;</span></span></span><br><span class="line"><span class="comment">/* Header for class com_east_NdkSample */</span></span><br><span class="line"><span class="comment">// 用来打一个标记， c 在编译的时候会把头文件 copy 到你引入的地方，不管是重复引用还是相互引用都只会 copy 一次</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _Included_com_east_jni07_NdkSample</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _Included_com_east_jni07_NdkSample</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus <span class="comment">// 相当于 if 语句 c++</span></span></span><br><span class="line"><span class="comment">// 不管是 c 还是 c++ 统一都是采用 c 的编译方法，因为在 c 里面是不允许函数重载的，但是在 c++ 里面可以</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     com_east_jni07_NdkSample</span></span><br><span class="line"><span class="comment"> * Method:    getSingnaturePassword</span></span><br><span class="line"><span class="comment"> * Signature: ()Ljava/lang/String;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">JNIEXPORT jstring JNICALL <span class="title function_">Java_com_east_jni07_NdkSample_getSingnaturePassword</span></span><br><span class="line">  <span class="params">(JNIEnv *, jclass)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
 <p>Simple.c：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现我们的 native 方法</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;com_east_NdkSample.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// JNIEXPORT： JNI 一个关键字，不能少（编译能通过），标记为该方法可以被外部调用</span></span><br><span class="line"><span class="comment">// jstring：代表 java 中的 String</span></span><br><span class="line"><span class="comment">// JNICALL：也是一个关键字，可以少的 jni call</span></span><br><span class="line"><span class="comment">// jobject： 非静态方法时 java 传递下来的类对象，就是本项目中 NdkSample java 对象</span></span><br><span class="line"><span class="comment">// jclass：静态方法时，java 传递下来的 class 对象，就是本项目中的 NdkSample.class</span></span><br><span class="line">JNIEXPORT jstring JNICALL <span class="title function_">Java_com_east_NdkSample_getSingnaturePassword</span></span><br><span class="line">        <span class="params">(JNIEnv * env, jclass clz)</span>&#123;</span><br><span class="line">    <span class="comment">// C 中 typedef const struct JNINativeInterface* JNIEnv; 已经是一个结构体指针了</span></span><br><span class="line">    <span class="comment">// C++ 中 typedef _JNIEnv JNIEnv; // 就是一个结构体</span></span><br><span class="line">    <span class="comment">// JNIEnv * 其实已经是一个二级指针了，所以 -&gt; 调用的情况下必须是一级指针 *取值</span></span><br><span class="line">    <span class="keyword">return</span> (*env)-&gt;NewStringUTF(env, <span class="string">&quot;eastrise&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="3-JNIEnv-的实现原理"><a href="#3-JNIEnv-的实现原理" class="headerlink" title="3. JNIEnv 的实现原理"></a>3. JNIEnv 的实现原理</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> defined(__cplusplus) <span class="comment">// 如果是C++文件 </span></span></span><br><span class="line"><span class="keyword">typedef</span> _JNIEnv JNIEnv;    JNIEnv 就是结构体 _JNIEnv</span><br><span class="line"><span class="keyword">typedef</span> _JavaVM JavaVM;  </span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">JNINativeInterface</span>* <span class="title">JNIEnv</span>;</span> <span class="comment">// 如果是C文件 JNIEnv 是JNINativeInterface的一级指针</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">JNIInvokeInterface</span>* <span class="title">JavaVM</span>;</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 <p>看下 <code>JNINativeInterface</code> 的部分代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">JNINativeInterface</span> &#123;</span></span><br><span class="line">    <span class="type">void</span>*       reserved0;</span><br><span class="line">    <span class="type">void</span>*       reserved1;</span><br><span class="line">    <span class="type">void</span>*       reserved2;</span><br><span class="line">    <span class="type">void</span>*       reserved3;</span><br><span class="line"></span><br><span class="line">    jint        (*GetVersion)(JNIEnv *); <span class="comment">// 函数指针</span></span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>看下 <code>_JNIEnv</code> 的部分代码（调用的还是 <code>JNINativeInterface</code> 的方法）：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> _<span class="title">JNIEnv</span> &#123;</span></span><br><span class="line">    <span class="comment">/* do not rename this; it does not seem to be entirely opaque */</span></span><br><span class="line">    <span class="type">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">JNINativeInterface</span>* <span class="title">functions</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(__cplusplus) <span class="comment">// 如果是 C++ ，调用的还是 JNINativeInterface 的方法</span></span></span><br><span class="line"></span><br><span class="line">    jint <span class="title function_">GetVersion</span><span class="params">()</span></span><br><span class="line">    &#123; <span class="keyword">return</span> functions-&gt;GetVersion(this); &#125;</span><br><span class="line">    ...</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="4-C-中访问和修改-java-的属性和方法"><a href="#4-C-中访问和修改-java-的属性和方法" class="headerlink" title="4. C 中访问和修改 java 的属性和方法"></a>4. C 中访问和修改 java 的属性和方法</h1><ul>
 <li><code>env-&gt;GetXXFieldID</code>：获取字段的ID</li>
 <li><code>env-&gt;GetXXField</code>：获取字段上的值,返回XX类型</li>
@@ -512,6 +519,7 @@
 <p>java 中的本地方法：<code>public native void changeName();</code></p>
 <p>c中的方法：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">JNIEXPORT <span class="type">void</span> JNICALL <span class="title function_">Java_com_east_NdkSample1_changeName</span></span><br><span class="line"><span class="params">(JNIEnv * env, jobject jobj)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 获取 jclass</span></span><br><span class="line">	jclass j_clz = (*env)-&gt;GetObjectClass(env,jobj);</span><br><span class="line">	<span class="comment">// 2. 获取 jfieldID</span></span><br><span class="line">	<span class="comment">// 获取 jfieldId (JNIEnv *env, jclass clazz, const char *name, const char *sig)</span></span><br><span class="line">	<span class="comment">// name 获取哪个属性的属性名 ,sig 属性的签名</span></span><br><span class="line">	jfieldID j_fid = (*env)-&gt;GetFieldID(env, j_clz, <span class="string">&quot;name&quot;</span>, <span class="string">&quot;Ljava/lang/String;&quot;</span>);</span><br><span class="line">	<span class="comment">// 1. 获取 name 的属性值</span></span><br><span class="line">	jstring j_str = (*env)-&gt;GetObjectField(env,jobj,j_fid);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 打印字符串 jstring -&gt; c_str</span></span><br><span class="line">	<span class="type">char</span>* c_str = (*env)-&gt;GetStringUTFChars(env, j_str, <span class="literal">NULL</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;name is %s&quot;</span>, c_str);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 修改成 Jack</span></span><br><span class="line">	jstring jack_name = (*env)-&gt;NewStringUTF(env,<span class="string">&quot;Jack&quot;</span>);</span><br><span class="line">	(*env)-&gt;SetObjectField(env,jobj,j_fid,jack_name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="4-2-C中修改-java-的静态属性"><a href="#4-2-C中修改-java-的静态属性" class="headerlink" title="4.2 C中修改 java 的静态属性"></a>4.2 C中修改 java 的静态属性</h2><p>java 中的属性：<code>public static int age = 24;</code></p>
 <p>java 中的本地静态方法：<code>public static native void changeAge();</code></p>
 <p>c中的方法：</p>
@@ -522,8 +530,14 @@
 </ul>
 <p>java 中的方法：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public <span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> number1,<span class="type">int</span> number2)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> number1+number2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>c中的方法：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// c 调用 java 层普通方法</span></span><br><span class="line">JNIEXPORT <span class="type">void</span> JNICALL <span class="title function_">Java_com_east_NdkSample1_callAddMethod</span></span><br><span class="line"><span class="params">(JNIEnv * env, jobject jobj)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3. 获取 jclass</span></span><br><span class="line">	jclass jcls = (*env)-&gt;GetObjectClass(env,jobj);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. 获取 jmethodID</span></span><br><span class="line">	jmethodID j_mid = (*env)-&gt;GetMethodID(env,jcls,<span class="string">&quot;add&quot;</span>,<span class="string">&quot;(II)I&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 调用 java 方法</span></span><br><span class="line">	jint sum = (*env)-&gt;CallObjectMethod(env,jobj,j_mid,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;sum = %d&quot;</span>,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
       
     </div>
@@ -2015,6 +2029,52 @@ if(canvas.getContext){
     document.body.addEventListener('input', POWERMODE);
   </script>
 
+
+
+<script>
+(function(){
+  var bar = document.getElementById('reading-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', function(){
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    bar.style.width = progress + '%';
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var el = document.querySelector('.site-subtitle');
+  if (!el) return;
+  var text = el.textContent;
+  el.textContent = '';
+  el.style.borderRight = '2px solid #555';
+  var i = 0;
+  function type(){
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 150);
+    } else {
+      // 打完后光标闪烁 3 次后消失
+      var blink = 0;
+      var timer = setInterval(function(){
+        el.style.borderRight = el.style.borderRight === 'none' ? '2px solid #555' : 'none';
+        blink++;
+        if (blink >= 6) {
+          clearInterval(timer);
+          el.style.borderRight = 'none';
+        }
+      }, 400);
+    }
+  }
+  // 页面加载后延迟 500ms 开始打字
+  setTimeout(type, 500);
+})();
+</script>
   
   <style>
     .copy-btn {
