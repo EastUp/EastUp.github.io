@@ -21,7 +21,8 @@ $(document).ready(function () {
       });
     }
 
-    setSidebarMarginTop(headerOffset).css({ 'margin-left': 'initial' });
+    // 额外加 40px 避免侧边栏与 header 重叠
+    setSidebarMarginTop(headerOffset + 30).css({ 'margin-left': 'initial' });
   }
 
   function resizeListener () {
