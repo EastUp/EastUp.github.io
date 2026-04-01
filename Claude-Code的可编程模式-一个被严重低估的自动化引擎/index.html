@@ -19,7 +19,7 @@
     
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-corner-indicator.min.css?v=1.0.2" rel="stylesheet">
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -1116,8 +1116,8 @@
           
             
           
-          <div style="">
-  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+          <div style="display:flex;justify-content:center;">
+  <canvas id="canvas" style="width:75%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
 </div>
 <script>
 (function(){
@@ -1263,7 +1263,7 @@ var canvas = document.getElementById('canvas');
 if(canvas.getContext){
     var cxt = canvas.getContext('2d');
     //声明canvas的宽高
-    var H = 100,W = 700;
+    var H = 70,W = 500;
     canvas.height = H;
     canvas.width = W;
     cxt.fillStyle = '#f00';
@@ -1352,7 +1352,7 @@ if(canvas.getContext){
     /*渲染*/
     function render(){
         //重置画布宽度，达到清空画布的效果
-        canvas.height = 100;
+        canvas.height = 70;
         //渲染时钟
         for(var i = 0; i < data.length; i++){
             renderDigit(i,data[i]);
@@ -1381,8 +1381,8 @@ if(canvas.getContext){
 })();
 </script>
 
-          <div style="">
-  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+          <div style="display:flex;justify-content:center;">
+  <canvas id="canvas" style="width:75%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
 </div>
 <script>
 (function(){
@@ -1528,7 +1528,7 @@ var canvas = document.getElementById('canvas');
 if(canvas.getContext){
     var cxt = canvas.getContext('2d');
     //声明canvas的宽高
-    var H = 100,W = 700;
+    var H = 70,W = 500;
     canvas.height = H;
     canvas.width = W;
     cxt.fillStyle = '#f00';
@@ -1617,7 +1617,7 @@ if(canvas.getContext){
     /*渲染*/
     function render(){
         //重置画布宽度，达到清空画布的效果
-        canvas.height = 100;
+        canvas.height = 70;
         //渲染时钟
         for(var i = 0; i < data.length; i++){
             renderDigit(i,data[i]);
@@ -1749,6 +1749,8 @@ if(canvas.getContext){
   
 
 
+  
+
 
 
 
@@ -1787,6 +1789,11 @@ if(canvas.getContext){
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
