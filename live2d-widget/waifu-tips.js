@@ -42,7 +42,25 @@ function loadWidget(config) {
 	let userAction = false,
 		userActionTimer,
 		messageTimer,
-		messageArray = ["好久不见，日子过得好快呢……", "大坏蛋！你都多久没理人家了呀，嘤嘤嘤～", "嗨～快来逗我玩吧！", "拿小拳拳锤你胸口！", "记得把小家加入 Adblock 白名单哦！"];
+		messageArray = [
+			"好久不见，日子过得好快呢……",
+			"大坏蛋！你都多久没理人家了呀，嘤嘤嘤～",
+			"嗨～快来逗我玩吧！",
+			"拿小拳拳锤你胸口！",
+			"记得把小家加入 Adblock 白名单哦！",
+			"你知道吗？递归就是：要理解递归，你得先理解递归……",
+			"主人写了好多文章呢，你都看了吗？",
+			"试试把鼠标移到左边的按钮上，有惊喜哦～",
+			"据说程序员最怕的两件事：写注释和别人不写注释～",
+			"今天也要元气满满地学习呀！",
+			"有没有发现什么好玩的文章？分享给朋友吧！",
+			"代码写累了就休息一下吧，身体最重要哦！",
+			"我在这里等你好久了呢，要不要聊聊天？",
+			"听说收藏了不看等于学会了？才怪呢！",
+			"世界上最遥远的距离，就是写了 TODO 但永远没有 DO……",
+			"你今天的 bug 修完了吗？加油哦！",
+			"要不要试试点我？我不会咬人的……大概。"
+		];
 	window.addEventListener("mousemove", () => userAction = true);
 	window.addEventListener("keydown", () => userAction = true);
 	setInterval(() => {
@@ -98,6 +116,101 @@ function loadWidget(config) {
 		});
 		window.addEventListener("visibilitychange", () => {
 			if (!document.hidden) showMessage("哇，你终于回来了～", 6000, 9);
+		});
+	})();
+
+	// 拖拽移动 + 连击反馈（共享状态，避免拖拽结束误触 click）
+	(function initDragAndCombo() {
+		const waifu = document.getElementById("waifu");
+		const canvas = document.querySelector("#waifu #live2d");
+		let wasDragging = false;
+		let clickCount = 0, clickTimer = null;
+		const comboTexts = {
+			normal: ["是…是不小心碰到了吧…", "你看到我的小熊了吗？", "干嘛动我呀！小心我咬你！"],
+			angry: ["你够了哦！再戳我就要生气了！", "呜呜呜，你欺负我！", "不要再戳了啦 >_<！"],
+			rage: ["哼！不理你了！", "你再这样我要叫主人了！！", "够了够了够了！(╯°□°)╯︵ ┻━┻"]
+		};
+
+		// 拖拽：mousedown → mousemove → mouseup
+		canvas.addEventListener("mousedown", e => {
+			const startX = e.clientX, startY = e.clientY;
+			const origRight = parseInt(window.getComputedStyle(waifu).right) || 0;
+			const origBottom = parseInt(window.getComputedStyle(waifu).bottom) || 0;
+			let dragging = false;
+			const onMouseMove = ev => {
+				const dx = ev.clientX - startX, dy = ev.clientY - startY;
+				if (!dragging && Math.abs(dx) + Math.abs(dy) < 5) return;
+				dragging = true;
+				waifu.style.transition = "none";
+				waifu.style.right = Math.max(0, Math.min(origRight - dx, window.innerWidth - 300)) + "px";
+				waifu.style.bottom = Math.max(0, Math.min(origBottom - dy, window.innerHeight - 300)) + "px";
+			};
+			const onMouseUp = () => {
+				document.removeEventListener("mousemove", onMouseMove);
+				document.removeEventListener("mouseup", onMouseUp);
+				if (dragging) {
+					waifu.style.transition = "";
+					wasDragging = true;
+					// 延迟重置，让后续 click 事件能读到 wasDragging=true
+					setTimeout(() => { wasDragging = false; }, 0);
+				}
+			};
+			document.addEventListener("mousemove", onMouseMove);
+			document.addEventListener("mouseup", onMouseUp);
+		});
+
+		// 连击：click（拖拽后不触发）
+		canvas.addEventListener("click", () => {
+			if (wasDragging) return;
+			clickCount++;
+			clearTimeout(clickTimer);
+			clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
+			let text;
+			if (clickCount >= 6) {
+				text = randomSelection(comboTexts.rage);
+				canvas.style.animation = "comboShake 0.3s ease";
+				setTimeout(() => { canvas.style.animation = ""; }, 300);
+			} else if (clickCount >= 3) {
+				text = randomSelection(comboTexts.angry);
+			} else {
+				text = randomSelection(comboTexts.normal);
+			}
+			showMessage(text, 4000, 9);
+		});
+	})();
+
+	// 阅读陪伴系统（仅文章页启用）
+	(function initReadingCompanion() {
+		if (!document.querySelector(".post-body")) return;
+		const milestones = new Set();
+		const readingTexts = {
+			25: ["看了四分之一啦，继续加油！", "这篇文章不错吧？继续往下看哦～"],
+			50: ["已经看了一半了呢！", "中场休息一下？还是继续冲？"],
+			75: ["快看完了，坚持住！", "最后一点点了，加油～"],
+			100: ["太棒了！整篇文章都看完了！", "看完了要记得收藏哦！"]
+		};
+		const startTime = Date.now();
+		let scrollTimer = null;
+		window.addEventListener("scroll", () => {
+			if (scrollTimer) return;
+			scrollTimer = setTimeout(() => {
+				scrollTimer = null;
+				const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+				if (scrollHeight <= 0) return;
+				const progress = Math.round((scrollTop / scrollHeight) * 100);
+				[25, 50, 75, 100].forEach(milestone => {
+					if (progress >= milestone && !milestones.has(milestone)) {
+						milestones.add(milestone);
+						showMessage(randomSelection(readingTexts[milestone]), 5000, 9);
+					}
+				});
+				// 阅读超过15分钟提醒休息
+				if (Date.now() - startTime > 15 * 60 * 1000 && !milestones.has("rest")) {
+					milestones.add("rest");
+					showMessage("已经看了好久了呢，休息一下眼睛吧～", 6000, 9);
+				}
+			}, 1000);
 		});
 	})();
 
@@ -194,8 +307,13 @@ function loadWidget(config) {
 					if ((after.split("/")[0] <= now.getMonth() + 1 && now.getMonth() + 1 <= before.split("/")[0]) && (after.split("/")[1] <= now.getDate() && now.getDate() <= before.split("/")[1])) {
 						text = randomSelection(text);
 						text = text.replace("{year}", now.getFullYear());
-						//showMessage(text, 7000, true);
 						messageArray.push(text);
+						// 节日主动推送（每天只推送一次）
+						const todayKey = "waifu-season-" + now.toDateString();
+						if (!sessionStorage.getItem(todayKey)) {
+							sessionStorage.setItem(todayKey, "1");
+							setTimeout(() => { showMessage(text, 7000, 10); }, 10000);
+						}
 					}
 				});
 			});
